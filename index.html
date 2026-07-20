@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>AR Viewer</title>
+
+    <!-- ═══ Google Fonts: IBM Plex Sans Thai + Inter (สำรอง) ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- โหลด Model-Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js">
+    </script>
+
+    <style>
+        /* ─── รีเซ็ต & พื้นฐาน ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0d0e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'IBM Plex Sans Thai', 'Inter', -apple-system, sans-serif;
+            color: #fff;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        model-viewer {
+            width: 100vw;
+            height: 100vh;
+            background: #0b0d0e;
+        }
+
+        /* ─── ซ่อนปุ่ม AR เริ่มต้นของ model-viewer ─── */
+        model-viewer::part(ar-button) {
+            display: none !important;
+        }
+
+        /* ─── ข้อความโหลด ─── */
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: rgba(255, 255, 255, 0.85);
+            z-index: 50;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 20px 32px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: opacity 0.4s ease;
+            white-space: nowrap;
+        }
+        #loading.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ─── ปุ่มสำรอง (fallback) ─── */
+        #fallback-btn {
+            position: fixed;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            color: #fff;
+            border: none;
+            border-radius: 60px;
+            padding: 18px 48px;
+            font-family: inherit;
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            z-index: 100;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.35);
+            transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+            display: none;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        #fallback-btn:active {
+            transform: translateX(-50%) scale(0.96);
+            box-shadow: 0 4px 16px rgba(0, 122, 255, 0.25);
+        }
+        #fallback-btn.show {
+            display: block;
+        }
+
+        /* ─── ปรับแต่งปุ่มให้เหมาะกับมือถือ ─── */
+        @media (max-width: 480px) {
+            #loading {
+                font-size: 1rem;
+                padding: 16px 24px;
+                white-space: normal;
+                max-width: 80vw;
+            }
+            #fallback-btn {
+                padding: 16px 32px;
+                font-size: 1rem;
+                bottom: 32px;
+                min-width: 200px;
+            }
+        }
+
+        /* ─── ข้อความแจ้งเตือนเมื่อไม่รองรับ AR ─── */
+        #unsupported {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(30, 30, 30, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 32px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            max-width: 360px;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        #unsupported .emoji {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        #unsupported .title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        #unsupported .desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ข้อความโหลด -->
+    <div id="loading">⏳ กำลังเตรียม AR…</div>
+
+    <!-- ข้อความไม่รองรับ (ซ่อนไว้) -->
+    <div id="unsupported">
+        <span class="emoji">📱</span>
+        <div class="title">อุปกรณ์นี้ไม่รองรับ AR</div>
+        <div class="desc">กรุณาใช้ iPhone (iOS 12+) หรือ Android (ARCore) ที่รองรับ</div>
+    </div>
+
+    <!-- Model-Viewer -->
+    <model-viewer
+        id="ar-viewer"
+        src="https://ziphercyprex.github.io/C5TAKO-Project/3D%20Model/AR/3D%20MODEL_NOT_PRINT.3mf.glb"
+        ios-src="https://ziphercyprex.github.io/C5TAKO-Project/3D%20Model/AR/3D%20MODEL_NOT_PRINT.3mf.usdz"
+        ar
+        ar-scale="auto"
+        camera-controls
+        alt="3D Model"
+        style="width: 100vw; height: 100vh;"
+    >
+    </model-viewer>
+
+    <!-- ปุ่มสำรอง (ซ่อนไว้) -->
+    <button id="fallback-btn">🔍 เปิดใน AR</button>
+
+    <script>
+        (function() {
+            const modelViewer = document.getElementById('ar-viewer');
+            const fallbackBtn = document.getElementById('fallback-btn');
+            const loading = document.getElementById('loading');
+            const unsupported = document.getElementById('unsupported');
+
+            // ─── ตรวจจับ iOS / Android ───
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            const isAndroid = /Android/.test(navigator.userAgent);
+            const isSupported = isIOS || isAndroid;
+
+            // ─── ฟังก์ชันเปิด AR ───
+            function activateAR() {
+                if (modelViewer && modelViewer.activateAR) {
+                    modelViewer.activateAR();
+                } else {
+                    // fallback: คลิกปุ่ม AR ที่อยู่ภายใน shadow DOM
+                    const arButton = modelViewer.shadowRoot?.querySelector('.ar-button');
+                    if (arButton) arButton.click();
+                }
+            }
+
+            // ─── กรณีไม่รองรับ ───
+            if (!isSupported) {
+                loading.classList.add('hide');
+                unsupported.style.display = 'block';
+                return;
+            }
+
+            // ─── รอให้โมเดลโหลดเสร็จ ───
+            modelViewer.addEventListener('load', function() {
+                loading.classList.add('hide');
+
+                // ฟังก์ชันที่จะใช้เป็น event handler สำหรับการแตะครั้งแรก
+                const startAR = function(e) {
+                    activateAR();
+                    // ลบ event หลังจากใช้แล้ว
+                    document.removeEventListener('click', startAR);
+                    document.removeEventListener('touchstart', startAR);
+                };
+
+                // เพิ่ม listener รอผู้ใช้แตะ/คลิก
+                document.addEventListener('click', startAR);
+                document.addEventListener('touchstart', startAR);
+
+                // ถ้าผ่านไป 3.5 วินาทียังไม่มีการโต้ตอบ → แสดงปุ่มสำรอง
+                let timeoutId = setTimeout(() => {
+                    // ตรวจสอบว่า event listener ยังคงอยู่หรือไม่ (ถ้ายังอยู่ แปลว่ายังไม่ถูกเรียก)
+                    // วิธีง่าย: ใช้ flag
+                    if (typeof window._arStarted === 'undefined' || !window._arStarted) {
+                        fallbackBtn.classList.add('show');
+                        loading.textContent = '👆 แตะเพื่อเปิด AR';
+                        loading.classList.remove('hide');
+                        // ซ่อนข้อความโหลดอีกครั้งหลังจาก 2 วินาที
+                        setTimeout(() => {
+                            loading.classList.add('hide');
+                        }, 2000);
+                    }
+                }, 3500);
+
+                // เมื่อมีการเปิด AR จริง (จาก listener หรือปุ่ม) ให้ลบ timeout และซ่อนปุ่ม
+                const markStarted = function() {
+                    window._arStarted = true;
+                    clearTimeout(timeoutId);
+                    fallbackBtn.classList.remove('show');
+                    loading.classList.add('hide');
+                };
+
+                // ใช้ event 'ar-status' เพื่อตรวจสอบว่าเข้า AR แล้ว
+                modelViewer.addEventListener('ar-status', function(e) {
+                    if (e.detail.status === 'session-started') {
+                        markStarted();
+                    }
+                });
+
+                // ถ้า activateAR ถูกเรียกจากปุ่มสำรอง ก็ให้ mark ด้วย
+                const originalActivate = activateAR;
+                activateAR = function() {
+                    markStarted();
+                    originalActivate();
+                };
+                // อัปเดตฟังก์ชันที่ปุ่มใช้
+                fallbackBtn.onclick = function() {
+                    activateAR();
+                };
+
+            });
+
+            // ─── ถ้าโหลดโมเดลล้มเหลว ───
+            modelViewer.addEventListener('error', function() {
+                loading.classList.add('hide');
+                fallbackBtn.classList.add('show');
+                fallbackBtn.textContent = '⚠️ โหลดไม่สำเร็จ ลองอีกครั้ง';
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
