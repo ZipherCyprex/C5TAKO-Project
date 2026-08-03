@@ -2,10 +2,77 @@
   --c5-purple: #7b21f5;
   --c5-purple-soft: #a855f7;
   --c5-ink: #0d0b10;
+  --c5-menu-bg: rgba(0, 0, 0, 0.22);
+  --c5-menu-border: rgba(255, 255, 255, 0.08);
 }
 
 #navbar {
   border-bottom-color: color-mix(in srgb, var(--c5-purple) 22%, transparent);
+}
+
+/* Keep the outer Mintlify sidebar as spacing, then frame its scrollable content. */
+#sidebar {
+  box-sizing: border-box;
+  padding: 20px 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#sidebar-content {
+  box-sizing: border-box;
+  height: calc(100% - 40px);
+  min-height: 0;
+  padding: 10px 8px;
+  background: var(--c5-menu-bg);
+  border: 1px solid var(--c5-menu-border);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+#sidebar-content nav a {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+#sidebar-content nav a:hover,
+#sidebar-content nav a[aria-current="page"],
+#sidebar-content li[data-active] > a {
+  background: rgba(123, 33, 245, 0.08);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* เส้นติดตามตำแหน่งของหัวข้อใน On this page */
+#table-of-contents-content {
+  position: relative;
+  padding-left: 14px;
+}
+
+/* เส้นพื้นหลังสีเทาเข้ม */
+#table-of-contents-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 3px;
+  width: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* เส้นสีม่วงจะเลื่อนตามหัวข้อที่กำลังอ่าน */
+#table-of-contents-content > li[data-active]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -11px;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--c5-purple-soft);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.28);
 }
 
 #page-title,
@@ -18,6 +85,31 @@ h3 {
 code,
 pre {
   font-variant-ligatures: none;
+}
+
+/* Mintlify renders Info, Tip, Warning, and Note as div.callout. */
+.callout {
+  border-radius: 12px !important;
+}
+
+/* Only neutral callouts get the darker grayscale background. */
+.callout:not([class*="bg-green-"]):not([class*="bg-yellow-"]):not([class*="bg-red-"]):not([class*="bg-blue-"]):not([class*="bg-purple-"]) {
+  background: #17171d !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Mintlifyวางสีที่เห็นจริงไว้ที่ .code-block-background */
+#content-area .code-block-background {
+  background-color: rgba(40, 42, 54, 0.45) !important;
+  background-image: none !important;
+}
+
+/* ให้พื้นหลังของ pre โปร่งใส เพื่อให้เห็น opacity ของ parent */
+#content-area .code-block-background pre.shiki,
+#content-area .code-block-background [class*="font-mono"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 /* The wordmark PNG already has transparency; never place a box behind it. */
@@ -34,4 +126,46 @@ pre {
 .media-todo {
   border-left: 3px solid var(--c5-purple);
   padding-left: 1rem;
+}
+
+/* Keep long paths, code blocks, and tables usable on narrow screens. */
+@media (max-width: 768px) {
+  #sidebar {
+    padding: 14px 8px;
+  }
+
+  #sidebar-content {
+    height: calc(100% - 28px);
+    padding: 8px 6px;
+    border-radius: 10px;
+  }
+
+  #navbar img {
+    max-height: 28px;
+  }
+
+  #page-title,
+  h1 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    line-height: 1.2;
+  }
+
+  article {
+    overflow-wrap: anywhere;
+  }
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .media-todo {
+    padding-left: 0.75rem;
+  }
 }

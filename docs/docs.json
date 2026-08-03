@@ -58,6 +58,7 @@
       {
         "group": "🚀 เริ่มต้นใช้งาน",
         "pages": [
+          "about",
           "index",
           "getting-started/unboxing-and-power",
           "getting-started/controls",

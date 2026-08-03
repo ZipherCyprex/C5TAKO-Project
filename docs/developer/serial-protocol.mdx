@@ -1,29 +1,39 @@
 ---
 title: "Serial Protocol"
-description: "ข้อมูลพื้นฐานสำหรับสร้างแอปที่ควบคุม C5TAKO ผ่าน USB Serial หรือ BLE Serial"
+description: "คำสั่งสำหรับสร้างแอปควบคุม C5TAKO ผ่าน USB Serial หรือ BLE Serial"
 icon: "terminal"
 ---
 
-หน้านี้แยกจากคู่มือลูกค้า ใช้สำหรับผู้ที่ต้องการสร้างแอปควบคุม C5TAKO ผ่าน USB Serial หรือ BLE Serial
+หน้านี้ใช้สำหรับนักพัฒนาที่ต้องการสร้างแอปควบคุม C5TAKO ผ่าน USB Serial หรือ BLE Serial
+
+## เริ่มต้นอย่างเร็ว
+
+1. เชื่อมต่อ USB Serial หรือ BLE Serial
+2. เปิด Notification ที่ TX หากใช้ BLE
+3. ส่งคำสั่ง `/HELP` เพื่ออ่านคำสั่งของ Firmware ที่กำลังใช้งาน
+4. ส่ง `/PING` เพื่อตรวจการเชื่อมต่อ
+5. ส่ง `/STATUS` เพื่ออ่านสถานะเครื่อง
 
 <Warning>
 
-Protocol อาจเปลี่ยนตามเวอร์ชัน Firmware ให้เรียก `/HELP` และ `/STATUS` จากเครื่องจริงก่อนผูกคำสั่งเข้ากับแอป
+Protocol อาจเปลี่ยนตามเวอร์ชัน Firmware ให้ใช้ผลจาก `/HELP` ของเครื่องจริงเป็นแหล่งอ้างอิงก่อนผูกคำสั่งเข้ากับแอป
 
 </Warning>
 
-## USB Serial
+## การเชื่อมต่อ
+
+### USB Serial
 
 | รายการ | ค่า |
 | --- | --- |
 | Baud rate | `115200` |
-| รูปแบบ | Text แบบทีละบรรทัด |
+| รูปแบบข้อมูล | Text แบบทีละบรรทัด |
 | จบบรรทัด | `\n` หรือ CRLF |
 | Prefix คำสั่ง | `/` |
 
-ชื่อคำสั่งและชื่อโหมดส่วนใหญ่ไม่แยกตัวพิมพ์เล็ก–ใหญ่ ค่าอาร์กิวเมนต์ที่มีช่องว่างควรใส่เครื่องหมายคำพูด
+ตั้งค่า Serial Monitor ให้ส่ง `Newline` หรือ `Both NL & CR` หากเครื่องไม่ตอบสนอง ให้ตรวจการตั้งค่าจบบรรทัดก่อน
 
-## BLE Serial
+### BLE Serial
 
 BLE ใช้คำสั่งและ Response ชุดเดียวกับ USB Serial
 
@@ -32,9 +42,15 @@ BLE ใช้คำสั่งและ Response ชุดเดียวกั
 | Device name | `C5TAKO Serial` |
 | Service UUID | `6E400001-B5A3-F393-E0A9-E50E24DCCA9E` |
 | RX — เขียนคำสั่ง | `6E400002-B5A3-F393-E0A9-E50E24DCCA9E` |
-| TX — อ่าน/Notify | `6E400003-B5A3-F393-E0A9-E50E24DCCA9E` |
+| TX — อ่านและรับ Notification | `6E400003-B5A3-F393-E0A9-E50E24DCCA9E` |
 
-Client ควรเปิด Notification ที่ TX ก่อนเขียนคำสั่งไปยัง RX และต้องรองรับ Response ที่ถูกแบ่งเป็นหลาย BLE Packet
+ลำดับการทำงาน:
+
+1. ค้นหาอุปกรณ์ชื่อ `C5TAKO Serial`
+2. เชื่อมต่อ Service UUID
+3. เปิด Notification ที่ TX
+4. เขียนคำสั่งไปที่ RX
+5. รองรับ Response ที่แบ่งเป็นหลาย BLE Packet
 
 ## รูปแบบ Response
 
@@ -58,78 +74,200 @@ Client ควรเปิด Notification ที่ TX ก่อนเขีย�
 [DATA] [STATUS] {"wifi":"AP+STA","scan":{"aps":4,"stas":0}}
 ```
 
-## คำสั่งเริ่มต้นที่ควรรองรับ
+อ่านข้อมูลเป็น Stream อย่าสมมติว่า 1 Read เท่ากับ 1 Response แยก Parser ของข้อความ Response ออกจาก JSON payload และรองรับ `BUSY`, Timeout และการเชื่อมต่อหลุด
+
+## คำสั่งพื้นฐาน
+
+| คำสั่ง | ใช้ทำอะไร |
+| --- | --- |
+| `/HELP` | แสดงคำสั่งที่ Firmware รุ่นนั้นรองรับ |
+| `/PING` | ตรวจว่า Serial Command ทำงานอยู่ |
+| `/STATUS` | อ่านสถานะรวมของเครื่อง |
+| `/STATUS <module>` | อ่านสถานะของ Module ที่ระบุ หาก Firmware รองรับ |
+| `/STOP` | หยุด Runtime ทั้งหมด |
+| `/STOP <module>` | หยุด Runtime ของ Module ที่ระบุ |
+| `/REBOOT [DELAY=ms]` | รีสตาร์ทเครื่องทันทีหรือหลังหน่วงเวลาตามที่ระบุ |
+
+## Scan และเลือกเป้าหมาย
+
+### ค้นหา AP และ STA
+
+```text
+/SCAN AP [CHANNEL=n]
+/SCAN STA
+```
+
+`/SCAN AP` ค้นหา Access Point หากไม่ระบุ Channel จะสแกนหลาย Channel ส่วน `/SCAN STA` ค้นหา Client ที่เกี่ยวข้องกับข้อมูล AP ที่สแกนไว้
+
+### อ่านผลการสแกน
+
+```text
+/RESULT AP
+/RESULT STA
+```
+
+คำสั่งนี้อ่านผลล่าสุดโดยไม่เริ่มสแกนใหม่ ดัชนีรายการเริ่มจาก `0`
+
+### เลือกรายการ
+
+```text
+/SELECT AP <ids|ALL|CLEAR>
+/SELECT STA <ids|ALL|CLEAR>
+```
+
+ตัวอย่าง:
+
+```text
+/SELECT AP 0,1
+/SELECT STA 0
+/SELECT AP ALL
+/SELECT STA CLEAR
+```
+
+## เริ่มและหยุด Runtime
+
+คำสั่งที่เริ่มการทำงานใช้รูปแบบนี้:
+
+```text
+/START <MODULE> [MODE] [ARGS...]
+```
+
+### Wi‑Fi Monitor และ PCAP
+
+```text
+/START MONITOR NORMAL [HOP=ON] [INTERVAL=500]
+/START MONITOR SAVE [HOP=ON] [INTERVAL=500]
+/START PCAP ACTIVE
+/START PCAP TARGET
+```
+
+`SAVE` บันทึกข้อมูล Monitor เป็น PCAP หากมีพื้นที่เก็บข้อมูล ส่วน `TARGET` ต้องมีข้อมูล AP ที่สแกนและเลือกไว้แล้ว
+
+### เครื่องมือ Wi‑Fi อื่น
+
+```text
+/START DEAUTH ALL|MASS|AP|STA
+/START BEACON RANDOM|ALL|AP|PREFIX <name>|LIST <ssid1,ssid2>
+/START AUTH ALL|AP
+/START ASSOC ALL|AP
+/START CSA ALL|AP|STA
+/START FINDHIDDEN
+/START WHITELIST AP|ALL
+```
+
+### Portal
+
+```text
+/START PORTAL NORMAL SSID="Free WiFi" [TEMPLATE=basic|HTML=/path.html|INLINE="<html>..."]
+/START PORTAL VERIFY SSID="Target" [BSSID=xx] [CHANNEL=n] [TEMPLATE=password_only|HTML=/path.html|INLINE="<html>..."]
+/PORTAL STATUS
+/PORTAL DEAUTH TOGGLE|ON|OFF
+```
+
+ใช้คำสั่ง Portal เฉพาะใน Lab และใช้ข้อมูลทดสอบที่ไม่ใช่ข้อมูลส่วนตัวของผู้อื่น
+
+### Bluetooth และการตรวจจับอื่น
+
+```text
+/START BLE_MONITOR [ACTIVE|PASSIVE]
+/START BLE_SPAM IOS|SAMSUNG|ANDROID|MICROSOFT|RANDOM
+/START BAD_BLE
+/START MODEL_FIND
+/START AIRTAG
+/START CSI_MOTION [CHANNEL=n] [MIN_RSSI=-85]
+```
+
+### หยุด Runtime
+
+```text
+/STOP
+/STOP MONITOR
+/STOP BLE_SPAM
+```
+
+หากแอปมีปุ่มหยุดฉุกเฉิน ให้ส่ง `/STOP` และ `/BTN RELEASE ALL` เมื่อหยุดการเชื่อมต่อระหว่างการกดปุ่มค้าง
+
+## ควบคุมหน้าจอ
+
+```text
+/BTN <UP|DOWN|LEFT|RIGHT|OK|BACK> TAP|HOLD|RELEASE
+/BTN RELEASE ALL
+```
+
+ตัวอย่าง:
+
+```text
+/BTN UP TAP
+/BTN OK HOLD
+/BTN RELEASE ALL
+```
+
+หากแอปขาดการเชื่อมต่อระหว่างคำสั่ง `HOLD` ให้ส่ง `/BTN RELEASE ALL` หลังเชื่อมต่อใหม่
+
+### ขอภาพหน้าจอ
+
+```text
+/FRAME GET [FMT=GRAY2|MONO] [COMP=RLE|RAW] [CHUNK=512]
+```
+
+แอปต้องประกอบ Chunk ตามลำดับและตรวจขนาดข้อมูลก่อนนำภาพไปแสดง
+
+## Status Stream
+
+```text
+/STREAM ON [INTERVAL=ms] [EVENTS=ON] [STATS=ON]
+/STREAM OFF
+```
+
+ช่วงเวลา `INTERVAL` รองรับ `100–60000` มิลลิวินาที ควรส่ง `/STREAM OFF` ก่อนตัดการเชื่อมต่อเมื่อไม่ต้องการข้อมูลต่อเนื่อง
+
+## คำสั่งไฟล์
+
+```text
+/FILE LIST [PATH=/]
+/FILE INFO <path>
+/FILE STORAGE
+/FILE DELETE <path>
+/FILE RENAME <old> <new>
+/FILE GET <path> [CHUNK=512] [LOOPS=1]
+/FILE RECV <path> LEN=<bytes> [CHUNK=512] [OVERWRITE=ON] [TIMEOUT=30000]
+```
+
+คำสั่งที่ใช้บ่อย:
+
+| คำสั่ง | ใช้ทำอะไร |
+| --- | --- |
+| `/FILE LIST` | แสดงรายการไฟล์ |
+| `/FILE INFO` | อ่านข้อมูลไฟล์ |
+| `/FILE STORAGE` | อ่านพื้นที่ทั้งหมด พื้นที่ใช้แล้ว และพื้นที่ว่าง |
+| `/FILE DELETE` | ลบไฟล์ |
+| `/FILE RENAME` | เปลี่ยนชื่อไฟล์ |
+| `/FILE GET` | ส่งไฟล์จากเครื่องออกไปยังแอป |
+| `/FILE RECV` | รับไฟล์จากแอปเข้าสู่เครื่องตาม Protocol ที่ Firmware รองรับ |
+
+รูปแบบ Stream ของ `/FILE RECV`:
+
+```text
+[BEGIN] [FILE] name="/x" len=n chunk=n
+DATA chunks
+[END] [FILE]
+```
+
+ก่อนใช้คำสั่งไฟล์ ให้ตรวจผล `/HELP` และ `/FILE STORAGE` จากเครื่องจริง เพราะความสามารถและชื่อพื้นที่เก็บข้อมูลอาจเปลี่ยนตาม Firmware
+
+## ลำดับการเชื่อมต่อที่แนะนำ
 
 ```text
 /HELP
 /PING
 /STATUS
+/SCAN AP
+/RESULT AP
+/SELECT AP 0
+/START MONITOR NORMAL
+/STREAM ON INTERVAL=1000 EVENTS=ON STATS=ON
+/STREAM OFF
 /STOP
 ```
 
-- `/HELP` อ่านรายการคำสั่งที่ Firmware รุ่นนั้นรองรับ
-- `/PING` ตรวจการเชื่อมต่อ
-- `/STATUS` อ่านสถานะรวมของเครื่อง
-- `/STOP` หยุด Runtime ที่กำลังทำงาน
-
-## ควบคุมหน้าจอจากแอป
-
-Protocol รองรับการจำลองปุ่ม:
-
-```text
-/BTN UP TAP
-/BTN DOWN TAP
-/BTN LEFT TAP
-/BTN RIGHT TAP
-/BTN OK TAP
-/BTN BACK TAP
-/BTN RELEASE ALL
-```
-
-หากแอปขาดการเชื่อมต่อระหว่างกดค้าง ควรส่ง `/BTN RELEASE ALL` หลังเชื่อมต่อใหม่เพื่อป้องกันปุ่มค้าง
-
-การขอ Frame จากหน้าจอ:
-
-```text
-/FRAME GET FMT=GRAY2 COMP=RLE CHUNK=512
-```
-
-แอปต้องประกอบ Chunk ตามลำดับและตรวจขนาดข้อมูลก่อนนำไปแสดง
-
-## Status Stream
-
-```text
-/STREAM ON INTERVAL=1000 EVENTS=ON STATS=ON
-/STREAM OFF
-```
-
-ช่วงเวลา `INTERVAL` รองรับ 100–60000 มิลลิวินาที แอปควรส่ง `/STREAM OFF` ก่อนตัดการเชื่อมต่อเมื่อไม่ต้องการข้อมูลต่อเนื่อง
-
-## ไฟล์
-
-คำสั่งอ่านที่ควรรองรับ:
-
-```text
-/FILE LIST
-/FILE STORAGE
-/FILE INFO /path/file.pcap
-/FILE GET /path/file.pcap CHUNK=512
-```
-
-<Info>
-
-✅ การดาวน์โหลดไฟล์ผ่าน Serial รองรับแล้ว แต่ 🚫 การอัปโหลดหรือเขียนไฟล์ผ่าน Serial ยังไม่รองรับ
-
-</Info>
-
-## ข้อแนะนำในการทำแอป
-
-- อ่านข้อมูลเป็น Stream อย่าสมมติว่า 1 Read เท่ากับ 1 Response
-- แยก Parser ของ Response text กับ JSON payload
-- รองรับ `BUSY`, Timeout และการเชื่อมต่อหลุด
-- มีปุ่ม Emergency Stop ที่ส่ง `/STOP` และ `/BTN RELEASE ALL`
-- ตรวจ Firmware version และผล `/HELP` ทุกครั้งที่เชื่อมต่อ
-
-<Info>
-🧩 **ต้องเพิ่มแผนภาพตรงนี้:** App ↔ USB Serial/BLE Serial ↔ Command Parser ↔ หน้าจอและ Runtime
-</Info>
+เมื่อเชื่อมต่อใหม่ทุกครั้ง ให้ตรวจ Firmware version, ผล `/HELP` และสถานะจาก `/STATUS` ก่อนใช้คำสั่งอื่น
