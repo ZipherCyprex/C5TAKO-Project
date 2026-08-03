@@ -1,0 +1,41 @@
+---
+title: "WIFI"
+description: "เลือกเครื่องมือ Wi‑Fi ให้ตรงกับงาน"
+icon: "wifi"
+---
+
+เมนู `WIFI` ใช้ค้นหาเครือข่าย ตรวจสอบสัญญาณ และทดสอบระบบ Wi‑Fi ที่คุณได้รับอนุญาต
+
+<Warning>
+
+ใช้กับ Router, Access Point และอุปกรณ์ของคุณเอง หรือระบบที่เจ้าของอนุญาตอย่างชัดเจนเท่านั้น ฟีเจอร์ใน `ATTACK` อาจรบกวนการเชื่อมต่อของอุปกรณ์ใกล้เคียง
+
+</Warning>
+
+## 🧭 เลือกเมนู
+
+| เมนูบนเครื่อง | ใช้ทำอะไร | คู่มือ |
+| --- | --- | --- |
+| `SCAN` | ค้นหา Router หรืออุปกรณ์ที่เชื่อมต่ออยู่ | [เปิดคู่มือ SCAN](/features/wifi-scan) |
+| `ATTACK` | ทดสอบการป้องกันของเครือข่าย | [เปิดคู่มือ ATTACK](/features/wifi-attack) |
+| `SNIFFER` | ดู Packet สัญญาณรบกวน หรือบันทึก PCAP | [เปิดคู่มือ SNIFFER](/features/wifi-sniffer) |
+
+<Info>
+📷 **ต้องเพิ่มรูปตรงนี้:** ภาพหน้าเมนู WIFI โดยใส่หมายเลขกำกับ SCAN, ATTACK และ SNIFFER
+</Info>
+
+## 💡 คำที่เห็นบ่อย
+
+<AccordionGroup>
+  <Accordion title="AP คืออะไร?" icon="router">
+    `AP` หรือ Access Point คือจุดปล่อย Wi‑Fi เช่น Router ที่บ้านหรือ Hotspot
+  </Accordion>
+  <Accordion title="STA คืออะไร?" icon="smartphone">
+    `STA` คืออุปกรณ์ที่เชื่อมต่อ Wi‑Fi เช่น โทรศัพท์ คอมพิวเตอร์ หรือกล้อง IP ในบางหน้าจออาจเรียกว่า Client
+  </Accordion>
+  <Accordion title="Packet และ PCAP คืออะไร?" icon="file-archive">
+    Packet คือข้อมูลชิ้นเล็ก ๆ ที่ส่งผ่านเครือข่าย ส่วน PCAP คือไฟล์ที่บันทึก Packet ไว้เปิดตรวจสอบภายหลัง
+  </Accordion>
+</AccordionGroup>
+
+เมื่อทำงานเสร็จ ใช้ [วิธีหยุดฟีเจอร์](/getting-started/controls#หยุดฟีเจอร์ที่กำลังทำงาน)

@@ -1,0 +1,135 @@
+---
+title: "Serial Protocol"
+description: "ข้อมูลพื้นฐานสำหรับสร้างแอปที่ควบคุม C5TAKO ผ่าน USB Serial หรือ BLE Serial"
+icon: "terminal"
+---
+
+หน้านี้แยกจากคู่มือลูกค้า ใช้สำหรับผู้ที่ต้องการสร้างแอปควบคุม C5TAKO ผ่าน USB Serial หรือ BLE Serial
+
+<Warning>
+
+Protocol อาจเปลี่ยนตามเวอร์ชัน Firmware ให้เรียก `/HELP` และ `/STATUS` จากเครื่องจริงก่อนผูกคำสั่งเข้ากับแอป
+
+</Warning>
+
+## USB Serial
+
+| รายการ | ค่า |
+| --- | --- |
+| Baud rate | `115200` |
+| รูปแบบ | Text แบบทีละบรรทัด |
+| จบบรรทัด | `\n` หรือ CRLF |
+| Prefix คำสั่ง | `/` |
+
+ชื่อคำสั่งและชื่อโหมดส่วนใหญ่ไม่แยกตัวพิมพ์เล็ก–ใหญ่ ค่าอาร์กิวเมนต์ที่มีช่องว่างควรใส่เครื่องหมายคำพูด
+
+## BLE Serial
+
+BLE ใช้คำสั่งและ Response ชุดเดียวกับ USB Serial
+
+| รายการ | ค่า |
+| --- | --- |
+| Device name | `C5TAKO Serial` |
+| Service UUID | `6E400001-B5A3-F393-E0A9-E50E24DCCA9E` |
+| RX — เขียนคำสั่ง | `6E400002-B5A3-F393-E0A9-E50E24DCCA9E` |
+| TX — อ่าน/Notify | `6E400003-B5A3-F393-E0A9-E50E24DCCA9E` |
+
+Client ควรเปิด Notification ที่ TX ก่อนเขียนคำสั่งไปยัง RX และต้องรองรับ Response ที่ถูกแบ่งเป็นหลาย BLE Packet
+
+## รูปแบบ Response
+
+```text
+[LEVEL] [MODULE] fields...
+```
+
+| Level | ความหมาย |
+| --- | --- |
+| `OK` | คำสั่งสำเร็จ |
+| `ERR` | คำสั่งล้มเหลว โดยปกติมี `CODE=` และ `MSG=` |
+| `INFO` | ข้อความแจ้งสถานะ |
+| `DATA` | ข้อมูล JSON |
+| `STREAM` | ข้อมูลสถานะแบบต่อเนื่อง |
+
+ตัวอย่าง:
+
+```text
+[OK] [SERIAL] MSG="pong" uptime=123456
+[ERR] [DEAUTH] CODE=NO_AP_SCAN MSG="scan ap first"
+[DATA] [STATUS] {"wifi":"AP+STA","scan":{"aps":4,"stas":0}}
+```
+
+## คำสั่งเริ่มต้นที่ควรรองรับ
+
+```text
+/HELP
+/PING
+/STATUS
+/STOP
+```
+
+- `/HELP` อ่านรายการคำสั่งที่ Firmware รุ่นนั้นรองรับ
+- `/PING` ตรวจการเชื่อมต่อ
+- `/STATUS` อ่านสถานะรวมของเครื่อง
+- `/STOP` หยุด Runtime ที่กำลังทำงาน
+
+## ควบคุมหน้าจอจากแอป
+
+Protocol รองรับการจำลองปุ่ม:
+
+```text
+/BTN UP TAP
+/BTN DOWN TAP
+/BTN LEFT TAP
+/BTN RIGHT TAP
+/BTN OK TAP
+/BTN BACK TAP
+/BTN RELEASE ALL
+```
+
+หากแอปขาดการเชื่อมต่อระหว่างกดค้าง ควรส่ง `/BTN RELEASE ALL` หลังเชื่อมต่อใหม่เพื่อป้องกันปุ่มค้าง
+
+การขอ Frame จากหน้าจอ:
+
+```text
+/FRAME GET FMT=GRAY2 COMP=RLE CHUNK=512
+```
+
+แอปต้องประกอบ Chunk ตามลำดับและตรวจขนาดข้อมูลก่อนนำไปแสดง
+
+## Status Stream
+
+```text
+/STREAM ON INTERVAL=1000 EVENTS=ON STATS=ON
+/STREAM OFF
+```
+
+ช่วงเวลา `INTERVAL` รองรับ 100–60000 มิลลิวินาที แอปควรส่ง `/STREAM OFF` ก่อนตัดการเชื่อมต่อเมื่อไม่ต้องการข้อมูลต่อเนื่อง
+
+## ไฟล์
+
+คำสั่งอ่านที่ควรรองรับ:
+
+```text
+/FILE LIST
+/FILE STORAGE
+/FILE INFO /path/file.pcap
+/FILE GET /path/file.pcap CHUNK=512
+```
+
+<Info>
+
+✅ การดาวน์โหลดไฟล์ผ่าน Serial รองรับแล้ว แต่ 🚫 การอัปโหลดหรือเขียนไฟล์ผ่าน Serial ยังไม่รองรับ
+
+</Info>
+
+## ข้อแนะนำในการทำแอป
+
+- อ่านข้อมูลเป็น Stream อย่าสมมติว่า 1 Read เท่ากับ 1 Response
+- แยก Parser ของ Response text กับ JSON payload
+- รองรับ `BUSY`, Timeout และการเชื่อมต่อหลุด
+- มีปุ่ม Emergency Stop ที่ส่ง `/STOP` และ `/BTN RELEASE ALL`
+- ตรวจ Firmware version และผล `/HELP` ทุกครั้งที่เชื่อมต่อ
+
+<Info>
+🧩 **ต้องเพิ่มแผนภาพตรงนี้:** App ↔ USB Serial/BLE Serial ↔ Command Parser ↔ หน้าจอและ Runtime
+</Info>

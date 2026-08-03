@@ -1,0 +1,81 @@
+---
+title: "SNIFFER"
+description: "ใช้ SNIFFER เพื่อตรวจเหตุการณ์ Wi‑Fi และบันทึก PCAP"
+icon: "radar"
+---
+
+เมนู `SNIFFER` ใช้สังเกตสิ่งที่เกิดขึ้นในอากาศ เช่น Packet ที่ตรวจพบ สัญญาณรบกวน และอุปกรณ์ที่กำลังค้นหา Wi‑Fi
+
+<Info>
+
+หน้านี้แสดงข้อมูลเพื่อการตรวจสอบ ไม่ได้แปลว่าอุปกรณ์ทุกชิ้นที่พบเป็นภัยคุกคาม ควรเปรียบเทียบกับสภาพแวดล้อมจริงเสมอ
+
+</Info>
+
+## 🧭 เลือกเครื่องมือ
+
+| เมนู | ใช้เมื่อคุณต้องการ… |
+| --- | --- |
+| `Packet Monitor` | ดูหรือบันทึก Packet ตามประเภท |
+| `Jammer Detect` | ดูความผิดปกติที่อาจเกี่ยวกับสัญญาณรบกวน |
+| `Find Hidden AP` | ค้นหา AP ที่ไม่ประกาศชื่อแบบปกติ |
+| `WiFi Tracker` | ติดตามข้อมูลของ AP ที่ตรวจพบ |
+| `STA Tracker` | ติดตามข้อมูลของอุปกรณ์ Client ที่ตรวจพบ |
+
+## 📦 Packet Monitor
+
+```text
+WIFI → SNIFFER → Packet Monitor
+```
+
+<AccordionGroup>
+  <Accordion title="ดู Packet ทั้งหมด" icon="list-filter">
+    `Monitor All` แสดง Packet ที่ตรวจพบแบบรวม โดยไม่บันทึกเป็นไฟล์
+  </Accordion>
+  <Accordion title="ดูพร้อมบันทึกไฟล์" icon="save">
+    `All + Save` แสดง Packet และบันทึกเป็นไฟล์ PCAP ตรวจพื้นที่ว่างก่อนเริ่มที่ [FILES → File Explorer](/features/files#file-explorer)
+  </Accordion>
+  <Accordion title="กรองตามประเภท" icon="filter">
+    เลือก `Deauth`, `Beacon`, `Probe`, `Auth`, `Client`, `EAPOL` หรือ `Action Monitor` เมื่อต้องการดูเฉพาะ Packet ประเภทนั้น
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+📷 **ต้องเพิ่มรูปตรงนี้:** ภาพ Packet Monitor พร้อมลูกศรชี้จำนวน Packet, Channel และสถานะการบันทึก
+</Info>
+
+## 💾 บันทึก PCAP แบบทีละขั้น
+
+<Steps>
+  <Step title="ตรวจพื้นที่ว่าง">
+    เปิด `FILES → File Explorer` หากต้องบันทึกนาน แนะนำให้ใส่ microSD ที่รองรับก่อน
+  </Step>
+  <Step title="เริ่มบันทึก">
+    เข้า `WIFI → SNIFFER → Packet Monitor → All + Save`
+  </Step>
+  <Step title="รอเก็บข้อมูล">
+    ปล่อยให้เครื่องทำงานเฉพาะช่วงที่ต้องการ หลีกเลี่ยงการบันทึกข้อมูลจากเครือข่ายที่ไม่ได้รับอนุญาต
+  </Step>
+  <Step title="หยุดและตรวจไฟล์">
+    กดกลางค้างประมาณ 1 วินาที จากนั้นเปิด `FILES → File Explorer` เพื่อตรวจไฟล์ที่สร้างขึ้น
+  </Step>
+</Steps>
+
+<Info>
+🎬 **ต้องเพิ่มคลิปตรงนี้:** ขั้นตอน “ตรวจ Storage → All + Save → หยุด → เปิดไฟล์ใน FILES”
+</Info>
+
+## 📍 Tracker และตัวตรวจจับอื่น
+
+- `Jammer Detect` ใช้เป็นข้อมูลช่วยสังเกตเท่านั้น ผลแจ้งเตือนไม่ได้ยืนยันว่ามี Jammer เสมอไป
+- `Find Hidden AP` ช่วยมองหา AP ที่ซ่อนชื่อ แต่ผลขึ้นอยู่กับ Packet ที่พบในขณะนั้น
+- `WiFi Tracker` ใช้ติดตาม AP
+- `STA Tracker` ใช้ติดตาม Client
+
+<Info>
+🎬 **ต้องเพิ่มคลิปตรงนี้:** คลิปรวมไม่เกิน 30 วินาที แสดง Jammer Detect, Find Hidden AP, WiFi Tracker และ STA Tracker พร้อมข้อความว่าผลลัพธ์อาจเปลี่ยนตามพื้นที่
+</Info>
+
+## ⏹️ ออกจากหน้าตรวจสอบ
+
+ใช้ [วิธีหยุดฟีเจอร์](/getting-started/controls#หยุดฟีเจอร์ที่กำลังทำงาน)

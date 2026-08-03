@@ -1,0 +1,37 @@
+:root {
+  --c5-purple: #7b21f5;
+  --c5-purple-soft: #a855f7;
+  --c5-ink: #0d0b10;
+}
+
+#navbar {
+  border-bottom-color: color-mix(in srgb, var(--c5-purple) 22%, transparent);
+}
+
+#page-title,
+h1,
+h2,
+h3 {
+  letter-spacing: -0.015em;
+}
+
+code,
+pre {
+  font-variant-ligatures: none;
+}
+
+/* The wordmark PNG already has transparency; never place a box behind it. */
+#navbar img {
+  max-height: 34px;
+  width: auto;
+  object-fit: contain;
+  padding: 0;
+  background: transparent !important;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.media-todo {
+  border-left: 3px solid var(--c5-purple);
+  padding-left: 1rem;
+}

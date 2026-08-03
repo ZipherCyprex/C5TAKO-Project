@@ -1,0 +1,263 @@
+---
+title: "ภาพรวมเมนู"
+description: "เลือกคู่มือจากชื่อเมนูที่เห็นบนหน้าจอ C5TAKO"
+icon: "list-tree"
+---
+
+คู่มือด้านล่างเรียงตามเมนูบนหน้าจอ C5TAKO ชื่อใน `กรอบ` คือชื่อที่เห็นบนเครื่อง เลือกชื่อที่ตรงกันได้ทันที
+
+## 🧭 เมนูบนเครื่อง
+
+| เมนู | ใช้ทำอะไร | คู่มือ |
+| --- | --- | --- |
+| `WIFI` | ค้นหา ตรวจสอบ และทดสอบเครือข่าย Wi‑Fi | [เปิดคู่มือ WIFI](/features/wifi-overview) |
+| `Bluetooth` | ดูและทดสอบอุปกรณ์ BLE | [เปิดคู่มือ Bluetooth](/features/bluetooth-overview) |
+| `APP` | ใช้ Buzzer และหน้าจอเป็นไฟส่องสว่าง | [เปิดคู่มือ APP](/features/apps) |
+| `GAME` | เล่นเกมเขาวงกต | [เปิดคู่มือ GAME](/features/game) |
+| `FILES` | ดู เปลี่ยนชื่อ ลบไฟล์ และจัดการ Storage | [เปิดคู่มือ FILES](/features/files) |
+| `SETTINGS` | ตั้งค่าเสียง หน้าจอ รหัสผ่าน และข้อมูลเครื่อง | [เปิดคู่มือ SETTINGS](/features/settings) |
+
+<Tip>
+
+เมื่อคู่มือแสดงเส้นทาง เช่น `WIFI → SCAN → AP → Scan` ให้เลือกชื่อจากซ้ายไปขวาทีละรายการ ดูวิธีใช้ปุ่มที่ [ปุ่มควบคุมและการนำทาง](/getting-started/controls#วิธีอ่านเส้นทางเมนู)
+
+</Tip>
+
+<Info>
+📷 **ต้องเพิ่มรูปตรงนี้:** Screenshot เมนูหลักจริง พร้อมหมายเลขกำกับ WIFI, Bluetooth, APP, GAME, FILES และ SETTINGS
+</Info>
+
+## 🌳 Menu Tree แบบละเอียด
+
+เปิดเฉพาะหมวดที่กำลังหา รายการเรียงจากบนลงล่างเหมือนบนหน้าจอ ข้อความหลัง `—` เป็นคำอธิบายบนเว็บ ไม่ใช่ชื่อเมนู ส่วน `< BACK` มีอยู่ท้ายทุกเมนูย่อย จึงไม่แสดงซ้ำในแผนผัง
+
+<AccordionGroup>
+  <Accordion title="WIFI" icon="wifi">
+    ```text
+    WIFI
+    ├─ SCAN                       — ค้นหา AP และ STA
+    │  ├─ AP
+    │  │  ├─ Scan
+    │  │  ├─ Select
+    │  │  └─ Info
+    │  ├─ STA
+    │  │  ├─ Scan
+    │  │  ├─ Select
+    │  │  └─ Info
+    │  └─ Scan AP+STA
+    ├─ ATTACK                     — ทดสอบความทนทานของเครือข่าย
+    │  ├─ Deauth                  — ทดสอบการหลุดและเชื่อมต่อใหม่
+    │  │  ├─ All
+    │  │  ├─ Mass
+    │  │  ├─ Selected AP
+    │  │  └─ Selected STA
+    │  ├─ Whitelist               — เว้น STA ที่เลือก
+    │  │  └─ Selected STA
+    │  ├─ Beacon Spam             — จำลองชื่อ Wi‑Fi จำนวนมาก
+    │  │  ├─ All
+    │  │  ├─ Selected AP
+    │  │  ├─ Random
+    │  │  └─ Prefix
+    │  ├─ Handshake               — บันทึกข้อมูลเชื่อมต่อเป็น PCAP
+    │  │  ├─ Auto Active
+    │  │  └─ Selected AP
+    │  ├─ Evil Portal             — เปิดหน้าเว็บจำลองใน Lab
+    │  │  ├─ Default
+    │  │  │  ├─ admin_config
+    │  │  │  ├─ google_login
+    │  │  │  ├─ facebook_login
+    │  │  │  ├─ tiktok_login
+    │  │  │  ├─ instagram_login
+    │  │  │  └─ monkey_fck
+    │  │  └─ Selected AP
+    │  │     ├─ password_only
+    │  │     ├─ true_gigatex
+    │  │     ├─ 3bb_fiber
+    │  │     └─ ais_fibre
+    │  ├─ Auth Overload           — ส่งคำขอยืนยันตัวตนจำนวนมาก
+    │  │  ├─ All
+    │  │  └─ Selected AP
+    │  ├─ Assoc Overload          — ส่งคำขอเชื่อมต่อจำนวนมาก
+    │  │  ├─ All
+    │  │  └─ Selected AP
+    │  ├─ Force CSA               — ทดสอบการเปลี่ยน Channel
+    │  │  ├─ All
+    │  │  ├─ Selected AP
+    │  │  └─ Selected STA
+    │  └─ DNS Repeater            — ส่งต่อคำขอ DNS
+    └─ SNIFFER                    — ดู Packet และสัญญาณ
+       ├─ Packet Monitor          — ดูหรือบันทึก Packet
+       │  ├─ Monitor All
+       │  ├─ All + Save
+       │  ├─ Deauth Monitor
+       │  ├─ Beacon Monitor
+       │  ├─ Probe Monitor
+       │  ├─ Auth Monitor
+       │  ├─ Client Monitor
+       │  ├─ EAPOL Monitor
+       │  └─ Action Monitor
+       ├─ Jammer Detect           — สังเกตสัญญาณรบกวน
+       ├─ Find Hidden AP          — ค้นหา AP ที่ซ่อนชื่อ
+       ├─ WiFi Tracker            — ติดตาม AP
+       └─ STA Tracker             — ติดตาม Client
+    ```
+
+    คู่มือ: [SCAN](/features/wifi-scan) · [ATTACK](/features/wifi-attack) · [SNIFFER](/features/wifi-sniffer)
+  </Accordion>
+
+  <Accordion title="Bluetooth" icon="bluetooth">
+    ```text
+    Bluetooth
+    ├─ SPAM                       — ทดสอบการแจ้งเตือน BLE
+    │  ├─ iOS
+    │  ├─ Samsung
+    │  ├─ Android
+    │  ├─ Microsoft
+    │  └─ Random
+    ├─ ATTACK                     — ทดสอบ AirtagTrigger
+    │  └─ AirtagTrigger
+    └─ SNIFFER                    — ดูอุปกรณ์ BLE ใกล้เคียง
+       ├─ BLE Monitor             — ดูสัญญาณที่ตรวจพบ
+       └─ Inspector               — ดูรายละเอียดอุปกรณ์
+    ```
+
+    คู่มือ: [SPAM](/features/bluetooth-spam-airtag) · [ATTACK](/features/bluetooth-attack) · [SNIFFER](/features/bluetooth-sniffer)
+  </Accordion>
+
+  <Accordion title="APP" icon="panels-top-left">
+    ```text
+    APP
+    ├─ Buzzer                     — เล่นเสียงจากเครื่อง
+    │  ├─ Play Music              — เล่นเพลงตัวอย่าง
+    │  │  ├─ SOS
+    │  │  ├─ Birthday
+    │  │  ├─ Christmas
+    │  │  ├─ EVIL J0RDAN
+    │  │  ├─ DOOM
+    │  │  ├─ PACMAN
+    │  │  ├─ MARIO
+    │  │  ├─ TETRIS
+    │  │  ├─ MC CAT
+    │  │  ├─ PIGSTEP
+    │  │  ├─ Arcade Loop
+    │  │  ├─ Cyber Bass
+    │  │  ├─ Thorani
+    │  │  ├─ Armed&Dang
+    │  │  ├─ Erika
+    │  │  └─ Homelander
+    │  └─ Play Note               — เล่นเสียงตามความถี่
+    │     ├─ Peak 3000Hz
+    │     ├─ Tune 4000Hz
+    │     ├─ C 2093Hz
+    │     ├─ C# 2217Hz
+    │     ├─ D 2349Hz
+    │     ├─ D# 2489Hz
+    │     ├─ E 2637Hz
+    │     ├─ F 2794Hz
+    │     ├─ F# 2960Hz
+    │     ├─ G 3136Hz
+    │     ├─ G# 3322Hz
+    │     ├─ A 3520Hz
+    │     ├─ A# 3729Hz
+    │     ├─ B 3951Hz
+    │     └─ C8 4186Hz
+    └─ Flashlight                 — ใช้หน้าจอเป็นไฟส่องสว่าง
+    ```
+
+    เปิด [คู่มือ APP](/features/apps)
+  </Accordion>
+
+  <Accordion title="GAME" icon="gamepad-2">
+    ```text
+    GAME
+    └─ MAZE                       — เกมเขาวงกต
+    ```
+
+    เปิด [คู่มือ GAME](/features/game)
+  </Accordion>
+
+  <Accordion title="FILES" icon="folder-open">
+    ```text
+    FILES
+    ├─ File Explorer              — ดูและจัดการไฟล์
+    │  └─ เลือกไฟล์
+    │     ├─ Read                 — เปิดดูไฟล์
+    │     ├─ Rename               — เปลี่ยนชื่อไฟล์
+    │     ├─ Delete               — ลบไฟล์เดียว
+    │     └─ Crack                — ตรวจไฟล์ PCAP ที่รองรับ
+    └─ Format Storage             — 🗑️ ลบไฟล์ทั้งหมด
+    ```
+
+    เปิด [คู่มือ FILES](/features/files)
+  </Accordion>
+
+  <Accordion title="SETTINGS" icon="settings">
+    ```text
+    SETTINGS
+    ├─ Notification               — ตั้งค่าเสียงและไฟ
+    │  ├─ Mute Buzzer             — ปิดเสียงแจ้งเตือน
+    │  ├─ OFF LED                 — ปิดไฟสถานะ
+    │  ├─ Test Buzzer             — ทดลองเสียง
+    │  │  ├─ Click
+    │  │  ├─ Soft Ping
+    │  │  ├─ Ready
+    │  │  ├─ Confirm
+    │  │  ├─ Success
+    │  │  ├─ Flipper Chirp
+    │  │  ├─ Mode Change
+    │  │  ├─ Start Armed
+    │  │  ├─ Stop Disarmed
+    │  │  ├─ Connected
+    │  │  ├─ Disconnected
+    │  │  ├─ Busy Locked
+    │  │  ├─ Denied
+    │  │  ├─ Warning Soft
+    │  │  ├─ Warning Tactical
+    │  │  ├─ Error Normal
+    │  │  ├─ Hard Fail
+    │  │  ├─ Low Battery
+    │  │  ├─ Critical
+    │  │  ├─ Scan Tick
+    │  │  └─ Capture Found
+    │  └─ Test LED                — ทดลองไฟสถานะ
+    ├─ Display UI                 — ตั้งค่าหน้าจอ
+    │  ├─ Lock screen             — ตั้งค่าหน้าจอล็อก
+    │  │  ├─ Timeout              — เวลาก่อนล็อก
+    │  │  │  ├─ 10 sec
+    │  │  │  ├─ 20 sec
+    │  │  │  ├─ 30 sec
+    │  │  │  ├─ 40 sec
+    │  │  │  ├─ 50 sec
+    │  │  │  ├─ 60 sec
+    │  │  │  └─ Disable
+    │  │  ├─ Lock dim             — ความสว่างตอนล็อก
+    │  │  │  └─ 10% / 25% / 50% / 75% / 100%
+    │  │  ├─ GIF path             — เลือกไฟล์ GIF
+    │  │  ├─ GIF image            — เปิดหรือปิด GIF
+    │  │  └─ Boomerang            — เล่น GIF ไป–กลับ
+    │  ├─ Booting                 — ตั้งค่าภาพเปิดเครื่อง
+    │  │  ├─ Custom image         — เปิดหรือปิดภาพกำหนดเอง
+    │  │  └─ Image path           — เลือกไฟล์ภาพ
+    │  ├─ Brightness              — ความสว่างหน้าจอ
+    │  │  └─ 10% / 25% / 50% / 75% / 100%
+    │  └─ Theme                   — เลือกชุดสี
+    │     ├─ Default
+    │     ├─ Terminal
+    │     ├─ Arctic
+    │     ├─ Sunset
+    │     ├─ Gold
+    │     ├─ Crimson
+    │     ├─ Electric
+    │     └─ Magenta
+    ├─ Security                   — จัดการรหัสผ่าน
+    │  ├─ Set Password            — ตั้งรหัสครั้งแรก
+    │  ├─ Reset Password          — เปลี่ยนรหัส
+    │  └─ Disable Password        — ปิดการใช้รหัส
+    └─ Device                     — ข้อมูลและระบบเครื่อง
+       ├─ Info                    — ดูข้อมูลเครื่อง
+       └─ Reboot                  — เริ่มระบบใหม่
+    ```
+
+    เปิด [คู่มือ SETTINGS](/features/settings)
+  </Accordion>
+</AccordionGroup>

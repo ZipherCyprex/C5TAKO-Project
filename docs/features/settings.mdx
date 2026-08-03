@@ -1,0 +1,86 @@
+---
+title: "SETTINGS"
+description: "ตั้งค่าเสียง ไฟ หน้าจอ รหัสผ่าน และข้อมูลเครื่อง"
+icon: "settings"
+---
+
+เลือกหัวข้อที่ต้องการปรับ การตั้งค่าที่แนะนำสำหรับเครื่องใหม่อยู่ใน [เช็กลิสต์ตั้งค่าครั้งแรก](/getting-started/first-settings)
+
+| ต้องการปรับ | เส้นทาง |
+| --- | --- |
+| เสียงและไฟสถานะ | `SETTINGS → Notification` |
+| หน้าจอล็อก ความสว่าง ภาพเปิดเครื่อง และ Theme | `SETTINGS → Display UI` |
+| รหัสผ่าน | `SETTINGS → Security` |
+| ข้อมูลเครื่องหรือเริ่มระบบใหม่ | `SETTINGS → Device` |
+
+<Info>
+📷 **ต้องเพิ่มรูปตรงนี้:** ภาพหน้า SETTINGS พร้อมหมายเลขกำกับ Notification, Display UI, Security และ Device
+</Info>
+
+## 🔔 Notification
+
+- `Mute Buzzer` ปิดหรือเปิดเสียงแจ้งเตือน เมื่อต้องการปิดเสียงให้เปิดตัวเลือกนี้
+- `OFF LED` ปิดหรือเปิดไฟสถานะ เมื่อต้องการปิดไฟให้เปิดตัวเลือกนี้
+- `Test Buzzer` ทดลองเสียงแต่ละรูปแบบ
+- `Test LED` ทดลองไฟสถานะ
+
+<Info>
+
+คำว่า `Mute` และ `OFF` หมายถึง “ปิดการทำงาน” จึงอาจดูตรงข้ามกับสถานะสวิตช์บนหน้าจอ
+
+</Info>
+
+## 🎨 Display UI
+
+<AccordionGroup>
+  <Accordion title="Lock screen — หน้าจอล็อก" icon="lock">
+    - `Timeout` เลือกเวลารอก่อนล็อก 10–60 วินาที หรือ `Disable` เพื่อไม่ใช้หน้าจอล็อก
+    - `Lock dim` กำหนดความสว่างขณะล็อก
+    - `GIF path` เลือกตำแหน่งไฟล์ GIF
+    - `GIF image` เปิดหรือปิดภาพ GIF
+    - `Boomerang` ให้ GIF เล่นไป–กลับ
+  </Accordion>
+  <Accordion title="Booting — ภาพตอนเปิดเครื่อง" icon="power">
+    - `Custom image` เปิดหรือปิดภาพที่ผู้ใช้กำหนด
+    - `Image path` เลือกตำแหน่งไฟล์ภาพ
+  </Accordion>
+  <Accordion title="Brightness — ความสว่าง" icon="sun">
+    เปิด `SETTINGS → Display UI → Brightness` แล้วเลือก `10%`, `25%`, `50%`, `75%` หรือ `100%` หากต้องการประหยัดแบตเตอรี่ ให้เริ่มที่ 25–50%
+  </Accordion>
+  <Accordion title="Theme — ชุดสี" icon="palette">
+    เปิด `SETTINGS → Display UI → Theme` แล้วเลือก `Default`, `Terminal`, `Arctic`, `Sunset`, `Gold`, `Crimson`, `Electric` หรือ `Magenta` รายการที่ใช้อยู่จะมี `*` ต่อท้าย
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+📷 **ต้องเพิ่มรูปตรงนี้:** ภาพ Grid เปรียบเทียบ Theme ทั้ง 8 แบบ โดยเปิดเมนูเดียวกันทุกภาพ
+</Info>
+
+## 🔐 Security
+
+รหัสผ่านเป็นรูปแบบการกด 4 ครั้ง โดยใช้ขึ้น ลง ซ้าย ขวา หรือกดกลางผสมกันได้
+
+<Steps>
+  <Step title="เปิดหน้าตั้งรหัส">
+    เข้า `SETTINGS → Security → Set Password`
+  </Step>
+  <Step title="สร้างรูปแบบ">
+    กดทิศทางหรือปุ่มกลางรวมกันให้ครบ 4 ครั้ง และจำลำดับให้ได้
+  </Step>
+  <Step title="ยืนยัน">
+    เมื่อหน้าจอถาม `Use this pattern?` เลือก `Use` เพื่อบันทึก หรือ `Retry` เพื่อทำใหม่
+  </Step>
+</Steps>
+
+<Info>
+🎬 **ต้องเพิ่มคลิปตรงนี้:** ขั้นตอนตั้งรหัสผ่านด้วยรูปแบบตัวอย่าง และปิดช่วงที่แสดงรหัสจริงของผู้ถ่าย
+</Info>
+
+เมื่อตั้งแล้ว ใช้ `Reset Password` เพื่อเปลี่ยนรูปแบบ หรือ `Disable Password` เพื่อปิดรหัสผ่าน หากลืมรหัส ให้ดู [วิธีแก้ปัญหา](/help/troubleshooting#ลืมรหัสผ่าน)
+
+## ℹ️ Device
+
+- `Info` ดูข้อมูล Firmware, Flash, Wi‑Fi, Bluetooth และ Storage
+- `Reboot` เริ่มระบบใหม่ เหมาะเมื่อหน้าจอหรือฟีเจอร์ผิดปกติแต่ยังเข้าเมนูได้
+
+หากต้องส่งข้อมูลให้ฝ่ายช่วยเหลือ ดู [ข้อมูลที่ควรส่งเมื่อติดต่อ](/help/troubleshooting#ข้อมูลที่ควรส่งเมื่อติดต่อ)

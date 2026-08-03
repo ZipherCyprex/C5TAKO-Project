@@ -1,0 +1,7 @@
+{
+  "name": "c5tako-docs",
+  "private": true,
+  "scripts": {
+    "dev": "mint dev"
+  }
+}

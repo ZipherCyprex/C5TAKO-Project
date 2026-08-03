@@ -1,0 +1,113 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "C5TAKO Docs",
+  "colors": {
+    "primary": "#7B21F5",
+    "light": "#A855F7",
+    "dark": "#6D18D9"
+  },
+  "logo": {
+    "light": "/images/Zipher_c5tako.png",
+    "dark": "/images/Zipher_c5tako.png",
+    "href": "/"
+  },
+  "favicon": "/images/favicon.png",
+  "appearance": {
+    "default": "dark"
+  },
+  "search": {
+    "prompt": "ค้นหาในคู่มือ..."
+  },
+  "fonts": {
+    "family": "LINE Seed Sans TH",
+    "source": "/fonts/LINESeedSansTH_W_Rg.woff2",
+    "format": "woff2",
+    "weight": 400,
+    "heading": {
+      "family": "LINE Seed Sans TH",
+      "source": "/fonts/LINESeedSansTH_W_Bd.woff2",
+      "format": "woff2",
+      "weight": 700
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "background": {
+    "decoration": "gradient",
+    "color": {
+      "light": "#F8F7FC",
+      "dark": "#0D0B10"
+    }
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "theme": {
+        "light": "github-light",
+        "dark": "dracula"
+      }
+    }
+  },
+  "interaction": {
+    "drilldown": false
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "🚀 เริ่มต้นใช้งาน",
+        "pages": [
+          "index",
+          "getting-started/unboxing-and-power",
+          "getting-started/controls",
+          "getting-started/first-settings",
+          "getting-started/update-firmware"
+        ]
+      },
+      {
+        "group": "📖 เมนูบนเครื่อง",
+        "pages": [
+          "features/menu-overview",
+          {
+            "group": "📶 WIFI",
+            "expanded": false,
+            "pages": [
+              "features/wifi-overview",
+              "features/wifi-scan",
+              "features/wifi-attack",
+              "features/wifi-sniffer"
+            ]
+          },
+          {
+            "group": "🟦 Bluetooth",
+            "expanded": false,
+            "pages": [
+              "features/bluetooth-overview",
+              "features/bluetooth-spam-airtag",
+              "features/bluetooth-attack",
+              "features/bluetooth-sniffer"
+            ]
+          },
+          "features/apps",
+          "features/game",
+          "features/files",
+          "features/settings"
+        ]
+      },
+      {
+        "group": "🆘 ช่วยเหลือ",
+        "pages": [
+          "help/troubleshooting",
+          "help/care-warranty-support"
+        ]
+      },
+      {
+        "group": "🧑‍💻 สำหรับนักพัฒนา",
+        "pages": [
+          "developer/serial-protocol"
+        ]
+      }
+    ]
+  }
+}
