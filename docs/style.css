@@ -6,6 +6,11 @@
   --c5-menu-border: rgba(255, 255, 255, 0.08);
 }
 
+/* Keep Mintlify's windows decoration visible, but make the background glow subtle. */
+#background-color ~ span[style*="gradient"] {
+  opacity: 0.2 !important;
+}
+
 #navbar {
   border-bottom-color: color-mix(in srgb, var(--c5-purple) 22%, transparent);
 }
