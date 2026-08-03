@@ -15,28 +15,29 @@
 
 </div>
 
----
+<br>
 
 ## 📋 Table of Contents
 
 - [About](#-about)
-- [Downloads](#-downloads)
+- [Downloads & Flashing](#-downloads--flashing)
 - [Hardware Pinout](#-hardware-pinout)
 - [Documentation](#-documentation)
 - [Community & Support](#-community--support)
 - [Legal Notice](#️-legal-notice)
 
----
+<br>
 
 ## 🎯 About
 
 This repository provides **firmware releases** and **installation tools** for the C5TAKO™ device. 
 
-**C5TAKO™** is a portable Wi-Fi (2.4/5 GHz) and Bluetooth LE testing device for security research and penetration testing. This repo is primarily for DIY builders and developers who want to flash firmware or contribute to the project.
+C5TAKO™ is a portable Wi-Fi (2.4/5 GHz) and Bluetooth LE testing device for security research and penetration testing. This repo is primarily for DIY builders and developers who want to flash firmware or contribute to the project.
 
 > **For end-users**: Full user guides, feature documentation, and tutorials are available at **[c5tako.ziphers.space](https://c5tako.ziphers.space)**
 
----
+<br>
+<br>
 
 ## 📦 Downloads & Flashing
 
@@ -44,27 +45,33 @@ This repository provides **firmware releases** and **installation tools** for th
 
 Download the latest firmware `.bin` file from the [Releases](https://github.com/ZipherCyprex/C5TAKO-Project/releases) page.
 
+<br>
+
 ### Flashing Methods
 
-#### 🌐 Option 1: Firmware Flasher (Easiest)
+<br>
+
+### 🌐 Option 1: Firmware Flasher (Easiest)
 
 Use the official web-based flasher - no installation required:
 
-**[Firmware Flasher - Ziphers](https://flash.ziphers.space)**
+**👉 [Firmware Flasher - Ziphers](https://flash.ziphers.space)**
 
+**Steps:**
 1. Visit the flasher website
 2. Connect your ESP32-C5 via USB-C
 3. Click "Connect" and select your device port
 4. The firmware will be flashed automatically
 
-> **Recommended**: This is the fastest and most user-friendly method.
+> **Recommended** - This is the fastest and most user-friendly method.
 
----
+<br>
 
-#### 🔧 Option 2: ESP Web Tool
+### 🔧 Option 2: ESP Web Tool
 
 Use [ESP Web Tool](https://espressif.github.io/esptool-js/) for manual flashing:
 
+**Steps:**
 1. Download the `.bin` file from releases
 2. Open ESP Web Tool in a Chromium-based browser (Chrome, Edge, etc.)
 3. Connect your ESP32-C5 via USB-C
@@ -73,9 +80,9 @@ Use [ESP Web Tool](https://espressif.github.io/esptool-js/) for manual flashing:
 6. Select the downloaded `.bin` file
 7. Click "Program" to flash
 
----
+<br>
 
-#### ⚙️ Option 3: Command Line (esptool)
+### ⚙️ Option 3: Command Line (esptool)
 
 For advanced users who prefer terminal:
 
@@ -85,13 +92,12 @@ esptool.py --chip esp32c5 --port COM3 write_flash 0x0 firmware.bin
 
 Replace `COM3` with your device's serial port (`/dev/ttyUSB0` on Linux/Mac).
 
----
+<br>
 
-### Troubleshooting
+**Troubleshooting:** If flashing fails, see the [Firmware Update Guide](https://c5tako.ziphers.space/getting-started/update-firmware) or ask for help in our [Discord](https://discord.gg/UXV38s6wAc).
 
-If flashing fails, see the [Firmware Update Guide](https://c5tako.ziphers.space/getting-started/update-firmware) or ask for help in our [Discord](https://discord.gg/UXV38s6wAc).
-
----
+<br>
+<br>
 
 ## 🔌 Hardware Pinout
 
@@ -100,6 +106,8 @@ If flashing fails, see the [Firmware Update Guide](https://c5tako.ziphers.space/
 **Recommended**: XIAO ESP32-C5 or any ESP32-C5 dev board
 
 > **Important**: This firmware is designed specifically for ESP32-C5. Other ESP32 variants are not supported.
+
+<br>
 
 | Component | GPIO Pin | Notes |
 |-----------|----------|-------|
@@ -118,28 +126,33 @@ If flashing fails, see the [Firmware Update Guide](https://c5tako.ziphers.space/
 | - RIGHT | TBD | Pull-up |
 | - CENTER | TBD | Pull-up |
 | **Power (Optional)** | | |
-| - Battery | TBD | ADC for voltage monitoring (optional) |
+| - Battery | TBD | ADC for voltage monitoring |
 
 > **Note**: Pin assignments are being finalized and will be updated soon.
 
-### Physical Layout
+<br>
+
+### Physical Components
 
 - **Display**: 240x240 ST7789 TFT LCD
-- **USB-C**: Charging & firmware flashing (bottom edge)
-- **Power Switch**: ON/OFF toggle (side)
-- **5-Way Button**: Center navigation control (front)
+- **USB-C**: Charging & firmware flashing
+- **Power Switch**: ON/OFF toggle
+- **5-Way Button**: Navigation control
 
-> **Note**: Battery monitoring pin is optional depending on your hardware design.
+<br>
 
 > **Warning**: C5TAKO™ is **NOT waterproof**. Avoid moisture and handle with care during assembly.
 
----
+<br>
+<br>
 
 ## 📚 Documentation
 
-Complete user guides, feature documentation, and DIY assembly instructions are available at:
+Complete user guides, feature documentation, and DIY assembly instructions:
 
-### **[c5tako.ziphers.space](https://c5tako.ziphers.space)**
+### 👉 **[c5tako.ziphers.space](https://c5tako.ziphers.space)**
+
+<br>
 
 **For DIY Builders:**
 - [Serial Protocol Specification](https://c5tako.ziphers.space/developer/serial-protocol)
@@ -151,7 +164,8 @@ Complete user guides, feature documentation, and DIY assembly instructions are a
 - [Feature Overview](https://c5tako.ziphers.space/features/menu-overview)
 - [WiFi & Bluetooth Guides](https://c5tako.ziphers.space/features/wifi-overview)
 
----
+<br>
+<br>
 
 ## 💬 Community & Support
 
@@ -164,37 +178,52 @@ Complete user guides, feature documentation, and DIY assembly instructions are a
 
 </div>
 
+<br>
+
 ### Get Help
 
-- **Technical Support**: Join our [Discord Server](https://discord.gg/UXV38s6wAc) (Support hours: 11:00–00:00 GMT+7)
-- **Bug Reports**: Open an issue in this repository
-- **General Questions**: Visit [ziphers.space](https://www.ziphers.space/)
+- **Technical Support** - Join our [Discord Server](https://discord.gg/UXV38s6wAc) (11:00–00:00 GMT+7)
+- **Bug Reports** - Open an issue in this repository
+- **General Questions** - Visit [ziphers.space](https://www.ziphers.space/)
 
----
+<br>
+<br>
 
 ## ⚠️ Legal Notice
 
-### Responsible Use Policy
-
 C5TAKO™ is designed for **educational purposes, security research, and authorized penetration testing only**.
 
-- ✅ **Allowed**: Testing on your own devices and networks
-- ✅ **Allowed**: Authorized security assessments with written permission
-- ✅ **Allowed**: Educational research in controlled environments
-- ❌ **Prohibited**: Unauthorized access to networks or devices
-- ❌ **Prohibited**: Malicious attacks or data theft
-- ❌ **Prohibited**: Interference with public infrastructure
+<br>
+
+### Allowed Usage
+
+✅ Testing on your own devices and networks  
+✅ Authorized security assessments with written permission  
+✅ Educational research in controlled environments
+
+### Prohibited Usage
+
+❌ Unauthorized access to networks or devices  
+❌ Malicious attacks or data theft  
+❌ Interference with public infrastructure
+
+<br>
 
 > **Warning**: Unauthorized network testing may violate local laws. Users are solely responsible for compliance with applicable regulations. The developers of C5TAKO™ are not liable for misuse of this device.
 
-### Legal Compliance
+<br>
 
+**Legal Compliance:**
 - Check local laws before testing any wireless network
 - Obtain written permission before testing third-party systems
 - Use only on networks and devices you own or have authorization to test
 - Follow responsible disclosure practices for discovered vulnerabilities
 
----
+<br>
+<br>
+
+<br>
+<br>
 
 <div align="center">
 
@@ -204,7 +233,7 @@ C5TAKO™ is designed for **educational purposes, security research, and authori
 
 [🌐 Website](https://www.ziphers.space/) • [📖 Docs](https://c5tako.ziphers.space) • [🔗 Linktree](https://linktr.ee/zipherqr)
 
----
+<br>
 
 **Star ⭐ this repository if you find it useful!**
 
