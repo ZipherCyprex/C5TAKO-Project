@@ -49,8 +49,6 @@ Download the latest firmware `.bin` file from the [Releases](https://github.com/
 
 ### Flashing Methods
 
-<br>
-
 ### 🌐 Option 1: Firmware Flasher (Easiest)
 
 Use the official web-based flasher - no installation required:
@@ -130,8 +128,6 @@ Replace `COM3` with your device's serial port (`/dev/ttyUSB0` on Linux/Mac).
 
 > **Note**: Pin assignments are being finalized and will be updated soon.
 
-<br>
-
 ### Physical Components
 
 - **Display**: 240x240 ST7789 TFT LCD
@@ -178,8 +174,6 @@ Complete user guides, feature documentation, and DIY assembly instructions:
 
 </div>
 
-<br>
-
 ### Get Help
 
 - **Technical Support** - Join our [Discord Server](https://discord.gg/UXV38s6wAc) (11:00–00:00 GMT+7)
@@ -192,8 +186,6 @@ Complete user guides, feature documentation, and DIY assembly instructions:
 ## ⚠️ Legal Notice
 
 C5TAKO™ is designed for **educational purposes, security research, and authorized penetration testing only**.
-
-<br>
 
 ### Allowed Usage
 
