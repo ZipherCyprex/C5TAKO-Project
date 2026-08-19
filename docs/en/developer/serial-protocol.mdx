@@ -1,0 +1,273 @@
+---
+title: "Serial Protocol"
+description: "Commands for building an app that controls C5TAKO™ over USB Serial or BLE Serial."
+icon: "terminal"
+---
+
+Use this page when building an application that controls C5TAKO™ over USB Serial or BLE Serial.
+
+## Quick start
+
+1. Connect with USB Serial or BLE Serial.
+2. Enable TX notifications when using BLE.
+3. Send `/HELP` to read commands supported by the installed firmware.
+4. Send `/PING` to check connectivity.
+5. Send `/STATUS` to read device state.
+
+<Warning>
+
+The protocol can change between firmware versions. Treat `/HELP` from the physical device as the source of truth before wiring commands into an app.
+
+</Warning>
+
+## Connection
+
+### USB Serial
+
+| Item | Value |
+| --- | --- |
+| Baud rate | `115200` |
+| Data format | Line-oriented text |
+| Line ending | `\n` or CRLF |
+| Command prefix | `/` |
+
+Configure Serial Monitor to send `Newline` or `Both NL & CR`. If the device does not respond, check the line-ending setting first.
+
+### BLE Serial
+
+BLE uses the same command and response set as USB Serial.
+
+| Item | Value |
+| --- | --- |
+| Device name | `C5TAKO Serial` |
+| Service UUID | `6E400001-B5A3-F393-E0A9-E50E24DCCA9E` |
+| RX — write commands | `6E400002-B5A3-F393-E0A9-E50E24DCCA9E` |
+| TX — read and receive notifications | `6E400003-B5A3-F393-E0A9-E50E24DCCA9E` |
+
+Workflow:
+
+1. Find `C5TAKO Serial`.
+2. Connect to the Service UUID.
+3. Enable notifications on TX.
+4. Write commands to RX.
+5. Handle responses that may span multiple BLE packets.
+
+## Response format
+
+```text
+[LEVEL] [MODULE] fields...
+```
+
+| Level | Meaning |
+| --- | --- |
+| `OK` | Command succeeded. |
+| `ERR` | Command failed; usually includes `CODE=` and `MSG=`. |
+| `INFO` | Status message. |
+| `DATA` | JSON data. |
+| `STREAM` | Continuous status data. |
+
+Example:
+
+```text
+[OK] [SERIAL] MSG="pong" uptime=123456
+[ERR] [DEAUTH] CODE=NO_AP_SCAN MSG="scan ap first"
+[DATA] [STATUS] {"wifi":"AP+STA","scan":{"aps":4,"stas":0}}
+```
+
+Read data as a stream: do not assume one read equals one response. Separate response-message parsing from JSON payload parsing, and handle `BUSY`, timeouts, and disconnections.
+
+## Basic commands
+
+| Command | Purpose |
+| --- | --- |
+| `/HELP` | List commands supported by this firmware. |
+| `/PING` | Check that Serial Command is running. |
+| `/STATUS` | Read overall device status. |
+| `/STATUS <module>` | Read a named module's status if firmware supports it. |
+| `/STOP` | Stop every runtime. |
+| `/STOP <module>` | Stop a named runtime. |
+| `/REBOOT [DELAY=ms]` | Restart immediately or after the specified delay. |
+
+## Scan and select a target
+
+### Scan APs and STAs
+
+```text
+/SCAN AP [CHANNEL=n]
+/SCAN STA
+```
+
+`/SCAN AP` scans for access points. Without a channel it scans multiple channels. `/SCAN STA` scans clients related to prior AP scan data.
+
+### Read scan results
+
+```text
+/RESULT AP
+/RESULT STA
+```
+
+These commands return the most recent results without starting another scan. Entry indexes start at `0`.
+
+### Select entries
+
+```text
+/SELECT AP <ids|ALL|CLEAR>
+/SELECT STA <ids|ALL|CLEAR>
+```
+
+Example:
+
+```text
+/SELECT AP 0,1
+/SELECT STA 0
+/SELECT AP ALL
+/SELECT STA CLEAR
+```
+
+## Start and stop a runtime
+
+Commands that start work use this form:
+
+```text
+/START <MODULE> [MODE] [ARGS...]
+```
+
+### Wi-Fi Monitor and PCAP
+
+```text
+/START MONITOR NORMAL [HOP=ON] [INTERVAL=500]
+/START MONITOR SAVE [HOP=ON] [INTERVAL=500]
+/START PCAP ACTIVE
+/START PCAP TARGET
+```
+
+`SAVE` writes Monitor data to PCAP when storage is available. `TARGET` requires scanned and selected AP data.
+
+### Other Wi-Fi tools
+
+```text
+/START DEAUTH ALL|MASS|AP|STA
+/START BEACON RANDOM|ALL|AP|PREFIX <name>|LIST <ssid1,ssid2>
+/START AUTH ALL|AP
+/START ASSOC ALL|AP
+/START CSA ALL|AP|STA
+/START FINDHIDDEN
+/START WHITELIST AP|ALL
+```
+
+### Portal
+
+```text
+/START PORTAL NORMAL SSID="Free WiFi" [TEMPLATE=basic|HTML=/path.html|INLINE="<html>..."]
+/START PORTAL VERIFY SSID="Target" [BSSID=xx] [CHANNEL=n] [TEMPLATE=password_only|HTML=/path.html|INLINE="<html>..."]
+/PORTAL STATUS
+/PORTAL DEAUTH TOGGLE|ON|OFF
+```
+
+Use Portal commands only in a lab and only with test data that is not another person's personal information.
+
+### Bluetooth and other detectors
+
+```text
+/START BLE_MONITOR [ACTIVE|PASSIVE]
+/START BLE_SPAM IOS|SAMSUNG|ANDROID|MICROSOFT|RANDOM
+/START BAD_BLE
+/START MODEL_FIND
+/START AIRTAG
+/START CSI_MOTION [CHANNEL=n] [MIN_RSSI=-85]
+```
+
+### Stop a runtime
+
+```text
+/STOP
+/STOP MONITOR
+/STOP BLE_SPAM
+```
+
+For an app emergency-stop control, send `/STOP` and `/BTN RELEASE ALL` if the connection is lost while a button is held.
+
+## Control the display
+
+```text
+/BTN <UP|DOWN|LEFT|RIGHT|OK|BACK> TAP|HOLD|RELEASE
+/BTN RELEASE ALL
+```
+
+Example:
+
+```text
+/BTN UP TAP
+/BTN OK HOLD
+/BTN RELEASE ALL
+```
+
+If the app loses connection during a `HOLD` command, send `/BTN RELEASE ALL` after reconnecting.
+
+### Request a screen image
+
+```text
+/FRAME GET [FMT=GRAY2|MONO] [COMP=RLE|RAW] [CHUNK=512]
+```
+
+Assemble chunks in order and check data size before displaying the image.
+
+## Status stream
+
+```text
+/STREAM ON [INTERVAL=ms] [EVENTS=ON] [STATS=ON]
+/STREAM OFF
+```
+
+`INTERVAL` accepts `100–60000` milliseconds. Send `/STREAM OFF` before disconnecting when continuous data is no longer needed.
+
+## File commands
+
+```text
+/FILE LIST [PATH=/]
+/FILE INFO <path>
+/FILE STORAGE
+/FILE DELETE <path>
+/FILE RENAME <old> <new>
+/FILE GET <path> [CHUNK=512] [LOOPS=1]
+/FILE RECV <path> LEN=<bytes> [CHUNK=512] [OVERWRITE=ON] [TIMEOUT=30000]
+```
+
+Frequently used commands:
+
+| Command | Purpose |
+| --- | --- |
+| `/FILE LIST` | List files. |
+| `/FILE INFO` | Read file information. |
+| `/FILE STORAGE` | Read total, used, and free storage. |
+| `/FILE DELETE` | Delete a file. |
+| `/FILE RENAME` | Rename a file. |
+| `/FILE GET` | Send a file from the device to the app. |
+| `/FILE RECV` | Receive a file from the app according to the firmware-supported protocol. |
+
+The `/FILE RECV` stream format is:
+
+```text
+[BEGIN] [FILE] name="/x" len=n chunk=n
+DATA chunks
+[END] [FILE]
+```
+
+Before using file commands, check `/HELP` and `/FILE STORAGE` on the physical device because capabilities and storage names can change by firmware version.
+
+## Recommended connection sequence
+
+```text
+/HELP
+/PING
+/STATUS
+/SCAN AP
+/RESULT AP
+/SELECT AP 0
+/START MONITOR NORMAL
+/STREAM ON INTERVAL=1000 EVENTS=ON STATS=ON
+/STREAM OFF
+/STOP
+```
+
+After every reconnection, check firmware version, `/HELP` output, and `/STATUS` before sending another command.

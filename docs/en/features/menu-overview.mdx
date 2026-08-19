@@ -1,0 +1,109 @@
+---
+title: "Menu overview"
+description: "Choose a guide from the menu name displayed on C5TAKO™."
+icon: "list-tree"
+---
+
+This is C5TAKO™'s menu map. Names in `code` match the names shown on the device; select the same name to find its guide.
+
+## 🧭 Device menus
+
+| Menu | Purpose | Guide |
+| --- | --- | --- |
+| `WIFI` | Discover, inspect, and test Wi-Fi networks. | [Open WIFI guide](/en/features/wifi-overview) |
+| `Bluetooth` | View and test BLE devices. | [Open Bluetooth guide](/en/features/bluetooth-overview) |
+| `APP` | Use Buzzer and the screen as a light. | [Open APP guide](/en/features/apps) |
+| `GAME` | Play a maze game. | [Open GAME guide](/en/features/game) |
+| `FILES` | View, rename, delete, and manage storage. | [Open FILES guide](/en/features/files) |
+| `SETTINGS` | Configure sound, display, password, and device information. | [Open SETTINGS guide](/en/features/settings) |
+
+<Tip>
+
+For a path such as `WIFI → SCAN → AP → Scan`, choose each name from left to right. See [how to read a menu path](/en/getting-started/controls#read-a-menu-path).
+
+</Tip>
+
+<Info>
+📷 **Image to add:** A screenshot of the real main menu labeled WIFI, Bluetooth, APP, GAME, FILES, and SETTINGS.
+</Info>
+
+## 🌳 Detailed menu tree
+
+Items are in the same top-to-bottom order as the device. Text after `—` describes the item and is not part of the device label. Every submenu has `< BACK`, so it is omitted from the tree.
+
+<AccordionGroup>
+  <Accordion title="WIFI" icon="wifi">
+    ```text
+    WIFI
+    ├─ SCAN — discover APs and STAs
+    │  ├─ AP: Scan, Select, Info
+    │  ├─ STA: Scan, Select, Info
+    │  └─ Scan AP+STA
+    ├─ ATTACK — authorized network-resilience testing
+    │  ├─ Deauth: All, Mass, Selected AP, Selected STA
+    │  ├─ Whitelist: Selected STA
+    │  ├─ Beacon Spam: All, Selected AP, Random, Prefix
+    │  ├─ Handshake: Auto Active, Selected AP
+    │  ├─ Evil Portal: Default templates, Selected AP templates
+    │  ├─ Auth Overload: All, Selected AP
+    │  ├─ Assoc Overload: All, Selected AP
+    │  ├─ Force CSA: All, Selected AP, Selected STA
+    │  └─ DNS Repeater
+    └─ SNIFFER — inspect packets and signals
+       ├─ Packet Monitor: Monitor All, All + Save, Deauth, Beacon, Probe, Auth, Client, EAPOL, Action monitors
+       ├─ Jammer Detect
+       ├─ Find Hidden AP
+       ├─ WiFi Tracker
+       └─ STA Tracker
+    ```
+
+    Guides: [SCAN](/en/features/wifi-scan) · [ATTACK](/en/features/wifi-attack) · [SNIFFER](/en/features/wifi-sniffer)
+  </Accordion>
+  <Accordion title="Bluetooth" icon="bluetooth">
+    ```text
+    Bluetooth
+    ├─ SPAM — BLE notification testing: iOS, Samsung, Android, Microsoft, Random
+    ├─ ATTACK — AirtagTrigger
+    └─ SNIFFER — BLE Monitor, Inspector
+    ```
+
+    Guides: [SPAM](/en/features/bluetooth-spam-airtag) · [ATTACK](/en/features/bluetooth-attack) · [SNIFFER](/en/features/bluetooth-sniffer)
+  </Accordion>
+  <Accordion title="APP" icon="panels-top-left">
+    ```text
+    APP
+    ├─ Buzzer — Play Music or Play Note
+    └─ Flashlight — use the display as a light
+    ```
+
+    Open the [APP guide](/en/features/apps).
+  </Accordion>
+  <Accordion title="GAME" icon="gamepad-2">
+    ```text
+    GAME
+    └─ MAZE — maze game
+    ```
+
+    Open the [GAME guide](/en/features/game).
+  </Accordion>
+  <Accordion title="FILES" icon="folder-open">
+    ```text
+    FILES
+    ├─ File Explorer — select a file: Read, Rename, Delete, Crack
+    └─ Format Storage — deletes every file in the active storage
+    ```
+
+    Open the [FILES guide](/en/features/files).
+  </Accordion>
+  <Accordion title="SETTINGS" icon="settings">
+    ```text
+    SETTINGS
+    ├─ Notification — Mute Buzzer, OFF LED, Test Buzzer, Test LED
+    ├─ Display UI — Lock screen, Booting, Brightness, Theme
+    ├─ Security — Set Password, Reset Password, Disable Password
+    └─ Device — Info, Reboot
+    ```
+
+    Open the [SETTINGS guide](/en/features/settings).
+  </Accordion>
+</AccordionGroup>

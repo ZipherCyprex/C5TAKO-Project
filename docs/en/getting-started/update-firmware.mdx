@@ -1,0 +1,72 @@
+---
+title: "Update firmware"
+description: "Update C5TAKO™ with Web Firmware Installer in Chrome or Edge."
+icon: "download"
+---
+
+Update C5TAKO™ firmware through the web, without installing additional software.
+
+Use the [Web Firmware Installer](https://www.ziphers.space/flash) with Chrome or Edge.
+
+## Before you begin
+
+- Use a computer with Chrome or Edge.
+- Prepare a **data-capable** USB cable, not a charge-only cable.
+- Charge the battery sufficiently.
+- Close programs that are using the device's serial port.
+- Back up important files from Storage before updating.
+
+<Warning>
+
+Do not unplug the cable, turn off the computer, or close the web page during firmware installation.
+
+</Warning>
+
+## Update steps
+
+<Steps>
+  <Step title="Open Web Firmware Installer">
+    Go to [ziphers.space/flash](https://www.ziphers.space/flash).
+  </Step>
+  <Step title="Choose the board">
+    Choose `ESP32-C5`, then select `Next`.
+  </Step>
+  <Step title="Choose firmware">
+    Choose `C5 TAKO`, then select `Next`.
+  </Step>
+  <Step title="Choose a version">
+    Choose the latest `C5 TAKO XIAO ESP32-C5` version and confirm that it shows `ESP32-C5` and `8MB Flash`.
+  </Step>
+  <Step title="Connect the device">
+    Select the install page, then choose `Connect` and select C5TAKO™'s USB port in the browser dialog.
+  </Step>
+  <Step title="Install">
+    After connecting, the firmware-install button becomes available. Follow the on-screen instructions and wait for completion.
+  </Step>
+  <Step title="Restart">
+    When installation finishes, turn the device off and on once, then confirm it reaches the main menu normally.
+  </Step>
+</Steps>
+
+<Info>
+📷 **Images to add:** Four screenshots: choose ESP32-C5, C5 TAKO, XIAO ESP32-C5 8MB, and the Connect screen.
+</Info>
+
+<Info>
+🎬 **Media to add:** The complete update from cable connection to restart, blurring port names and device-identifying information.
+</Info>
+
+## If the website cannot find the device
+
+1. Use a data-capable USB cable.
+2. Connect directly to the computer, not through a USB hub.
+3. Close Serial Monitor, Arduino IDE, and any other program using the port.
+4. Unplug the cable, wait about five seconds, then reconnect it.
+5. Refresh the page and select `Connect` again.
+6. If it is still not found, stop and contact the seller.
+
+<Note>
+
+Version names on the website can change. Use `C5 TAKO`, board `ESP32-C5`, and `8MB Flash` as the main identifiers.
+
+</Note>

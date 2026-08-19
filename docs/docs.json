@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "C5TAKO™ Docs",
+  "name": "C5TAKO Docs",
   "colors": {
     "primary": "#7B21F5",
     "light": "#A855F7",
@@ -54,59 +54,125 @@
     "drilldown": false
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "🚀 เริ่มต้นใช้งาน",
-        "pages": [
-          "about",
-          "index",
-          "getting-started/unboxing-and-power",
-          "getting-started/controls",
-          "getting-started/first-settings",
-          "getting-started/update-firmware"
-        ]
-      },
-      {
-        "group": "📖 เมนูบนเครื่อง",
-        "pages": [
-          "features/menu-overview",
+        "tab": "ไทย",
+        "icon": "languages",
+        "groups": [
           {
-            "group": "📶 WIFI",
-            "expanded": false,
+            "group": "🚀 เริ่มต้นใช้งาน",
             "pages": [
-              "features/wifi-overview",
-              "features/wifi-scan",
-              "features/wifi-attack",
-              "features/wifi-sniffer"
+              "about",
+              "index",
+              "getting-started/unboxing-and-power",
+              "getting-started/controls",
+              "getting-started/first-settings",
+              "getting-started/update-firmware"
             ]
           },
           {
-            "group": "🟦 Bluetooth",
-            "expanded": false,
+            "group": "📖 เมนูบนเครื่อง",
             "pages": [
-              "features/bluetooth-overview",
-              "features/bluetooth-spam-airtag",
-              "features/bluetooth-attack",
-              "features/bluetooth-sniffer"
+              "features/menu-overview",
+              {
+                "group": "📶 WIFI",
+                "expanded": false,
+                "pages": [
+                  "features/wifi-overview",
+                  "features/wifi-scan",
+                  "features/wifi-attack",
+                  "features/wifi-sniffer"
+                ]
+              },
+              {
+                "group": "🟦 Bluetooth",
+                "expanded": false,
+                "pages": [
+                  "features/bluetooth-overview",
+                  "features/bluetooth-spam-airtag",
+                  "features/bluetooth-attack",
+                  "features/bluetooth-sniffer"
+                ]
+              },
+              "features/apps",
+              "features/game",
+              "features/files",
+              "features/settings"
             ]
           },
-          "features/apps",
-          "features/game",
-          "features/files",
-          "features/settings"
+          {
+            "group": "🆘 ช่วยเหลือ",
+            "pages": [
+              "help/troubleshooting",
+              "help/care-warranty-support"
+            ]
+          },
+          {
+            "group": "👩‍💻 สำหรับนักพัฒนา",
+            "pages": [
+              "developer/serial-protocol"
+            ]
+          }
         ]
       },
       {
-        "group": "🆘 ช่วยเหลือ",
-        "pages": [
-          "help/troubleshooting",
-          "help/care-warranty-support"
-        ]
-      },
-      {
-        "group": "🧑‍💻 สำหรับนักพัฒนา",
-        "pages": [
-          "developer/serial-protocol"
+        "tab": "English",
+        "icon": "languages",
+        "groups": [
+          {
+            "group": "🚀 Getting started",
+            "pages": [
+              "en/about",
+              "en/index",
+              "en/getting-started/unboxing-and-power",
+              "en/getting-started/controls",
+              "en/getting-started/first-settings",
+              "en/getting-started/update-firmware"
+            ]
+          },
+          {
+            "group": "📖 Device menus",
+            "pages": [
+              "en/features/menu-overview",
+              {
+                "group": "📶 WIFI",
+                "expanded": false,
+                "pages": [
+                  "en/features/wifi-overview",
+                  "en/features/wifi-scan",
+                  "en/features/wifi-attack",
+                  "en/features/wifi-sniffer"
+                ]
+              },
+              {
+                "group": "🟦 Bluetooth",
+                "expanded": false,
+                "pages": [
+                  "en/features/bluetooth-overview",
+                  "en/features/bluetooth-spam-airtag",
+                  "en/features/bluetooth-attack",
+                  "en/features/bluetooth-sniffer"
+                ]
+              },
+              "en/features/apps",
+              "en/features/game",
+              "en/features/files",
+              "en/features/settings"
+            ]
+          },
+          {
+            "group": "🆘 Help",
+            "pages": [
+              "en/help/troubleshooting",
+              "en/help/care-warranty-support"
+            ]
+          },
+          {
+            "group": "👩‍💻 Developers",
+            "pages": [
+              "en/developer/serial-protocol"
+            ]
+          }
         ]
       }
     ]

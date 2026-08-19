@@ -1,0 +1,155 @@
+---
+title: "ATTACK"
+description: "Choose and use Wi-Fi testing tools only on authorized systems."
+icon: "shield-alert"
+---
+
+Use the tools under `WIFI → ATTACK` for the task at hand. Each feature can affect a real connection.
+
+<Warning>
+
+Use only networks you own or have explicit permission to test. Prepare controlled test devices in advance and stop the feature immediately when finished.
+
+</Warning>
+
+## Choose a topic
+
+| Task | Go to |
+| --- | --- |
+| Disconnect a test device | [Deauth](#deauth) |
+| Exclude a device from testing | [Whitelist](#whitelist) |
+| Simulate many Wi-Fi names | [Beacon Spam](#beacon-spam) |
+| Record connection data as PCAP | [Handshake](#handshake) |
+| Test a simulated web page in a lab | [Evil Portal](#evil-portal) |
+| Test many connection requests | [Auth Overload](#auth-overload) and [Assoc Overload](#assoc-overload) |
+| Test a channel change | [Force CSA](#force-csa) |
+| Test DNS forwarding | [DNS Repeater](#dns-repeater) |
+
+## Before you begin
+
+1. [Scan and select a device](/en/features/wifi-scan) when the feature requires `Selected AP` or `Selected STA`.
+2. Prepare a router and test device that you control.
+3. Review [the feature-stop procedure](/en/getting-started/controls#stop-an-active-feature).
+4. Check [FILES → File Explorer](/en/features/files#file-explorer) for free space if you will save a file.
+
+## Deauth
+
+Use this to test whether a device disconnects from Wi-Fi and can reconnect.
+
+Menu path: `WIFI → ATTACK → Deauth`
+
+| Option | Purpose |
+| --- | --- |
+| `All` | Disconnect every discovered AP. |
+| `Mass` | Disconnect multiple APs continuously. |
+| `Selected AP` | Disconnect only the selected AP. |
+| `Selected STA` | Disconnect only the selected client device. |
+
+Expected result: the test device may disconnect from Wi-Fi and attempt to reconnect.
+
+## Whitelist
+
+Use this to exclude a device from disconnection during a test.
+
+Menu path: `WIFI → ATTACK → Whitelist → Selected STA`
+
+1. [Scan and select an STA](/en/features/wifi-scan#sta--phone-or-client).
+2. Open `WIFI → ATTACK → Whitelist → Selected STA`.
+3. Verify that the selected device appears in the exclusion list before testing.
+
+## Beacon Spam
+
+Use this to simulate many Wi-Fi network names and test how a device displays its Wi-Fi list.
+
+Menu path: `WIFI → ATTACK → Beacon Spam`
+
+| Option | Purpose |
+| --- | --- |
+| `All` | Use names from previously discovered APs. |
+| `Selected AP` | Use the selected AP's name. |
+| `Random` | Generate random names. |
+| `Prefix` | Generate names with a prefix, such as `TEST_001`. |
+
+Expected result: the test device's Wi-Fi list may display many network names.
+
+## Handshake
+
+Use this to record Wi-Fi connection data as a `.pcap` file for authorized network-security analysis.
+
+Menu path: `WIFI → ATTACK → Handshake`
+
+| Option | Purpose |
+| --- | --- |
+| `Auto Active` | Automatically disconnect and capture a handshake. |
+| `Selected AP` | Capture a handshake for the selected AP only. |
+
+Before starting, check free storage and do not publish files captured from a network that is not yours.
+
+## Evil Portal
+
+Use this to create an access point and a simulated web page in a controlled lab, for testing recognition of spoofed pages.
+
+Menu path: `WIFI → ATTACK → Evil Portal`
+
+| Option | Purpose |
+| --- | --- |
+| `Default` | Use a built-in template. |
+| `Selected AP` | Use the selected AP name with the applicable template. |
+
+Never collect another person's password or personal information; use test data only.
+
+## Auth Overload
+
+Use this to send many authentication requests to an AP and test how a router handles requests.
+
+Menu path: `WIFI → ATTACK → Auth Overload`
+
+| Option | Purpose |
+| --- | --- |
+| `All` | Send requests to every discovered AP. |
+| `Selected AP` | Send requests to the selected AP. |
+
+Possible result: the router may slow down or new devices may be temporarily unable to connect.
+
+## Assoc Overload
+
+Use this to send many association requests to an AP and test concurrent-connection handling.
+
+Menu path: `WIFI → ATTACK → Assoc Overload`
+
+| Option | Purpose |
+| --- | --- |
+| `All` | Send requests to every discovered AP. |
+| `Selected AP` | Send requests to the selected AP. |
+
+Possible result: the router may reject new connections or existing devices may disconnect temporarily.
+
+## Force CSA
+
+Use this to test how devices respond to a channel-switch instruction.
+
+Menu path: `WIFI → ATTACK → Force CSA`
+
+| Option | Purpose |
+| --- | --- |
+| `All` | Send the instruction to every discovered device. |
+| `Selected AP` | Send the instruction to the selected AP. |
+| `Selected STA` | Send the instruction to the selected client. |
+
+Possible result: devices may disconnect temporarily while finding a new channel.
+
+## DNS Repeater
+
+Use this as a temporary DNS server to test DNS-request forwarding in a network you control.
+
+Menu path: `WIFI → ATTACK → DNS Repeater`
+
+Start this menu directly, then check the test device's response after it starts.
+
+## Stop and verify the test
+
+1. Use [the feature-stop procedure](/en/getting-started/controls#stop-an-active-feature).
+2. Confirm that test devices can reconnect to Wi-Fi normally.
+3. Restart the router or device if it still behaves unexpectedly.
+
+If the screen does not respond, see [Feature will not stop or screen is frozen](/en/help/troubleshooting#feature-will-not-stop-or-screen-is-frozen).

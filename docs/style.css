@@ -2,8 +2,26 @@
   --c5-purple: #7b21f5;
   --c5-purple-soft: #a855f7;
   --c5-ink: #0d0b10;
+  --c5-menu-bg: rgba(255, 255, 255, 0.32);
+  --c5-menu-border: rgba(13, 11, 16, 0.08);
+  --c5-menu-active-border: rgba(13, 11, 16, 0.08);
+  --c5-toc-track: rgba(13, 11, 16, 0.12);
+  --c5-callout-bg: #f5f3f8;
+  --c5-callout-border: rgba(13, 11, 16, 0.1);
+  --c5-code-bg: rgba(40, 42, 54, 0.08);
+}
+
+html.dark,
+html[data-theme="dark"],
+body.dark,
+body[data-theme="dark"] {
   --c5-menu-bg: rgba(0, 0, 0, 0.22);
   --c5-menu-border: rgba(255, 255, 255, 0.08);
+  --c5-menu-active-border: rgba(255, 255, 255, 0.06);
+  --c5-toc-track: rgba(255, 255, 255, 0.12);
+  --c5-callout-bg: #17171d;
+  --c5-callout-border: rgba(255, 255, 255, 0.1);
+  --c5-code-bg: rgba(40, 42, 54, 0.45);
 }
 
 /* Keep Mintlify's windows decoration visible, but make the background glow subtle. */
@@ -46,7 +64,7 @@
 #sidebar-content nav a[aria-current="page"],
 #sidebar-content li[data-active] > a {
   background: rgba(123, 33, 245, 0.08);
-  border-color: rgba(255, 255, 255, 0.06);
+  border-color: var(--c5-menu-active-border);
 }
 
 /* เส้นติดตามตำแหน่งของหัวข้อใน On this page */
@@ -64,7 +82,7 @@
   left: 3px;
   width: 2px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--c5-toc-track);
 }
 
 /* เส้นสีม่วงจะเลื่อนตามหัวข้อที่กำลังอ่าน */
@@ -97,15 +115,15 @@ pre {
   border-radius: 12px !important;
 }
 
-/* Only neutral callouts get the darker grayscale background. */
+/* Keep neutral callouts legible in both color modes. */
 .callout:not([class*="bg-green-"]):not([class*="bg-yellow-"]):not([class*="bg-red-"]):not([class*="bg-blue-"]):not([class*="bg-purple-"]) {
-  background: #17171d !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: var(--c5-callout-bg) !important;
+  border: 1px solid var(--c5-callout-border) !important;
 }
 
 /* Mintlifyวางสีที่เห็นจริงไว้ที่ .code-block-background */
 #content-area .code-block-background {
-  background-color: rgba(40, 42, 54, 0.45) !important;
+  background-color: var(--c5-code-bg) !important;
   background-image: none !important;
 }
 
