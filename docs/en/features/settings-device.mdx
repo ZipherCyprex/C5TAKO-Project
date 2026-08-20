@@ -75,6 +75,48 @@ When you open the Info page, you'll see:
 
 ---
 
+## BLE
+
+<CardGroup cols={2}>
+  <Card title="BLE Name" icon="bluetooth">
+    Set the name shown to other devices when using Bad BLE
+  </Card>
+  <Card title="BLE Battery" icon="battery">
+    Set the battery value reported by Bluetooth HID
+  </Card>
+</CardGroup>
+
+## WIFI
+
+<CardGroup cols={2}>
+  <Card title="WIFI Name" icon="wifi">
+    Set the access-point name used by Web Files and other features
+  </Card>
+  <Card title="Password" icon="key-round">
+    Choose Set Password or enable No Password
+  </Card>
+</CardGroup>
+
+<Warning>
+
+Configure a password before starting Web Files or another feature that opens an access point.
+
+</Warning>
+
+## Radio
+
+Use `Freq` to configure the CC1101 frequency:
+
+`300.000` · `303.875` · `315.000` · `433.920` · `868.350` · `915.000 MHz` · `Custom MHz`
+
+<Info>
+
+The `SUB-GHz` menu appears only when a CC1101 is detected. See the [SUB-GHz guide](/en/features/sub-ghz).
+
+</Info>
+
+---
+
 ## 🔄 Restart System (Reboot)
 
 <Warning>

@@ -1,0 +1,45 @@
+---
+title: "SUB-GHz"
+description: "Receive, analyze, save, and replay signals through a CC1101 module."
+icon: "radio"
+---
+
+The `SUB-GHz` menu appears only when the device detects a **CC1101** module. Use it only with devices and frequencies you own or are authorized to test, and check local radio regulations before transmitting.
+
+<Warning>
+
+Unauthorized interference, interception, or replay may be illegal. Use these tools only in a controlled test environment.
+
+</Warning>
+
+## Choose a menu
+
+<CardGroup cols={2}>
+  <Card title="Read" icon="radio-receiver">
+    Receive activity on the configured frequency
+  </Card>
+  <Card title="Decode" icon="scan-line">
+    Receive and display supported decoded signals
+  </Card>
+  <Card title="Read RAW" icon="audio-waveform">
+    Capture raw pulse timings
+  </Card>
+  <Card title="Saved" icon="folder-open">
+    Open captures stored in `/c5tako/subghz`
+  </Card>
+  <Card title="Add Manually" icon="keyboard">
+    Create a raw capture from signed microsecond timings
+  </Card>
+  <Card title="RF Analyzer" icon="chart-no-axes-combined">
+    Inspect activity around the selected frequency
+  </Card>
+  <Card title="Radio Settings" icon="sliders-horizontal" href="/en/features/settings-device#radio">
+    Select a preset frequency or enter a custom MHz value
+  </Card>
+</CardGroup>
+
+<Info>
+
+A SUB-GHz file opened from `Saved` provides `Replay`, `Read`, `Rename`, and `Delete` actions.
+
+</Info>

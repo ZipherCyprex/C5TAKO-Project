@@ -16,7 +16,7 @@ icon: "settings"
     
     ปิด/เปิดเสียง Buzzer และไฟ LED
   </Card>
-  <Card title="Display UI" icon="monitor" href="/features/settings-display">
+  <Card title="Display" icon="monitor" href="/features/settings-display">
     ตั้งค่าหน้าจอและภาพ
     
     ความสว่าง Theme หน้าจอล็อก และภาพเปิดเครื่อง
@@ -29,53 +29,30 @@ icon: "settings"
   <Card title="Device" icon="cpu" href="/features/settings-device">
     ข้อมูลเครื่องและระบบ
     
-    ดู Firmware, Storage และ Reboot
+    ดู Info และตั้ง BLE, WIFI, Radio หรือ Reboot
   </Card>
 </CardGroup>
 
 <Info>
-📷 **ต้องเพิ่มรูปตรงนี้:** ภาพหน้า SETTINGS พร้อมหมายเลขกำกับ Notification, Display UI, Security และ Device
+📷 **ยังขาดรูป:** หน้า SETTINGS ที่เห็น Notification, Display, Security และ Device
 </Info>
 
 ## ⚡ ตั้งค่าด่วน
 
-### ความสว่าง
-เส้นทาง: `SETTINGS → Display UI → Brightness`
-
-เลือก: **10%** | **25%** | **50%** | **75%** | **100%**
-
-💡 แนะนำ 25–50% เพื่อประหยัดแบต
-
-→ [ไปหน้า Display UI](/features/settings-display)
-
----
-
-### ชุดสี (Theme)
-เส้นทาง: `SETTINGS → Display UI → Theme`
-
-มี 8 ชุด: `Default` `Terminal` `Arctic` `Sunset` `Gold` `Crimson` `Electric` `Magenta`
-
-→ [ไปหน้า Display UI](/features/settings-display)
-
----
-
-### ปิดเสียง
-เส้นทาง: `SETTINGS → Notification → Mute Buzzer`
-
-เปิดตัวเลือกนี้เพื่อปิดเสียงทั้งหมด
-
-→ [ไปหน้า Notification](/features/settings-notification)
-
----
-
-### ตั้งรหัสผ่าน
-เส้นทาง: `SETTINGS → Security → Set Password`
-
-สร้างรูปแบบการกด 4 ครั้ง
-
-→ [ไปหน้า Security](/features/settings-security)
-
----
+<CardGroup cols={2}>
+  <Card title="ความสว่าง" icon="sun" href="/features/settings-display#ความสว่าง-brightness">
+    เลือก 10–100% แนะนำให้เริ่มที่ 25–50%
+  </Card>
+  <Card title="ชุดสี (Theme)" icon="palette" href="/features/settings-display#ชุดสี-theme">
+    เลือกจาก Theme ทั้ง 8 แบบ
+  </Card>
+  <Card title="ปิดเสียง" icon="volume-x" href="/features/settings-notification#ตั้งค่าเสียงและไฟ">
+    เปิด Mute Buzzer เพื่อปิดเสียง
+  </Card>
+  <Card title="ตั้งรหัสผ่าน" icon="lock" href="/features/settings-security#ตั้งรหัสผ่านครั้งแรก">
+    สร้างรูปแบบการกด 4 ครั้ง
+  </Card>
+</CardGroup>
 
 ## 🔍 สิ่งที่น่าสนใจ
 

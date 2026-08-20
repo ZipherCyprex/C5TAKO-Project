@@ -18,13 +18,23 @@ Test only in a controlled area and stop immediately when finished; nearby device
 
 Choose the preset that matches the test device:
 
-| Preset | Use with |
-| --- | --- |
-| `iOS` | Supported Apple devices. |
-| `Samsung` | Supported Samsung devices. |
-| `Android` | Supported Android devices. |
-| `Microsoft` | Supported Microsoft devices. |
-| `Random` | Cycles through several data formats. |
+<CardGroup cols={3}>
+  <Card title="iOS" icon="apple">
+    Supported Apple devices
+  </Card>
+  <Card title="Samsung" icon="smartphone">
+    Supported Samsung devices
+  </Card>
+  <Card title="Android" icon="bot">
+    Supported Android devices
+  </Card>
+  <Card title="Microsoft" icon="laptop">
+    Supported Microsoft devices
+  </Card>
+  <Card title="Random" icon="shuffle">
+    Cycle through several data formats
+  </Card>
+</CardGroup>
 
 ## Start and stop
 
@@ -43,8 +53,12 @@ Choose the preset that matches the test device:
   </Step>
 </Steps>
 
-<Info>
-🎬 **Media to add:** “Choose preset → start → test phone responds → hold center to stop,” with no other people's devices in the area.
-</Info>
+<video controls muted playsInline preload="metadata">
+  <source src="/videos/device/bluetooth-spam.mp4" type="video/mp4" />
+</video>
+
+## Example result on the test device
+
+![Example Apple TV pairing prompt produced during the BLE SPAM test](/images/device/bluetooth-spam-result.png)
 
 If the phone does not respond, follow the [Bluetooth troubleshooting steps](/en/features/bluetooth-overview#if-the-phone-does-not-respond).

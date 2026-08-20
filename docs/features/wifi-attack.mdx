@@ -30,14 +30,8 @@ icon: "shield-alert"
   <Card title="Evil Portal" icon="globe" href="#evil-portal">
     ทดสอบหน้าเว็บจำลองใน Lab
   </Card>
-  <Card title="Auth Overload" icon="users" href="#auth-overload">
-    ทดสอบคำขอยืนยันตัวตนจำนวนมาก
-  </Card>
-  <Card title="Assoc Overload" icon="network" href="#assoc-overload">
-    ทดสอบคำขอเชื่อมต่อจำนวนมาก
-  </Card>
-  <Card title="Force CSA" icon="arrow-right-left" href="#force-csa">
-    ทดสอบการเปลี่ยน Channel
+  <Card title="WPA3" icon="shield" href="#wpa3">
+    รวม Auth Overload, Assoc Overload และ Force CSA
   </Card>
   <Card title="DNS Repeater" icon="server" href="#dns-repeater">
     ทดสอบการส่งต่อ DNS
@@ -98,6 +92,10 @@ icon: "shield-alert"
 
 ก่อนเริ่ม ให้ตรวจพื้นที่ว่างและห้ามเผยแพร่ไฟล์จากเครือข่ายที่ไม่ใช่ของคุณ
 
+<video controls muted playsInline preload="metadata">
+  <source src="/videos/device/wifi-handshake.mp4" type="video/mp4" />
+</video>
+
 ## Evil Portal
 
 ใช้สร้าง Access Point และหน้าเว็บจำลองใน Lab ที่คุณควบคุม เพื่อทดสอบการแยกแยะหน้าเว็บปลอม
@@ -109,7 +107,11 @@ icon: "shield-alert"
 
 ห้ามเก็บรหัสผ่านหรือข้อมูลส่วนตัวของผู้อื่น ใช้ข้อมูลทดสอบเท่านั้น
 
-## Auth Overload
+## WPA3
+
+บนตัวเครื่อง ทั้ง 3 เมนูต่อไปนี้อยู่ใต้ `WIFI → ATTACK → WPA3`
+
+### Auth Overload
 
 ใช้ส่งคำขอยืนยันตัวตนจำนวนมากไปยัง AP เพื่อทดสอบการจัดการคำขอของ Router
 
@@ -120,7 +122,7 @@ icon: "shield-alert"
 
 ผลที่อาจเกิดขึ้น: Router อาจช้าลงหรืออุปกรณ์ใหม่อาจเชื่อมต่อไม่ได้ชั่วคราว
 
-## Assoc Overload
+### Assoc Overload
 
 ใช้ส่งคำขอเชื่อมต่อจำนวนมากไปยัง AP เพื่อทดสอบการรองรับการเชื่อมต่อพร้อมกัน
 
@@ -131,7 +133,7 @@ icon: "shield-alert"
 
 ผลที่อาจเกิดขึ้น: Router อาจปฏิเสธการเชื่อมต่อใหม่หรืออุปกรณ์เดิมอาจหลุดชั่วคราว
 
-## Force CSA
+### Force CSA
 
 ใช้ทดสอบว่าอุปกรณ์ตอบสนองต่อคำสั่งเปลี่ยน Channel อย่างไร
 

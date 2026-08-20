@@ -16,12 +16,20 @@ FILES → File Explorer
 
 Open this page to view files and check storage. Selecting a file offers these commands:
 
-| Device command | Purpose |
-| --- | --- |
-| `Read` | Open the file's contents. |
-| `Rename` | Rename the file. |
-| `Delete` | Delete the selected file. |
-| `Crack` | Show only supported PCAP files. |
+<CardGroup cols={2}>
+  <Card title="Read" icon="file-text">
+    Open the file's contents
+  </Card>
+  <Card title="Rename" icon="pencil">
+    Rename the selected file
+  </Card>
+  <Card title="Delete" icon="trash-2">
+    Delete the selected file
+  </Card>
+  <Card title="Crack" icon="key">
+    Appears only for a supported PCAP file
+  </Card>
+</CardGroup>
 
 <Info>
 📷 **Image to add:** File Explorer with a sample file, highlighting filename, size, and active storage.
@@ -43,6 +51,25 @@ Open this page to view files and check storage. Selecting a file offers these co
 Files deleted from the device cannot be recovered.
 
 </Warning>
+
+## 🌐 Web Files
+
+`FILES → Web Files` starts a Wi-Fi access point and a web server on the device.
+
+<Card title="Configure the Wi-Fi name and password" icon="settings" href="/en/features/settings-device#wifi">
+  Open the Device → WIFI guide
+</Card>
+
+1. Open `Web Files`.
+2. Connect a phone or computer to the Wi-Fi network shown on the display.
+3. Open the displayed URL and manage files in the browser.
+4. Stop Web Files when finished.
+
+<Tip>
+
+Configure a Wi-Fi password before starting Web Files, and do not leave it running in a public place.
+
+</Tip>
 
 ## 🚨 Format Storage
 

@@ -38,7 +38,7 @@
     "decoration": "windows",
     "color": {
       "light": "#F8F7FC",
-      "dark": "#0D0B10"
+      "dark": "#09090c"
     }
   },
   "styling": {
@@ -93,9 +93,11 @@
                   "features/bluetooth-overview",
                   "features/bluetooth-spam-airtag",
                   "features/bluetooth-attack",
-                  "features/bluetooth-sniffer"
+                  "features/bluetooth-sniffer",
+                  "features/bluetooth-bad-ble"
                 ]
               },
+              "features/sub-ghz",
               "features/apps",
               "features/game",
               "features/files",
@@ -166,9 +168,11 @@
                   "en/features/bluetooth-overview",
                   "en/features/bluetooth-spam-airtag",
                   "en/features/bluetooth-attack",
-                  "en/features/bluetooth-sniffer"
+                  "en/features/bluetooth-sniffer",
+                  "en/features/bluetooth-bad-ble"
                 ]
               },
+              "en/features/sub-ghz",
               "en/features/apps",
               "en/features/game",
               "en/features/files",

@@ -4,7 +4,7 @@ description: "Choose a guide from the menu name displayed on C5TAKO™."
 icon: "list-tree"
 ---
 
-This is C5TAKO™'s menu map. Names in `code` match the names shown on the device; select the same name to find its guide.
+Names in `code` match the device labels. Select the same name to open the related guide.
 
 ## 🧭 Device menus
 
@@ -15,54 +15,108 @@ This is C5TAKO™'s menu map. Names in `code` match the names shown on the devic
   <Card title="Bluetooth" icon="bluetooth" href="/en/features/bluetooth-overview">
     View and test BLE devices
   </Card>
+  <Card title="SUB-GHz" icon="radio" href="/en/features/sub-ghz">
+    Appears when the device detects a CC1101 module
+  </Card>
   <Card title="APP" icon="panels-top-left" href="/en/features/apps">
-    Use Buzzer and the screen as a light
+    Use Buzzer, Flashlight, MAP, and NMAP
   </Card>
   <Card title="GAME" icon="gamepad-2" href="/en/features/game">
-    Play a maze game
+    Play MAZE and DINO
   </Card>
   <Card title="FILES" icon="folder-open" href="/en/features/files">
-    View, rename, delete, and manage storage
+    Manage files, Web Files, and storage
   </Card>
   <Card title="SETTINGS" icon="settings" href="/en/features/settings">
-    Configure sound, display, password, and device info
+    Configure notifications, display, security, and device options
   </Card>
 </CardGroup>
 
 <Tip>
 
-For a path such as `WIFI → SCAN → AP → Scan`, choose each name from left to right. See [how to read a menu path](/en/getting-started/controls#read-a-menu-path).
+A path such as `WIFI → SCAN → AP → Scan` means choosing each label from left to right. See [how to read a menu path](/en/getting-started/controls#read-a-menu-path).
 
 </Tip>
 
-<Info>
-📷 **Image to add:** A screenshot of the real main menu labeled WIFI, Bluetooth, APP, GAME, FILES, and SETTINGS.
-</Info>
+![C5TAKO™ main menu](/images/device/main-menu.jpeg)
+
+<Note>
+
+`SUB-GHz` appears only when a CC1101 is detected, so it may not be visible in the photo.
+
+</Note>
 
 ## 🌳 Detailed menu tree
 
-Items are in the same top-to-bottom order as the device. Text after `—` describes the item and is not part of the device label. Every submenu has `< BACK`, so it is omitted from the tree.
+Items follow the source order used by the device. The final `< BACK` item in each submenu is omitted.
 
 <AccordionGroup>
   <Accordion title="WIFI" icon="wifi">
     ```text
     WIFI
-    ├─ SCAN — discover APs and STAs
-    │  ├─ AP: Scan, Select, Info
-    │  ├─ STA: Scan, Select, Info
+    ├─ SCAN
+    │  ├─ AP
+    │  │  ├─ Scan
+    │  │  ├─ Select
+    │  │  └─ Info
+    │  ├─ STA
+    │  │  ├─ Scan
+    │  │  ├─ Select
+    │  │  └─ Info
     │  └─ Scan AP+STA
-    ├─ ATTACK — authorized network-resilience testing
-    │  ├─ Deauth: All, Mass, Selected AP, Selected STA
-    │  ├─ Whitelist: Selected STA
-    │  ├─ Beacon Spam: All, Selected AP, Random, Prefix
-    │  ├─ Handshake: Auto Active, Selected AP
-    │  ├─ Evil Portal: Default templates, Selected AP templates
-    │  ├─ Auth Overload: All, Selected AP
-    │  ├─ Assoc Overload: All, Selected AP
-    │  ├─ Force CSA: All, Selected AP, Selected STA
-    │  └─ DNS Repeater
-    └─ SNIFFER — inspect packets and signals
-       ├─ Packet Monitor: Monitor All, All + Save, Deauth, Beacon, Probe, Auth, Client, EAPOL, Action monitors
+    ├─ ATTACK
+    │  ├─ Deauth
+    │  │  ├─ All
+    │  │  ├─ Mass
+    │  │  ├─ Selected AP
+    │  │  └─ Selected STA
+    │  ├─ Whitelist
+    │  │  └─ Selected STA
+    │  ├─ Beacon Spam
+    │  │  ├─ All
+    │  │  ├─ Selected AP
+    │  │  ├─ Random
+    │  │  └─ Prefix
+    │  ├─ Handshake
+    │  │  ├─ Auto Active
+    │  │  └─ Selected AP
+    │  ├─ Evil Portal
+    │  │  ├─ Default
+    │  │  │  ├─ admin_config
+    │  │  │  ├─ google_login
+    │  │  │  ├─ facebook_login
+    │  │  │  ├─ tiktok_login
+    │  │  │  ├─ instagram_login
+    │  │  │  └─ monkey_fck
+    │  │  └─ Selected AP
+    │  │     ├─ password_only
+    │  │     ├─ true_gigatex
+    │  │     ├─ 3bb_fiber
+    │  │     └─ ais_fibre
+    │  ├─ DNS Repeater
+    │  └─ WPA3
+    │     ├─ Auth Overload
+    │     │  ├─ All
+    │     │  └─ Selected AP
+    │     ├─ Assoc Overload
+    │     │  ├─ All
+    │     │  └─ Selected AP
+    │     └─ Force CSA
+    │        ├─ All
+    │        ├─ Selected AP
+    │        └─ Selected STA
+    └─ SNIFFER
+       ├─ Packet Monitor
+       │  ├─ Monitor All
+       │  ├─ All + Save
+       │  ├─ Deauth Monitor
+       │  ├─ Beacon Monitor
+       │  ├─ Probe Monitor
+       │  ├─ Auth Monitor
+       │  ├─ Client Monitor
+       │  ├─ EAPOL Monitor
+       │  ├─ Action Monitor
+       │  └─ Water Fall
        ├─ Jammer Detect
        ├─ Find Hidden AP
        ├─ WiFi Tracker
@@ -71,49 +125,190 @@ Items are in the same top-to-bottom order as the device. Text after `—` descri
 
     Guides: [SCAN](/en/features/wifi-scan) · [ATTACK](/en/features/wifi-attack) · [SNIFFER](/en/features/wifi-sniffer)
   </Accordion>
+
   <Accordion title="Bluetooth" icon="bluetooth">
     ```text
     Bluetooth
-    ├─ SPAM — BLE notification testing: iOS, Samsung, Android, Microsoft, Random
-    ├─ ATTACK — AirtagTrigger
-    └─ SNIFFER — BLE Monitor, Inspector
+    ├─ SPAM
+    │  ├─ iOS
+    │  ├─ Samsung
+    │  ├─ Android
+    │  ├─ Microsoft
+    │  └─ Random
+    ├─ ATTACK
+    │  └─ AirtagTrigger
+    ├─ SNIFFER
+    │  ├─ BLE Monitor
+    │  └─ Inspector
+    └─ Bad BLE
+       ├─ Mouse Remote
+       ├─ Keyboard
+       ├─ Media
+       │  ├─ Volume Up
+       │  ├─ Volume Down
+       │  ├─ Mute
+       │  ├─ Play/Pause
+       │  ├─ Next
+       │  ├─ Previous
+       │  └─ Stop
+       ├─ System
+       │  ├─ Power Down
+       │  ├─ Sleep
+       │  └─ Wake Up
+       ├─ Run Ducky
+       └─ Stop
     ```
 
-    Guides: [SPAM](/en/features/bluetooth-spam-airtag) · [ATTACK](/en/features/bluetooth-attack) · [SNIFFER](/en/features/bluetooth-sniffer)
+    Guides: [SPAM](/en/features/bluetooth-spam-airtag) · [ATTACK](/en/features/bluetooth-attack) · [SNIFFER](/en/features/bluetooth-sniffer) · [Bad BLE](/en/features/bluetooth-bad-ble)
   </Accordion>
+
+  <Accordion title="SUB-GHz" icon="radio">
+    ```text
+    SUB-GHz
+    ├─ Read
+    ├─ Decode
+    ├─ Read RAW
+    ├─ Saved
+    ├─ Add Manually
+    ├─ RF Analyzer
+    └─ Radio Settings
+       ├─ 300.000 MHz
+       ├─ 303.875 MHz
+       ├─ 315.000 MHz
+       ├─ 433.920 MHz
+       ├─ 868.350 MHz
+       ├─ 915.000 MHz
+       └─ Custom MHz
+    ```
+
+    Open the [SUB-GHz guide](/en/features/sub-ghz).
+  </Accordion>
+
   <Accordion title="APP" icon="panels-top-left">
     ```text
     APP
-    ├─ Buzzer — Play Music or Play Note
-    └─ Flashlight — use the display as a light
+    ├─ Buzzer
+    │  ├─ Play Music
+    │  │  ├─ SOS
+    │  │  ├─ Birthday
+    │  │  ├─ Christmas
+    │  │  ├─ MARIO
+    │  │  ├─ MC CAT
+    │  │  ├─ MC PIGSTEP
+    │  │  ├─ Armed&Dang
+    │  │  ├─ Erika
+    │  │  └─ Homelander
+    │  ├─ Play Note
+    │  │  ├─ Peak 3000Hz
+    │  │  ├─ Tune 4000Hz
+    │  │  └─ C 2093Hz ... C8 4186Hz
+    │  └─ Test Buzzer
+    │     ├─ Click
+    │     ├─ Soft Ping
+    │     ├─ Ready
+    │     ├─ Confirm
+    │     ├─ Success
+    │     ├─ Flipper Chirp
+    │     ├─ Mode Change
+    │     ├─ Start Armed
+    │     ├─ Stop Disarmed
+    │     ├─ Connected
+    │     ├─ Disconnected
+    │     ├─ Busy Locked
+    │     ├─ Denied
+    │     ├─ Warning Soft
+    │     ├─ Warning Tactical
+    │     ├─ Error Normal
+    │     ├─ Hard Fail
+    │     ├─ Low Battery
+    │     ├─ Critical
+    │     ├─ Scan Tick
+    │     └─ Capture Found
+    ├─ Flashlight
+    ├─ MAP
+    └─ NMAP
     ```
 
     Open the [APP guide](/en/features/apps).
   </Accordion>
+
   <Accordion title="GAME" icon="gamepad-2">
     ```text
     GAME
-    └─ MAZE — maze game
+    ├─ MAZE
+    └─ DINO
     ```
 
     Open the [GAME guide](/en/features/game).
   </Accordion>
+
   <Accordion title="FILES" icon="folder-open">
     ```text
     FILES
-    ├─ File Explorer — select a file: Read, Rename, Delete, Crack
-    └─ Format Storage — deletes every file in the active storage
+    ├─ File Explorer
+    │  └─ Selected file
+    │     ├─ Read
+    │     ├─ Rename
+    │     ├─ Delete
+    │     └─ Crack       — supported PCAP files only
+    ├─ Web Files
+    └─ Format Storage
     ```
 
     Open the [FILES guide](/en/features/files).
   </Accordion>
+
   <Accordion title="SETTINGS" icon="settings">
     ```text
     SETTINGS
-    ├─ Notification — Mute Buzzer, OFF LED, Test Buzzer, Test LED
-    ├─ Display UI — Lock screen, Booting, Brightness, Theme
-    ├─ Security — Set Password, Reset Password, Disable Password
-    └─ Device — Info, Reboot
+    ├─ Notification
+    │  ├─ Mute Buzzer
+    │  ├─ OFF LED
+    │  ├─ Test Buzzer
+    │  └─ Test LED
+    ├─ Display
+    │  ├─ Lock screen
+    │  │  ├─ Timeout
+    │  │  │  ├─ 10 / 20 / 30 / 40 / 50 / 60 sec
+    │  │  │  └─ Disable
+    │  │  ├─ Lock dim
+    │  │  │  └─ 10% / 25% / 50% / 75% / 100%
+    │  │  ├─ GIF path
+    │  │  ├─ GIF image
+    │  │  └─ Boomerang
+    │  ├─ Booting
+    │  │  ├─ Custom image
+    │  │  └─ Image path
+    │  ├─ Brightness
+    │  │  └─ 10% / 25% / 50% / 75% / 100%
+    │  ├─ Rotation
+    │  │  └─ 0 / 90 / 180 / 270 deg
+    │  └─ Theme
+    │     ├─ Default
+    │     ├─ Terminal
+    │     ├─ Arctic
+    │     ├─ Sunset
+    │     ├─ Gold
+    │     ├─ Crimson
+    │     ├─ Electric
+    │     └─ Magenta
+    ├─ Security
+    │  ├─ Set Password             — password not configured
+    │  ├─ Reset Password           — password configured
+    │  └─ Disable Password         — password configured
+    └─ Device
+       ├─ Info
+       ├─ BLE
+       │  ├─ BLE Name
+       │  └─ BLE Battery
+       ├─ WIFI
+       │  ├─ WIFI Name
+       │  └─ Password
+       │     ├─ Set Password
+       │     └─ No Password
+       ├─ Radio
+       │  └─ Freq
+       └─ Reboot
     ```
 
     Open the [SETTINGS guide](/en/features/settings).

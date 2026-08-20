@@ -1,10 +1,10 @@
 ---
 title: "APP"
-description: "Use the built-in Buzzer and Flashlight."
+description: "Use Buzzer, Flashlight, MAP, and NMAP."
 icon: "panels-top-left"
 ---
 
-Use the Buzzer for sound and the display as a light source.
+The `APP` menu contains device and network utilities.
 
 ## 🔊 Buzzer
 
@@ -16,6 +16,9 @@ Menu path: `APP → Buzzer`
   </Card>
   <Card title="Play Note" icon="music-2">
     Play the selected note or frequency
+  </Card>
+  <Card title="Test Buzzer" icon="volume-2">
+    Preview each notification sound
   </Card>
 </CardGroup>
 
@@ -52,3 +55,17 @@ Use the screen as a light source. Follow the hint at the bottom of the display t
 The Flashlight uses light from the display. It is suitable for close-range illumination, not as a high-power torch.
 
 </Tip>
+
+## 🗺️ MAP
+
+`APP → MAP` connects to the selected Wi-Fi AP and opens the map view. If no scan results exist, the device starts an AP scan and selection flow first.
+
+## 🔎 NMAP
+
+`APP → NMAP` discovers devices on the selected Wi-Fi network, then scans an IPv4 target on the same local network.
+
+<Warning>
+
+Use MAP and NMAP only on networks you own or are authorized to test.
+
+</Warning>

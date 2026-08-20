@@ -1,10 +1,10 @@
 ---
 title: "APP"
-description: "ใช้ Buzzer และ Flashlight ที่ติดมากับเครื่อง"
+description: "ใช้ Buzzer, Flashlight, MAP และ NMAP"
 icon: "panels-top-left"
 ---
 
-หน้านี้ช่วยให้คุณใช้เสียงจาก Buzzer และใช้หน้าจอเป็นไฟส่องสว่าง
+เมนู `APP` รวมเครื่องมือบนตัวเครื่องและเครือข่าย
 
 ## 🔊 Buzzer
 
@@ -16,6 +16,9 @@ icon: "panels-top-left"
   </Card>
   <Card title="Play Note" icon="music-2">
     เล่นเสียงตามชื่อโน้ตหรือความถี่ที่เลือก
+  </Card>
+  <Card title="Test Buzzer" icon="volume-2">
+    ทดลองเสียงแจ้งเตือนแต่ละแบบ
   </Card>
 </CardGroup>
 
@@ -52,3 +55,17 @@ APP → Flashlight
 Flashlight ใช้แสงจากหน้าจอ เหมาะกับการส่องใกล้ ๆ ไม่ใช่ไฟฉายกำลังสูง
 
 </Tip>
+
+## 🗺️ MAP
+
+`APP → MAP` เชื่อมต่อ Wi‑Fi ที่เลือกแล้วแสดงแผนที่ ถ้ายังไม่มีผล Scan เครื่องจะพาไป Scan และเลือก AP ก่อน
+
+## 🔎 NMAP
+
+`APP → NMAP` ค้นหาอุปกรณ์ในเครือข่าย Wi‑Fi ที่เลือก แล้วสแกนพอร์ตของ IPv4 เป้าหมายในเครือข่ายเดียวกัน
+
+<Warning>
+
+ใช้ MAP และ NMAP กับเครือข่ายที่คุณเป็นเจ้าของหรือได้รับอนุญาตเท่านั้น
+
+</Warning>

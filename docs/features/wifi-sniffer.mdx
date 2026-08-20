@@ -52,11 +52,12 @@ WIFI → SNIFFER → Packet Monitor
   <Accordion title="กรองตามประเภท" icon="filter">
     เลือก `Deauth`, `Beacon`, `Probe`, `Auth`, `Client`, `EAPOL` หรือ `Action Monitor` เมื่อต้องการดูเฉพาะ Packet ประเภทนั้น
   </Accordion>
+  <Accordion title="ดู Water Fall" icon="chart-spline">
+    `Water Fall` แสดงกิจกรรม Wi‑Fi แบบภาพตามเวลา
+  </Accordion>
 </AccordionGroup>
 
-<Info>
-📷 **ต้องเพิ่มรูปตรงนี้:** ภาพ Packet Monitor พร้อมลูกศรชี้จำนวน Packet, Channel และสถานะการบันทึก
-</Info>
+![หน้า Packet Monitor ของ C5TAKO™](/images/device/wifi-packet-monitor.jpeg)
 
 ## 💾 บันทึก PCAP แบบทีละขั้น
 
@@ -75,9 +76,9 @@ WIFI → SNIFFER → Packet Monitor
   </Step>
 </Steps>
 
-<Info>
-🎬 **ต้องเพิ่มคลิปตรงนี้:** ขั้นตอน “ตรวจ Storage → All + Save → หยุด → เปิดไฟล์ใน FILES”
-</Info>
+<video controls muted playsInline preload="metadata">
+  <source src="/videos/device/wifi-pcap-save.mp4" type="video/mp4" />
+</video>
 
 ## 📍 Tracker และตัวตรวจจับอื่น
 
@@ -86,9 +87,13 @@ WIFI → SNIFFER → Packet Monitor
 - `WiFi Tracker` ใช้ติดตาม AP
 - `STA Tracker` ใช้ติดตาม Client
 
-<Info>
-🎬 **ต้องเพิ่มคลิปตรงนี้:** คลิปรวมไม่เกิน 30 วินาที แสดง Jammer Detect, Find Hidden AP, WiFi Tracker และ STA Tracker พร้อมข้อความว่าผลลัพธ์อาจเปลี่ยนตามพื้นที่
-</Info>
+<video controls muted playsInline preload="metadata">
+  <source src="/videos/device/wifi-sniffer-tools.mp4" type="video/mp4" />
+</video>
+
+<Note>
+ผลลัพธ์ของ Jammer Detect, Find Hidden AP และ Tracker อาจเปลี่ยนตามพื้นที่และช่วงเวลาที่ตรวจสอบ
+</Note>
 
 ## ⏹️ ออกจากหน้าตรวจสอบ
 

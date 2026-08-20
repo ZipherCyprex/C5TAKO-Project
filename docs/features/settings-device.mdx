@@ -75,6 +75,48 @@ icon: "cpu"
 
 ---
 
+## BLE
+
+<CardGroup cols={2}>
+  <Card title="BLE Name" icon="bluetooth">
+    ตั้งชื่อที่อุปกรณ์อื่นจะเห็นเมื่อใช้ Bad BLE
+  </Card>
+  <Card title="BLE Battery" icon="battery">
+    ตั้งค่าแบตเตอรี่ที่รายงานผ่าน Bluetooth HID
+  </Card>
+</CardGroup>
+
+## WIFI
+
+<CardGroup cols={2}>
+  <Card title="WIFI Name" icon="wifi">
+    ตั้งชื่อ Access Point ที่ Web Files และฟีเจอร์อื่นใช้
+  </Card>
+  <Card title="Password" icon="key-round">
+    เลือก Set Password หรือเปิด No Password
+  </Card>
+</CardGroup>
+
+<Warning>
+
+ควรตั้งรหัสผ่านก่อนเปิด Web Files หรือฟีเจอร์ที่เปิด Access Point
+
+</Warning>
+
+## Radio
+
+เมนู `Freq` ใช้กำหนดความถี่สำหรับ CC1101:
+
+`300.000` · `303.875` · `315.000` · `433.920` · `868.350` · `915.000 MHz` · `Custom MHz`
+
+<Info>
+
+เมนู `SUB-GHz` จะแสดงเมื่อตรวจพบ CC1101 เท่านั้น ดู [คู่มือ SUB-GHz](/features/sub-ghz)
+
+</Info>
+
+---
+
 ## 🔄 เริ่มระบบใหม่ (Reboot)
 
 <Warning>

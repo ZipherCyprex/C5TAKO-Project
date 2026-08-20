@@ -14,13 +14,23 @@ This page presents observations for inspection; finding a device does not mean i
 
 ## 🧭 Choose a tool
 
-| Menu | Use when you need to… |
-| --- | --- |
-| `Packet Monitor` | View or save packets by type. |
-| `Jammer Detect` | Observe anomalies that may relate to interference. |
-| `Find Hidden AP` | Look for APs that do not normally advertise a name. |
-| `WiFi Tracker` | Track detected AP information. |
-| `STA Tracker` | Track detected client-device information. |
+<CardGroup cols={2}>
+  <Card title="Packet Monitor" icon="activity" href="#packet-monitor">
+    View or save packets by type
+  </Card>
+  <Card title="Jammer Detect" icon="alert-triangle" href="#trackers-and-other-detectors">
+    Observe anomalies that may relate to interference
+  </Card>
+  <Card title="Find Hidden AP" icon="eye-off" href="#trackers-and-other-detectors">
+    Look for APs that do not normally advertise a name
+  </Card>
+  <Card title="WiFi Tracker" icon="map-pin" href="#trackers-and-other-detectors">
+    Track detected AP information
+  </Card>
+  <Card title="STA Tracker" icon="smartphone" href="#trackers-and-other-detectors">
+    Track detected client-device information
+  </Card>
+</CardGroup>
 
 Choose `Packet Monitor` to view or save packets. Use another tool when you need a specific observation or tracker.
 
@@ -40,11 +50,12 @@ WIFI → SNIFFER → Packet Monitor
   <Accordion title="Filter by type" icon="filter">
     Choose `Deauth`, `Beacon`, `Probe`, `Auth`, `Client`, `EAPOL`, or `Action Monitor` to view that packet type only.
   </Accordion>
+  <Accordion title="View Water Fall" icon="chart-spline">
+    `Water Fall` visualizes Wi-Fi activity over time.
+  </Accordion>
 </AccordionGroup>
 
-<Info>
-📷 **Image to add:** Packet Monitor with arrows pointing to packet count, channel, and save status.
-</Info>
+![C5TAKO™ Packet Monitor](/images/device/wifi-packet-monitor.jpeg)
 
 ## 💾 Save a PCAP step by step
 
@@ -63,9 +74,9 @@ WIFI → SNIFFER → Packet Monitor
   </Step>
 </Steps>
 
-<Info>
-🎬 **Media to add:** “Check Storage → All + Save → stop → open the file in FILES.”
-</Info>
+<video controls muted playsInline preload="metadata">
+  <source src="/videos/device/wifi-pcap-save.mp4" type="video/mp4" />
+</video>
 
 ## 📍 Trackers and other detectors
 
@@ -74,9 +85,13 @@ WIFI → SNIFFER → Packet Monitor
 - `WiFi Tracker` tracks APs.
 - `STA Tracker` tracks client devices.
 
-<Info>
-🎬 **Media to add:** A clip of up to 30 seconds showing Jammer Detect, Find Hidden AP, WiFi Tracker, and STA Tracker, noting that results can vary by location.
-</Info>
+<video controls muted playsInline preload="metadata">
+  <source src="/videos/device/wifi-sniffer-tools.mp4" type="video/mp4" />
+</video>
+
+<Note>
+Jammer Detect, Find Hidden AP, and tracker results can vary by location and observation time.
+</Note>
 
 ## ⏹️ Leave an inspection screen
 

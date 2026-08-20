@@ -4,19 +4,19 @@ description: "เช็กลิสต์การตั้งค่าหลั
 icon: "sliders-horizontal"
 ---
 
-หลังตรวจว่าเครื่องและปุ่มทำงานแล้ว ให้ตั้งค่า 3 รายการนี้ก่อน รายการอื่นกลับมาปรับภายหลังได้
+หลังตรวจว่าเครื่องและปุ่มทำงานแล้ว เลือก Card เพื่อไปยังคู่มือที่มีขั้นตอนครบถ้วน:
 
-<Steps>
-  <Step title="ตั้งรหัสผ่าน">
-    เปิด `SETTINGS → Security → Set Password` แล้วสร้างรูปแบบการกด 4 ครั้ง ดูรายละเอียดที่ [ตั้ง เปลี่ยน หรือปิดรหัสผ่าน](/features/settings#security)
-  </Step>
-  <Step title="เลือก Theme">
-    เปิด `SETTINGS → Display UI → Theme` แล้วเลือกชุดสีที่ต้องการ ดูตัวเลือกที่ [ตั้งค่าหน้าจอ](/features/settings#display-ui)
-  </Step>
-  <Step title="ปรับความสว่าง">
-    เปิด `SETTINGS → Display UI → Brightness` เริ่มที่ 25–50% แล้วปรับตามสภาพแสง ดูรายละเอียดที่ [ตั้งค่าหน้าจอ](/features/settings#display-ui)
-  </Step>
-</Steps>
+<CardGroup cols={3}>
+  <Card title="1. ตั้งรหัสผ่าน" icon="lock" href="/features/settings-security#ตั้งรหัสผ่านครั้งแรก">
+    สร้างรูปแบบการกด 4 ครั้ง
+  </Card>
+  <Card title="2. เลือก Theme" icon="palette" href="/features/settings-display#ชุดสี-theme">
+    เลือกชุดสีที่อ่านง่ายและถูกใจ
+  </Card>
+  <Card title="3. ปรับความสว่าง" icon="sun" href="/features/settings-display#ความสว่าง-brightness">
+    เริ่มที่ 25–50% แล้วปรับตามสภาพแสง
+  </Card>
+</CardGroup>
 
 <Warning>
 

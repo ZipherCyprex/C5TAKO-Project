@@ -1,0 +1,45 @@
+---
+title: "SUB-GHz"
+description: "เมนูรับ วิเคราะห์ บันทึก และเล่นสัญญาณผ่านโมดูล CC1101"
+icon: "radio"
+---
+
+เมนู `SUB-GHz` จะแสดงเมื่อเครื่องตรวจพบโมดูล **CC1101** เท่านั้น ใช้กับอุปกรณ์และความถี่ที่คุณเป็นเจ้าของหรือได้รับอนุญาต และตรวจข้อกำหนดคลื่นความถี่ในพื้นที่ก่อนส่งสัญญาณ
+
+<Warning>
+
+การรบกวน การดักรับ หรือการส่งซ้ำสัญญาณโดยไม่ได้รับอนุญาตอาจผิดกฎหมาย ใช้ในสภาพแวดล้อมทดสอบที่ควบคุมได้เท่านั้น
+
+</Warning>
+
+## เลือกเมนู
+
+<CardGroup cols={2}>
+  <Card title="Read" icon="radio-receiver">
+    รับสัญญาณตามความถี่ที่ตั้งไว้
+  </Card>
+  <Card title="Decode" icon="scan-line">
+    รับสัญญาณและแสดงผลการถอดรหัสที่รองรับ
+  </Card>
+  <Card title="Read RAW" icon="audio-waveform">
+    บันทึกช่วงเวลาพัลส์แบบ RAW
+  </Card>
+  <Card title="Saved" icon="folder-open">
+    เปิดไฟล์ที่บันทึกไว้ใน `/c5tako/subghz`
+  </Card>
+  <Card title="Add Manually" icon="keyboard">
+    สร้างไฟล์ RAW จากค่าช่วงเวลาไมโครวินาที
+  </Card>
+  <Card title="RF Analyzer" icon="chart-no-axes-combined">
+    ดูกิจกรรมของสัญญาณรอบความถี่ที่เลือก
+  </Card>
+  <Card title="Radio Settings" icon="sliders-horizontal" href="/features/settings-device#radio">
+    เลือกความถี่สำเร็จรูปหรือกำหนดค่า MHz
+  </Card>
+</CardGroup>
+
+<Info>
+
+ไฟล์ SUB-GHz ที่เลือกจาก `Saved` มีคำสั่ง `Replay`, `Read`, `Rename` และ `Delete`
+
+</Info>

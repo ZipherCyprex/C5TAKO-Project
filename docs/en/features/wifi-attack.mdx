@@ -30,14 +30,8 @@ Use only networks you own or have explicit permission to test. Prepare controlle
   <Card title="Evil Portal" icon="globe" href="#evil-portal">
     Test a simulated web page in a lab
   </Card>
-  <Card title="Auth Overload" icon="users" href="#auth-overload">
-    Test many authentication requests
-  </Card>
-  <Card title="Assoc Overload" icon="network" href="#assoc-overload">
-    Test many association requests
-  </Card>
-  <Card title="Force CSA" icon="arrow-right-left" href="#force-csa">
-    Test a channel change
+  <Card title="WPA3" icon="shield" href="#wpa3">
+    Contains Auth Overload, Assoc Overload, and Force CSA
   </Card>
   <Card title="DNS Repeater" icon="server" href="#dns-repeater">
     Test DNS forwarding
@@ -104,6 +98,10 @@ Menu path: `WIFI → ATTACK → Handshake`
 
 Before starting, check free storage and do not publish files captured from a network that is not yours.
 
+<video controls muted playsInline preload="metadata">
+  <source src="/videos/device/wifi-handshake.mp4" type="video/mp4" />
+</video>
+
 ## Evil Portal
 
 Use this to create an access point and a simulated web page in a controlled lab, for testing recognition of spoofed pages.
@@ -117,11 +115,15 @@ Menu path: `WIFI → ATTACK → Evil Portal`
 
 Never collect another person's password or personal information; use test data only.
 
-## Auth Overload
+## WPA3
+
+The following three menus are under `WIFI → ATTACK → WPA3` on the device.
+
+### Auth Overload
 
 Use this to send many authentication requests to an AP and test how a router handles requests.
 
-Menu path: `WIFI → ATTACK → Auth Overload`
+Menu path: `WIFI → ATTACK → WPA3 → Auth Overload`
 
 | Option | Purpose |
 | --- | --- |
@@ -130,11 +132,11 @@ Menu path: `WIFI → ATTACK → Auth Overload`
 
 Possible result: the router may slow down or new devices may be temporarily unable to connect.
 
-## Assoc Overload
+### Assoc Overload
 
 Use this to send many association requests to an AP and test concurrent-connection handling.
 
-Menu path: `WIFI → ATTACK → Assoc Overload`
+Menu path: `WIFI → ATTACK → WPA3 → Assoc Overload`
 
 | Option | Purpose |
 | --- | --- |
@@ -143,11 +145,11 @@ Menu path: `WIFI → ATTACK → Assoc Overload`
 
 Possible result: the router may reject new connections or existing devices may disconnect temporarily.
 
-## Force CSA
+### Force CSA
 
 Use this to test how devices respond to a channel-switch instruction.
 
-Menu path: `WIFI → ATTACK → Force CSA`
+Menu path: `WIFI → ATTACK → WPA3 → Force CSA`
 
 | Option | Purpose |
 | --- | --- |
