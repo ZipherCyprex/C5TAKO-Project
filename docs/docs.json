@@ -75,7 +75,8 @@
             "pages": [
               "features/menu-overview",
               {
-                "group": "📶 WIFI",
+                "group": "WIFI",
+                "icon": "wifi",
                 "expanded": false,
                 "pages": [
                   "features/wifi-overview",
@@ -85,7 +86,8 @@
                 ]
               },
               {
-                "group": "🟦 Bluetooth",
+                "group": "Bluetooth",
+                "icon": "bluetooth",
                 "expanded": false,
                 "pages": [
                   "features/bluetooth-overview",
@@ -97,7 +99,18 @@
               "features/apps",
               "features/game",
               "features/files",
-              "features/settings"
+              {
+                "group": "SETTINGS",
+                "icon": "settings",
+                "expanded": false,
+                "pages": [
+                  "features/settings",
+                  "features/settings-notification",
+                  "features/settings-display",
+                  "features/settings-security",
+                  "features/settings-device"
+                ]
+              }
             ]
           },
           {
@@ -135,7 +148,8 @@
             "pages": [
               "en/features/menu-overview",
               {
-                "group": "📶 WIFI",
+                "group": "WIFI",
+                "icon": "wifi",
                 "expanded": false,
                 "pages": [
                   "en/features/wifi-overview",
@@ -145,7 +159,8 @@
                 ]
               },
               {
-                "group": "🟦 Bluetooth",
+                "group": "Bluetooth",
+                "icon": "bluetooth",
                 "expanded": false,
                 "pages": [
                   "en/features/bluetooth-overview",
@@ -157,7 +172,18 @@
               "en/features/apps",
               "en/features/game",
               "en/features/files",
-              "en/features/settings"
+              {
+                "group": "SETTINGS",
+                "icon": "settings",
+                "expanded": false,
+                "pages": [
+                  "en/features/settings",
+                  "en/features/settings-notification",
+                  "en/features/settings-display",
+                  "en/features/settings-security",
+                  "en/features/settings-device"
+                ]
+              }
             ]
           },
           {

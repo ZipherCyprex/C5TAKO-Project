@@ -1,0 +1,184 @@
+---
+title: "Device Info"
+description: "View device information and restart the system"
+icon: "cpu"
+---
+
+This page helps you view device information and reboot the system when needed
+
+## 📊 Device Information (Info)
+
+<CardGroup cols={2}>
+  <Card title="📱 Firmware" icon="package">
+    Current Firmware version
+    
+    Example: `v1.0.2`
+  </Card>
+  <Card title="💾 Flash" icon="hard-drive">
+    Flash memory size
+    
+    Example: `8MB`
+  </Card>
+  <Card title="Wi-Fi" icon="wifi">
+    Wi-Fi module information
+    
+    MAC Address and status
+  </Card>
+  <Card title="Bluetooth" icon="bluetooth">
+    Bluetooth module information
+    
+    MAC Address and status
+  </Card>
+  <Card title="💿 Storage" icon="database">
+    Total storage space
+    
+    Internal + microSD (if available)
+  </Card>
+</CardGroup>
+
+### 📝 Information Displayed
+
+When you open the Info page, you'll see:
+
+<AccordionGroup>
+  <Accordion title="Firmware Information" icon="code">
+    - **Version**: Firmware version
+    - **Build Date**: Firmware build date
+    - **Board**: Board name (e.g., `XIAO ESP32-C5`)
+  </Accordion>
+  <Accordion title="Hardware Information" icon="cpu">
+    - **Flash Size**: Flash memory size
+    - **Free Heap**: Available memory at that moment
+    - **Chip Model**: Chip model
+  </Accordion>
+  <Accordion title="Network Information" icon="network">
+    - **Wi-Fi MAC**: Wi-Fi MAC Address
+    - **BT MAC**: Bluetooth MAC Address
+    - **Status**: Module operation status
+  </Accordion>
+  <Accordion title="Storage Information" icon="folder">
+    - **Internal**: Internal space (used/total)
+    - **SD Card**: microSD space (if available)
+    - **Free Space**: Remaining free space
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+
+**When to check Info:**
+- Before updating Firmware (check old version)
+- When reporting issues to support
+- Check free space before saving files
+- View MAC Address for network configuration
+
+</Info>
+
+---
+
+## 🔄 Restart System (Reboot)
+
+<Warning>
+
+**Before Reboot:**
+- Save your current work
+- Stop active features
+- Verify no files are transferring
+
+</Warning>
+
+### When Should You Reboot?
+
+<CardGroup cols={2}>
+  <Card title="🐛 Screen acting strange" icon="monitor-x">
+    Screen frozen, displaying incorrectly, or flickering
+  </Card>
+  <Card title="🔌 Bluetooth/Wi-Fi not working" icon="wifi-off">
+    Cannot connect or cannot find devices
+  </Card>
+  <Card title="⚠️ Feature errors" icon="alert-circle">
+    Some features not working properly
+  </Card>
+  <Card title="🔧 After changing settings" icon="settings">
+    Some settings require reboot to take effect
+  </Card>
+</CardGroup>
+
+### Reboot Steps
+
+<Steps>
+  <Step title="Open Reboot page" icon="power">
+    Open `Device → Reboot`
+  </Step>
+  <Step title="Confirm" icon="check-circle">
+    Select `Reboot` to confirm or `Cancel` to abort
+  </Step>
+  <Step title="Wait for restart" icon="loader">
+    Device will shut down, wait about 5-10 seconds, then restart automatically
+  </Step>
+  <Step title="Verify" icon="eye">
+    Check that it enters the main menu normally
+  </Step>
+</Steps>
+
+<Note>
+
+**Reboot vs. Manual Power Cycle:**
+- **Reboot**: System shuts down and starts itself, faster
+- **Manual power cycle**: Use side switch, wait 5 seconds before turning back on
+
+Both methods produce the same result
+
+</Note>
+
+---
+
+## 📞 Information for Support
+
+When contacting support, prepare this information from the **Info** page:
+
+<CardGroup cols={2}>
+  <Card title="1️⃣ Firmware Version" icon="code">
+    Specify the Firmware version in use
+  </Card>
+  <Card title="2️⃣ Board Model" icon="cpu">
+    Specify the board model
+  </Card>
+  <Card title="3️⃣ Symptoms Observed" icon="message-circle">
+    Describe symptoms and the problematic screen
+  </Card>
+  <Card title="4️⃣ What You've Tried" icon="list-checks">
+    List what you've already attempted
+  </Card>
+</CardGroup>
+
+More details at [What to provide when contacting support](/en/help/troubleshooting#what-to-provide-when-contacting-support)
+
+---
+
+## 💡 Tips
+
+<Tip>
+
+**Screenshot Info page:**
+- Take a photo of the Info page for future reference
+- Store it securely with your order number
+
+**Reboot regularly:**
+- If used heavily, reboot every 1-2 weeks
+- Helps clear memory and improve system performance
+
+**Before updating Firmware:**
+- Check old version from Info page
+- Verify you're updating to the correct version
+
+</Tip>
+
+<Info>
+📷 **Image to add:** Screenshot of Device Info page and Reboot steps
+</Info>
+
+## ↩️ Back to Main
+
+<Card title="SETTINGS" icon="settings" href="/en/features/settings">
+  Return to see other settings
+</Card>

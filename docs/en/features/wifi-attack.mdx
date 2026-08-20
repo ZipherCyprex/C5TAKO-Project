@@ -12,18 +12,37 @@ Use only networks you own or have explicit permission to test. Prepare controlle
 
 </Warning>
 
-## Choose a topic
+## Choose what to test
 
-| Task | Go to |
-| --- | --- |
-| Disconnect a test device | [Deauth](#deauth) |
-| Exclude a device from testing | [Whitelist](#whitelist) |
-| Simulate many Wi-Fi names | [Beacon Spam](#beacon-spam) |
-| Record connection data as PCAP | [Handshake](#handshake) |
-| Test a simulated web page in a lab | [Evil Portal](#evil-portal) |
-| Test many connection requests | [Auth Overload](#auth-overload) and [Assoc Overload](#assoc-overload) |
-| Test a channel change | [Force CSA](#force-csa) |
-| Test DNS forwarding | [DNS Repeater](#dns-repeater) |
+<CardGroup cols={2}>
+  <Card title="Deauth" icon="wifi-off" href="#deauth">
+    Disconnect a test device
+  </Card>
+  <Card title="Whitelist" icon="shield-check" href="#whitelist">
+    Exclude a device from testing
+  </Card>
+  <Card title="Beacon Spam" icon="radio-tower" href="#beacon-spam">
+    Simulate many Wi-Fi names
+  </Card>
+  <Card title="Handshake" icon="handshake" href="#handshake">
+    Record connection data as PCAP
+  </Card>
+  <Card title="Evil Portal" icon="globe" href="#evil-portal">
+    Test a simulated web page in a lab
+  </Card>
+  <Card title="Auth Overload" icon="users" href="#auth-overload">
+    Test many authentication requests
+  </Card>
+  <Card title="Assoc Overload" icon="network" href="#assoc-overload">
+    Test many association requests
+  </Card>
+  <Card title="Force CSA" icon="arrow-right-left" href="#force-csa">
+    Test a channel change
+  </Card>
+  <Card title="DNS Repeater" icon="server" href="#dns-repeater">
+    Test DNS forwarding
+  </Card>
+</CardGroup>
 
 ## Before you begin
 

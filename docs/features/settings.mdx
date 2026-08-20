@@ -1,98 +1,123 @@
 ---
 title: "SETTINGS"
-description: "ตั้งค่าเสียง ไฟ หน้าจอ รหัสผ่าน และข้อมูลเครื่อง"
+description: "เลือกตั้งค่าตามที่ต้องการปรับ"
 icon: "settings"
 ---
 
-หน้านี้ช่วยให้คุณตั้งค่าเสียง ไฟ หน้าจอ รหัสผ่าน และข้อมูลเครื่อง การตั้งค่าที่แนะนำสำหรับเครื่องใหม่อยู่ใน [เช็กลิสต์ตั้งค่าครั้งแรก](/getting-started/first-settings)
+หน้านี้ช่วยให้คุณเลือกการตั้งค่าที่ต้องการปรับ เลือกหมวดตามชื่อเมนูที่เห็นบนหน้าจอ
 
-| ต้องการปรับ | เส้นทาง |
-| --- | --- |
-| เสียงและไฟสถานะ | [`SETTINGS → Notification`](#notification) |
-| หน้าจอล็อก ความสว่าง ภาพเปิดเครื่อง และ Theme | [`SETTINGS → Display UI`](#display-ui) |
-| รหัสผ่าน | [`SETTINGS → Security`](#security) |
-| ข้อมูลเครื่องหรือเริ่มระบบใหม่ | [`SETTINGS → Device`](#device) |
+การตั้งค่าที่แนะนำสำหรับเครื่องใหม่อยู่ใน [เช็กลิสต์ตั้งค่าครั้งแรก](/getting-started/first-settings)
+
+## 🧭 เลือกหมวดการตั้งค่า
+
+<CardGroup cols={2}>
+  <Card title="Notification" icon="bell" href="/features/settings-notification">
+    ตั้งค่าเสียงและไฟสถานะ
+    
+    ปิด/เปิดเสียง Buzzer และไฟ LED
+  </Card>
+  <Card title="Display UI" icon="monitor" href="/features/settings-display">
+    ตั้งค่าหน้าจอและภาพ
+    
+    ความสว่าง Theme หน้าจอล็อก และภาพเปิดเครื่อง
+  </Card>
+  <Card title="Security" icon="lock" href="/features/settings-security">
+    จัดการรหัสผ่าน
+    
+    ตั้ง เปลี่ยน หรือปิดรหัสผ่าน
+  </Card>
+  <Card title="Device" icon="cpu" href="/features/settings-device">
+    ข้อมูลเครื่องและระบบ
+    
+    ดู Firmware, Storage และ Reboot
+  </Card>
+</CardGroup>
 
 <Info>
 📷 **ต้องเพิ่มรูปตรงนี้:** ภาพหน้า SETTINGS พร้อมหมายเลขกำกับ Notification, Display UI, Security และ Device
 </Info>
 
-## 🔔 Notification
+## ⚡ ตั้งค่าด่วน
 
-เส้นทางเมนู: `SETTINGS → Notification`
+### ความสว่าง
+เส้นทาง: `SETTINGS → Display UI → Brightness`
 
-- `Mute Buzzer` ปิดหรือเปิดเสียงแจ้งเตือน เมื่อต้องการปิดเสียงให้เปิดตัวเลือกนี้
-- `OFF LED` ปิดหรือเปิดไฟสถานะ เมื่อต้องการปิดไฟให้เปิดตัวเลือกนี้
-- `Test Buzzer` ทดลองเสียงแต่ละรูปแบบ
-- `Test LED` ทดลองไฟสถานะ
+เลือก: **10%** | **25%** | **50%** | **75%** | **100%**
 
-<Info>
+💡 แนะนำ 25–50% เพื่อประหยัดแบต
 
-คำว่า `Mute` และ `OFF` หมายถึง “ปิดการทำงาน” จึงอาจดูตรงข้ามกับสถานะสวิตช์บนหน้าจอ
+→ [ไปหน้า Display UI](/features/settings-display)
 
-</Info>
+---
 
-## 🎨 Display UI
+### ชุดสี (Theme)
+เส้นทาง: `SETTINGS → Display UI → Theme`
 
-เส้นทางเมนู: `SETTINGS → Display UI`
+มี 8 ชุด: `Default` `Terminal` `Arctic` `Sunset` `Gold` `Crimson` `Electric` `Magenta`
+
+→ [ไปหน้า Display UI](/features/settings-display)
+
+---
+
+### ปิดเสียง
+เส้นทาง: `SETTINGS → Notification → Mute Buzzer`
+
+เปิดตัวเลือกนี้เพื่อปิดเสียงทั้งหมด
+
+→ [ไปหน้า Notification](/features/settings-notification)
+
+---
+
+### ตั้งรหัสผ่าน
+เส้นทาง: `SETTINGS → Security → Set Password`
+
+สร้างรูปแบบการกด 4 ครั้ง
+
+→ [ไปหน้า Security](/features/settings-security)
+
+---
+
+## 🔍 สิ่งที่น่าสนใจ
+
+<CardGroup cols={2}>
+  <Card title="🎬 ทดสอบเสียง" icon="volume-2" href="/features/settings-notification#🎵-รูปแบบเสียงที่มีให้ทดสอบ">
+    ฟังเสียงแต่ละรูปแบบก่อนเลือก
+  </Card>
+  <Card title="🖼️ GIF บนหน้าจอล็อก" icon="image" href="/features/settings-display#🔒-ตั้งค่าหน้าจอล็อก">
+    ใส่ GIF เคลื่อนไหวของคุณเอง
+  </Card>
+  <Card title="📊 ดูข้อมูลเครื่อง" icon="info" href="/features/settings-device#📊-ข้อมูลเครื่อง-info">
+    Firmware, Storage, MAC Address
+  </Card>
+  <Card title="🔄 Reboot ระบบ" icon="rotate-cw" href="/features/settings-device#🔄-เริ่มระบบใหม่-reboot">
+    เริ่มระบบใหม่เมื่อมีปัญหา
+  </Card>
+</CardGroup>
+
+---
+
+## 💡 คำแนะนำตามสถานการณ์
 
 <AccordionGroup>
-  <Accordion title="Lock screen — หน้าจอล็อก" icon="lock">
-    - `Timeout` เลือกเวลารอก่อนล็อก 10–60 วินาที หรือ `Disable` เพื่อไม่ใช้หน้าจอล็อก
-    - `Lock dim` กำหนดความสว่างขณะล็อก
-    - `GIF path` เลือกตำแหน่งไฟล์ GIF
-    - `GIF image` เปิดหรือปิดภาพ GIF
-    - `Boomerang` ให้ GIF เล่นไป–กลับ
+  <Accordion title="🌙 ใช้งานในห้องมืด" icon="moon">
+    1. ลดความสว่างเป็น 10–25%
+    2. เลือก Theme สีเข้ม (Terminal, Arctic)
+    3. เปิด Mute Buzzer ถ้าต้องการเงียบ
   </Accordion>
-  <Accordion title="Booting — ภาพตอนเปิดเครื่อง" icon="power">
-    - `Custom image` เปิดหรือปิดภาพที่ผู้ใช้กำหนด
-    - `Image path` เลือกตำแหน่งไฟล์ภาพ
+  <Accordion title="☀️ ใช้งานกลางแจ้ง" icon="sun">
+    1. เพิ่มความสว่างเป็น 75–100%
+    2. เลือก Theme ที่มีคอนทราสต์สูง
+    3. ปิด GIF บนหน้าจอล็อกเพื่อประหยัดแบต
   </Accordion>
-  <Accordion title="Brightness — ความสว่าง" icon="sun">
-    เปิด `SETTINGS → Display UI → Brightness` แล้วเลือก `10%`, `25%`, `50%`, `75%` หรือ `100%` หากต้องการประหยัดแบตเตอรี่ ให้เริ่มที่ 25–50%
+  <Accordion title="🔋 ประหยัดแบตเตอรี่" icon="battery">
+    1. ลดความสว่างเป็น 25%
+    2. ปิดไฟ LED (OFF LED)
+    3. ตั้ง Lock Timeout สั้น ๆ (10–20 วินาที)
+    4. ปิด GIF บนหน้าจอล็อก
   </Accordion>
-  <Accordion title="Theme — ชุดสี" icon="palette">
-    เปิด `SETTINGS → Display UI → Theme` แล้วเลือก `Default`, `Terminal`, `Arctic`, `Sunset`, `Gold`, `Crimson`, `Electric` หรือ `Magenta` รายการที่ใช้อยู่จะมี `*` ต่อท้าย
+  <Accordion title="🔒 เพิ่มความปลอดภัย" icon="shield">
+    1. ตั้งรหัสผ่าน 4 ครั้ง
+    2. ตั้ง Lock Timeout สั้น (10–20 วินาที)
+    3. จดรหัสไว้ในที่ปลอดภัย
   </Accordion>
 </AccordionGroup>
-
-<Info>
-📷 **ต้องเพิ่มรูปตรงนี้:** ภาพ Grid เปรียบเทียบ Theme ทั้ง 8 แบบ โดยเปิดเมนูเดียวกันทุกภาพ
-</Info>
-
-## 🔐 Security
-
-เส้นทางเมนู: `SETTINGS → Security`
-
-รหัสผ่านเป็นรูปแบบการกด 4 ครั้ง โดยใช้ขึ้น ลง ซ้าย ขวา หรือกดกลางผสมกันได้
-
-<Steps>
-  <Step title="เปิดหน้าตั้งรหัส">
-    เข้า `SETTINGS → Security → Set Password`
-  </Step>
-  <Step title="สร้างรูปแบบ">
-    กดทิศทางหรือปุ่มกลางรวมกันให้ครบ 4 ครั้ง และจำลำดับให้ได้
-  </Step>
-  <Step title="ยืนยัน">
-    เมื่อหน้าจอถาม `Use this pattern?` เลือก `Use` เพื่อบันทึก หรือ `Retry` เพื่อทำใหม่
-  </Step>
-</Steps>
-
-<Info>
-🎬 **ต้องเพิ่มคลิปตรงนี้:** ขั้นตอนตั้งรหัสผ่านด้วยรูปแบบตัวอย่าง และปิดช่วงที่แสดงรหัสจริงของผู้ถ่าย
-</Info>
-
-เมื่อตั้งแล้ว:
-
-- ใช้ `Reset Password` เพื่อเปลี่ยนรูปแบบ
-- ใช้ `Disable Password` เพื่อปิดรหัสผ่าน
-- หากลืมรหัส ให้ดู [วิธีแก้ปัญหาเมื่อจำรหัสไม่ได้](/help/troubleshooting#ลืมรหัสผ่าน)
-
-## ℹ️ Device
-
-เส้นทางเมนู: `SETTINGS → Device`
-
-- `Info` ดูข้อมูล Firmware, Flash, Wi‑Fi, Bluetooth และ Storage
-- `Reboot` เริ่มระบบใหม่ เหมาะเมื่อหน้าจอหรือฟีเจอร์ผิดปกติแต่ยังเข้าเมนูได้
-
-หากต้องส่งข้อมูลให้ฝ่ายช่วยเหลือ ดู [ข้อมูลที่ควรส่งเมื่อติดต่อ](/help/troubleshooting#ข้อมูลที่ควรส่งเมื่อติดต่อ)

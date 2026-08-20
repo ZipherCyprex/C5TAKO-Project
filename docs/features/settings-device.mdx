@@ -1,0 +1,184 @@
+---
+title: "Device Info"
+description: "ดูข้อมูลเครื่องและเริ่มระบบใหม่"
+icon: "cpu"
+---
+
+หน้านี้ช่วยให้คุณดูข้อมูลเครื่องและรีสตาร์ทระบบเมื่อต้องการ
+
+## 📊 ข้อมูลเครื่อง (Info)
+
+<CardGroup cols={2}>
+  <Card title="📱 Firmware" icon="package">
+    เวอร์ชัน Firmware ที่กำลังใช้งาน
+    
+    ตัวอย่าง: `v1.0.2`
+  </Card>
+  <Card title="💾 Flash" icon="hard-drive">
+    ขนาดหน่วยความจำ Flash
+    
+    ตัวอย่าง: `8MB`
+  </Card>
+  <Card title="Wi-Fi" icon="wifi">
+    ข้อมูล Wi-Fi module
+    
+    MAC Address และสถานะ
+  </Card>
+  <Card title="Bluetooth" icon="bluetooth">
+    ข้อมูล Bluetooth module
+    
+    MAC Address และสถานะ
+  </Card>
+  <Card title="💿 Storage" icon="database">
+    พื้นที่เก็บข้อมูลทั้งหมด
+    
+    Internal + microSD (ถ้ามี)
+  </Card>
+</CardGroup>
+
+### 📝 ข้อมูลที่แสดง
+
+เมื่อเข้าหน้า Info จะเห็นข้อมูลเหล่านี้:
+
+<AccordionGroup>
+  <Accordion title="Firmware Information" icon="code">
+    - **Version**: เวอร์ชัน Firmware
+    - **Build Date**: วันที่สร้าง Firmware
+    - **Board**: ชื่อบอร์ด (เช่น `XIAO ESP32-C5`)
+  </Accordion>
+  <Accordion title="Hardware Information" icon="cpu">
+    - **Flash Size**: ขนาด Flash memory
+    - **Free Heap**: หน่วยความจำว่างในขณะนั้น
+    - **Chip Model**: รุ่นของชิป
+  </Accordion>
+  <Accordion title="Network Information" icon="network">
+    - **Wi-Fi MAC**: MAC Address ของ Wi-Fi
+    - **BT MAC**: MAC Address ของ Bluetooth
+    - **Status**: สถานะการทำงานของ Module
+  </Accordion>
+  <Accordion title="Storage Information" icon="folder">
+    - **Internal**: พื้นที่ภายใน (ใช้/ทั้งหมด)
+    - **SD Card**: พื้นที่ microSD (ถ้ามี)
+    - **Free Space**: พื้นที่ว่างที่เหลือ
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+
+**เมื่อไหร่ต้องดูข้อมูล Info:**
+- ก่อนอัปเดต Firmware (เช็กเวอร์ชันเดิม)
+- เมื่อต้องการแจ้งปัญหาให้ฝ่ายช่วยเหลือ
+- ตรวจสอบพื้นที่ว่างก่อนบันทึกไฟล์
+- ดู MAC Address สำหรับการตั้งค่าเครือข่าย
+
+</Info>
+
+---
+
+## 🔄 เริ่มระบบใหม่ (Reboot)
+
+<Warning>
+
+**ก่อน Reboot:**
+- บันทึกงานที่กำลังทำอยู่
+- หยุดฟีเจอร์ที่กำลังทำงาน
+- ตรวจว่าไม่มีไฟล์กำลัง Transfer อยู่
+
+</Warning>
+
+### เมื่อไหร่ควร Reboot?
+
+<CardGroup cols={2}>
+  <Card title="🐛 หน้าจอผิดปกติ" icon="monitor-x">
+    หน้าจอค้าง แสดงผลผิด หรือกะพริบ
+  </Card>
+  <Card title="🔌 Bluetooth/Wi-Fi ไม่ทำงาน" icon="wifi-off">
+    เชื่อมต่อไม่ได้ หรือหาอุปกรณ์ไม่เจอ
+  </Card>
+  <Card title="⚠️ ฟีเจอร์ Error" icon="alert-circle">
+    ฟีเจอร์บางตัวทำงานผิดปกติ
+  </Card>
+  <Card title="🔧 หลังเปลี่ยนการตั้งค่า" icon="settings">
+    บางการตั้งค่าต้อง Reboot ถึงจะมีผล
+  </Card>
+</CardGroup>
+
+### ขั้นตอน Reboot
+
+<Steps>
+  <Step title="เข้าหน้า Reboot" icon="power">
+    เข้า `Device → Reboot`
+  </Step>
+  <Step title="ยืนยัน" icon="check-circle">
+    เลือก `Reboot` เพื่อยืนยัน หรือ `Cancel` เพื่อยกเลิก
+  </Step>
+  <Step title="รอเปิดใหม่" icon="loader">
+    เครื่องจะปิด รอประมาณ 5-10 วินาที แล้วเปิดใหม่อัตโนมัติ
+  </Step>
+  <Step title="ตรวจสอบ" icon="eye">
+    ตรวจว่าเข้าสู่เมนูหลักได้ตามปกติ
+  </Step>
+</Steps>
+
+<Note>
+
+**Reboot vs. ปิด-เปิดเครื่อง:**
+- **Reboot**: ระบบปิด-เปิดเอง รวดเร็วกว่า
+- **ปิด-เปิดด้วยมือ**: กดสวิตช์ด้านข้างเอง ควรรอ 5 วินาทีก่อนเปิดใหม่
+
+ทั้งสองวิธีให้ผลลัพธ์เหมือนกัน
+
+</Note>
+
+---
+
+## 📞 ข้อมูลสำหรับฝ่ายช่วยเหลือ
+
+เมื่อต้องการติดต่อฝ่ายช่วยเหลือ ให้เตรียมข้อมูลเหล่านี้จากหน้า **Info**:
+
+<CardGroup cols={2}>
+  <Card title="1️⃣ Firmware Version" icon="code">
+    ระบุเวอร์ชัน Firmware ที่กำลังใช้
+  </Card>
+  <Card title="2️⃣ Board Model" icon="cpu">
+    ระบุรุ่นบอร์ด
+  </Card>
+  <Card title="3️⃣ อาการที่พบ" icon="message-circle">
+    อธิบายอาการและหน้าจอที่เกิดปัญหา
+  </Card>
+  <Card title="4️⃣ สิ่งที่ลองแล้ว" icon="list-checks">
+    บอกว่าลองแก้ไขอะไรไปบ้าง
+  </Card>
+</CardGroup>
+
+รายละเอียดเพิ่มเติมที่ [ข้อมูลที่ควรส่งเมื่อติดต่อ](/help/troubleshooting#ข้อมูลที่ควรส่งเมื่อติดต่อ)
+
+---
+
+## 💡 เคล็ดลับ
+
+<Tip>
+
+**Screenshot ข้อมูล Info:**
+- ถ่ายภาพหน้า Info ไว้เพื่อใช้อ้างอิงภายหลัง
+- เก็บไว้ในที่ปลอดภัยพร้อมกับเลขคำสั่งซื้อ
+
+**Reboot เป็นประจำ:**
+- หากใช้งานหนัก ควร Reboot ทุก 1-2 สัปดาห์
+- ช่วยเคลียร์หน่วยความจำและทำให้ระบบทำงานดีขึ้น
+
+**ก่อนอัปเดต Firmware:**
+- เช็กเวอร์ชันเดิมจากหน้า Info
+- เปรียบเทียบว่าอัปเดตถูกเวอร์ชันหรือไม่
+
+</Tip>
+
+<Info>
+📷 **ต้องเพิ่มรูปตรงนี้:** Screenshot หน้า Device Info และขั้นตอน Reboot
+</Info>
+
+## ↩️ กลับไปหน้าหลัก
+
+<Card title="SETTINGS" icon="settings" href="/features/settings">
+  กลับไปดูตั้งค่าอื่น ๆ
+</Card>

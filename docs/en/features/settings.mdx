@@ -1,98 +1,123 @@
 ---
 title: "SETTINGS"
-description: "Configure sound, lights, display, password, and device information."
+description: "Choose settings to configure"
 icon: "settings"
 ---
 
-Configure sound, lights, display, password, and device information. For a new device, start with the [initial settings checklist](/en/getting-started/first-settings).
+This page helps you select the settings you want to configure. Choose a category by the menu name shown on the screen
 
-| What to change | Menu path |
-| --- | --- |
-| Sound and status light | [`SETTINGS → Notification`](#notification) |
-| Lock screen, brightness, boot image, and theme | [`SETTINGS → Display UI`](#display-ui) |
-| Password | [`SETTINGS → Security`](#security) |
-| Device information or restart | [`SETTINGS → Device`](#device) |
+For recommended settings for a new device, see the [initial settings checklist](/en/getting-started/first-settings)
+
+## 🧭 Choose Setting Category
+
+<CardGroup cols={2}>
+  <Card title="Notification" icon="bell" href="/en/features/settings-notification">
+    Configure sound and status LED
+    
+    Turn on/off Buzzer sound and LED light
+  </Card>
+  <Card title="Display UI" icon="monitor" href="/en/features/settings-display">
+    Configure screen and images
+    
+    Brightness, Theme, lock screen, and startup image
+  </Card>
+  <Card title="Security" icon="lock" href="/en/features/settings-security">
+    Manage password
+    
+    Set, change, or remove password
+  </Card>
+  <Card title="Device" icon="cpu" href="/en/features/settings-device">
+    Device information and system
+    
+    View Firmware, Storage, and Reboot
+  </Card>
+</CardGroup>
 
 <Info>
-📷 **Image to add:** The SETTINGS screen labeled with Notification, Display UI, Security, and Device.
+📷 **Image to add:** SETTINGS screen labeled with Notification, Display UI, Security, and Device
 </Info>
 
-## 🔔 Notification
+## ⚡ Quick Settings
 
-Menu path: `SETTINGS → Notification`
+### Brightness
+Path: `SETTINGS → Display UI → Brightness`
 
-- `Mute Buzzer` turns notification sound off or on. Enable this option to mute it.
-- `OFF LED` turns the status LED off or on. Enable this option to turn it off.
-- `Test Buzzer` previews each sound pattern.
-- `Test LED` tests the status light.
+Choose: **10%** | **25%** | **50%** | **75%** | **100%**
 
-<Info>
+💡 Recommended 25–50% to save battery
 
-`Mute` and `OFF` mean “disabled,” so their wording can look opposite to the on-screen switch state.
+→ [Go to Display UI](/en/features/settings-display)
 
-</Info>
+---
 
-## 🎨 Display UI
+### Theme - Color Scheme
+Path: `SETTINGS → Display UI → Theme`
 
-Menu path: `SETTINGS → Display UI`
+8 themes: `Default` `Terminal` `Arctic` `Sunset` `Gold` `Crimson` `Electric` `Magenta`
+
+→ [Go to Display UI](/en/features/settings-display)
+
+---
+
+### Mute Sound
+Path: `SETTINGS → Notification → Mute Buzzer`
+
+Enable this option to mute all sounds
+
+→ [Go to Notification](/en/features/settings-notification)
+
+---
+
+### Set Password
+Path: `SETTINGS → Security → Set Password`
+
+Create a 4-press pattern
+
+→ [Go to Security](/en/features/settings-security)
+
+---
+
+## 🔍 Interesting Features
+
+<CardGroup cols={2}>
+  <Card title="🎬 Test Sounds" icon="volume-2" href="/en/features/settings-notification#🎵-available-sound-patterns-for-testing">
+    Listen to each sound pattern before choosing
+  </Card>
+  <Card title="🖼️ GIF on Lock Screen" icon="image" href="/en/features/settings-display#🔒-lock-screen-settings">
+    Add your own animated GIF
+  </Card>
+  <Card title="📊 View Device Info" icon="info" href="/en/features/settings-device#📊-device-information-info">
+    Firmware, Storage, MAC Address
+  </Card>
+  <Card title="🔄 Reboot System" icon="rotate-cw" href="/en/features/settings-device#🔄-restart-system-reboot">
+    Restart system when issues occur
+  </Card>
+</CardGroup>
+
+---
+
+## 💡 Recommendations by Situation
 
 <AccordionGroup>
-  <Accordion title="Lock screen" icon="lock">
-    - `Timeout`: choose 10–60 seconds before locking, or `Disable` to turn the lock screen off.
-    - `Lock dim`: set brightness while locked.
-    - `GIF path`: choose the GIF file path.
-    - `GIF image`: enable or disable the GIF.
-    - `Boomerang`: play the GIF forward and backward.
+  <Accordion title="🌙 Use in Dark Room" icon="moon">
+    1. Reduce brightness to 10–25%
+    2. Choose dark Theme (Terminal, Arctic)
+    3. Enable Mute Buzzer if you need silence
   </Accordion>
-  <Accordion title="Booting" icon="power">
-    - `Custom image`: enable or disable a user-provided image.
-    - `Image path`: choose the image file path.
+  <Accordion title="☀️ Outdoor Use" icon="sun">
+    1. Increase brightness to 75–100%
+    2. Choose high-contrast Theme
+    3. Turn off GIF on lock screen to save battery
   </Accordion>
-  <Accordion title="Brightness" icon="sun">
-    Open `SETTINGS → Display UI → Brightness` and choose `10%`, `25%`, `50%`, `75%`, or `100%`. Start at 25–50% to conserve battery.
+  <Accordion title="🔋 Save Battery" icon="battery">
+    1. Reduce brightness to 25%
+    2. Turn off LED (OFF LED)
+    3. Set short Lock Timeout (10–20 seconds)
+    4. Turn off GIF on lock screen
   </Accordion>
-  <Accordion title="Theme" icon="palette">
-    Open `SETTINGS → Display UI → Theme` and choose `Default`, `Terminal`, `Arctic`, `Sunset`, `Gold`, `Crimson`, `Electric`, or `Magenta`. The active theme has a trailing `*`.
+  <Accordion title="🔒 Increase Security" icon="shield">
+    1. Set 4-press password
+    2. Set short Lock Timeout (10–20 seconds)
+    3. Write down password in a safe place
   </Accordion>
 </AccordionGroup>
-
-<Info>
-📷 **Image to add:** A grid comparing all eight themes with the same menu open in each image.
-</Info>
-
-## 🔐 Security
-
-Menu path: `SETTINGS → Security`
-
-The password is a sequence of four presses using up, down, left, right, and/or the center button.
-
-<Steps>
-  <Step title="Open password settings">
-    Open `SETTINGS → Security → Set Password`.
-  </Step>
-  <Step title="Create a pattern">
-    Enter four directional or center-button presses and remember their order.
-  </Step>
-  <Step title="Confirm">
-    When the device asks `Use this pattern?`, select `Use` to save it or `Retry` to try again.
-  </Step>
-</Steps>
-
-<Info>
-🎬 **Media to add:** A sample password-pattern setup, omitting the recorder's real password.
-</Info>
-
-After setting a password:
-
-- Use `Reset Password` to change the pattern.
-- Use `Disable Password` to remove the password.
-- If you forget it, see [forgotten-password troubleshooting](/en/help/troubleshooting#forgotten-password).
-
-## ℹ️ Device
-
-Menu path: `SETTINGS → Device`
-
-- `Info` displays Firmware, Flash, Wi-Fi, Bluetooth, and Storage information.
-- `Reboot` restarts the device when the display or a feature behaves unexpectedly but menus remain accessible.
-
-For details to send to support, see [what to provide when contacting support](/en/help/troubleshooting#what-to-provide-when-contacting-support).

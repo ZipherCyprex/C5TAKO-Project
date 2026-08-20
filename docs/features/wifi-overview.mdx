@@ -6,12 +6,6 @@ icon: "wifi"
 
 หน้านี้ช่วยให้คุณเลือกเมนู `WIFI` ให้ตรงกับงานที่ต้องการทำ: สแกนเครือข่าย ตรวจสอบสัญญาณ หรือทดสอบระบบ Wi‑Fi ที่คุณได้รับอนุญาต
 
-<Warning>
-
-ใช้กับ Router, Access Point และอุปกรณ์ของคุณเอง หรือระบบที่เจ้าของอนุญาตอย่างชัดเจนเท่านั้น ฟีเจอร์ใน `ATTACK` อาจรบกวนการเชื่อมต่อของอุปกรณ์ใกล้เคียง
-
-</Warning>
-
 <Info>
 
 ⭐ **จุดเด่นของ C5TAKO™:** รองรับ Wi‑Fi ทั้งย่าน **2.4 GHz และ 5 GHz**
@@ -20,13 +14,21 @@ icon: "wifi"
 
 ## 🧭 เลือกเมนู
 
-| เมนูบนเครื่อง | ใช้ทำอะไร | คู่มือ |
-| --- | --- | --- |
-| `SCAN` | ค้นหา Router หรืออุปกรณ์ที่เชื่อมต่ออยู่ | [เปิดคู่มือ SCAN](/features/wifi-scan) |
-| `ATTACK` | ทดสอบการป้องกันของเครือข่าย | [เปิดคู่มือ ATTACK](/features/wifi-attack) |
-| `SNIFFER` | ดู Packet สัญญาณรบกวน หรือบันทึก PCAP | [เปิดคู่มือ SNIFFER](/features/wifi-sniffer) |
+<CardGroup cols={3}>
+  <Card title="SCAN" icon="scan-search" href="/features/wifi-scan">
+    ค้นหา Router หรืออุปกรณ์ที่เชื่อมต่ออยู่
+  </Card>
+  <Card title="ATTACK" icon="shield-alert" href="/features/wifi-attack">
+    ทดสอบการป้องกันของเครือข่าย
+  </Card>
+  <Card title="SNIFFER" icon="radar" href="/features/wifi-sniffer">
+    ดู Packet สัญญาณรบกวน หรือบันทึก PCAP
+  </Card>
+</CardGroup>
 
-เริ่มจาก `SCAN` หากต้องการค้นหาและเลือก AP หรือ STA ก่อนใช้เมนูอื่น
+<Note>
+💡 **เริ่มต้นที่ไหนดี?** เริ่มจาก `SCAN` หากต้องการค้นหาและเลือก AP หรือ STA ก่อนใช้เมนูอื่น
+</Note>
 
 <Info>
 📷 **ต้องเพิ่มรูปตรงนี้:** ภาพหน้าเมนู WIFI โดยใส่หมายเลขกำกับ SCAN, ATTACK และ SNIFFER

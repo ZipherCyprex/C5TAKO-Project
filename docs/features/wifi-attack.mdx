@@ -8,22 +8,41 @@ icon: "shield-alert"
 
 <Warning>
 
-ใช้เฉพาะเครือข่ายที่คุณเป็นเจ้าของหรือได้รับอนุญาตอย่างชัดเจน เตรียมอุปกรณ์ทดสอบไว้ล่วงหน้า และหยุดฟีเจอร์ทันทีเมื่อเสร็จ
+ใช้เฉพาะเครือข่ายที่คุณเป็นเจ้าของหรือได้รับอนุญาตอย่างชัดเจน
 
 </Warning>
 
-## เลือกหัวข้อ
+## เลือกที่ต้องการทดสอบ
 
-| ต้องการทำอะไร | ไปที่ |
-| --- | --- |
-| ตัดการเชื่อมต่ออุปกรณ์ทดสอบ | [Deauth](#deauth) |
-| ยกเว้นอุปกรณ์ที่ไม่ต้องการทดสอบ | [Whitelist](#whitelist) |
-| จำลองชื่อ Wi‑Fi จำนวนมาก | [Beacon Spam](#beacon-spam) |
-| บันทึกข้อมูลการเชื่อมต่อเป็น PCAP | [Handshake](#handshake) |
-| ทดสอบหน้าเว็บจำลองใน Lab | [Evil Portal](#evil-portal) |
-| ทดสอบคำขอเชื่อมต่อจำนวนมาก | [Auth Overload](#auth-overload) และ [Assoc Overload](#assoc-overload) |
-| ทดสอบการเปลี่ยน Channel | [Force CSA](#force-csa) |
-| ทดสอบการส่งต่อ DNS | [DNS Repeater](#dns-repeater) |
+<CardGroup cols={2}>
+  <Card title="Deauth" icon="wifi-off" href="#deauth">
+    ตัดการเชื่อมต่ออุปกรณ์ทดสอบ
+  </Card>
+  <Card title="Whitelist" icon="shield-check" href="#whitelist">
+    ยกเว้นอุปกรณ์ที่ไม่ต้องการทดสอบ
+  </Card>
+  <Card title="Beacon Spam" icon="radio-tower" href="#beacon-spam">
+    จำลองชื่อ Wi‑Fi จำนวนมาก
+  </Card>
+  <Card title="Handshake" icon="handshake" href="#handshake">
+    บันทึกข้อมูลการเชื่อมต่อเป็น PCAP
+  </Card>
+  <Card title="Evil Portal" icon="globe" href="#evil-portal">
+    ทดสอบหน้าเว็บจำลองใน Lab
+  </Card>
+  <Card title="Auth Overload" icon="users" href="#auth-overload">
+    ทดสอบคำขอยืนยันตัวตนจำนวนมาก
+  </Card>
+  <Card title="Assoc Overload" icon="network" href="#assoc-overload">
+    ทดสอบคำขอเชื่อมต่อจำนวนมาก
+  </Card>
+  <Card title="Force CSA" icon="arrow-right-left" href="#force-csa">
+    ทดสอบการเปลี่ยน Channel
+  </Card>
+  <Card title="DNS Repeater" icon="server" href="#dns-repeater">
+    ทดสอบการส่งต่อ DNS
+  </Card>
+</CardGroup>
 
 ## ก่อนเริ่ม
 
@@ -35,8 +54,6 @@ icon: "shield-alert"
 ## Deauth
 
 ใช้สำหรับทดสอบว่าอุปกรณ์หลุดจาก Wi‑Fi แล้วเชื่อมต่อกลับได้หรือไม่
-
-เส้นทางเมนู: `WIFI → ATTACK → Deauth`
 
 | ตัวเลือก | ใช้ทำอะไร |
 | --- | --- |
@@ -51,10 +68,8 @@ icon: "shield-alert"
 
 ใช้สำหรับยกเว้นอุปกรณ์ที่ไม่ต้องการให้ถูกตัดการเชื่อมต่อระหว่างทดสอบ
 
-เส้นทางเมนู: `WIFI → ATTACK → Whitelist → Selected STA`
-
 1. [สแกนและเลือก STA](/features/wifi-scan#sta--โทรศัพท์หรือ-client)
-2. เปิด `WIFI → ATTACK → Whitelist → Selected STA`
+2. เลือก `Whitelist → Selected STA`
 3. ตรวจว่าอุปกรณ์ที่เลือกอยู่ในรายการยกเว้นก่อนเริ่มทดสอบ
 
 ## Beacon Spam
@@ -76,8 +91,6 @@ icon: "shield-alert"
 
 ใช้บันทึกข้อมูลการเชื่อมต่อ Wi‑Fi เป็นไฟล์ `.pcap` เพื่อวิเคราะห์ความปลอดภัยของเครือข่ายที่ได้รับอนุญาต
 
-เส้นทางเมนู: `WIFI → ATTACK → Handshake`
-
 | ตัวเลือก | ใช้ทำอะไร |
 | --- | --- |
 | `Auto Active` | ตัดการเชื่อมต่อและจับ Handshake โดยอัตโนมัติ |
@@ -88,8 +101,6 @@ icon: "shield-alert"
 ## Evil Portal
 
 ใช้สร้าง Access Point และหน้าเว็บจำลองใน Lab ที่คุณควบคุม เพื่อทดสอบการแยกแยะหน้าเว็บปลอม
-
-เส้นทางเมนู: `WIFI → ATTACK → Evil Portal`
 
 | ตัวเลือก | ใช้ทำอะไร |
 | --- | --- |
@@ -102,8 +113,6 @@ icon: "shield-alert"
 
 ใช้ส่งคำขอยืนยันตัวตนจำนวนมากไปยัง AP เพื่อทดสอบการจัดการคำขอของ Router
 
-เส้นทางเมนู: `WIFI → ATTACK → Auth Overload`
-
 | ตัวเลือก | ใช้ทำอะไร |
 | --- | --- |
 | `All` | ส่งคำขอไปยัง AP ที่ตรวจพบทั้งหมด |
@@ -114,8 +123,6 @@ icon: "shield-alert"
 ## Assoc Overload
 
 ใช้ส่งคำขอเชื่อมต่อจำนวนมากไปยัง AP เพื่อทดสอบการรองรับการเชื่อมต่อพร้อมกัน
-
-เส้นทางเมนู: `WIFI → ATTACK → Assoc Overload`
 
 | ตัวเลือก | ใช้ทำอะไร |
 | --- | --- |
@@ -128,8 +135,6 @@ icon: "shield-alert"
 
 ใช้ทดสอบว่าอุปกรณ์ตอบสนองต่อคำสั่งเปลี่ยน Channel อย่างไร
 
-เส้นทางเมนู: `WIFI → ATTACK → Force CSA`
-
 | ตัวเลือก | ใช้ทำอะไร |
 | --- | --- |
 | `All` | ส่งคำสั่งไปยังอุปกรณ์ที่ตรวจพบทั้งหมด |
@@ -141,8 +146,6 @@ icon: "shield-alert"
 ## DNS Repeater
 
 ใช้เป็น DNS Server ชั่วคราวเพื่อทดสอบการส่งต่อคำขอ DNS ในเครือข่ายที่คุณควบคุม
-
-เส้นทางเมนู: `WIFI → ATTACK → DNS Repeater`
 
 เริ่มเมนูนี้โดยตรง แล้วตรวจการตอบสนองของอุปกรณ์ทดสอบหลังเริ่มทำงาน
 

@@ -1,0 +1,98 @@
+---
+title: "Notification"
+description: "ตั้งค่าเสียงและไฟสถานะของ C5TAKO™"
+icon: "bell"
+---
+
+หน้านี้ช่วยให้คุณตั้งค่าเสียงแจ้งเตือนและไฟสถานะ LED
+
+เส้นทางเมนู: `SETTINGS → Notification`
+
+## 🔔 ตั้งค่าเสียงและไฟ
+
+<CardGroup cols={2}>
+  <Card title="🔇 Mute Buzzer" icon="volume-x">
+    ปิดหรือเปิดเสียงแจ้งเตือน
+    
+    เมื่อต้องการปิดเสียงให้เปิดตัวเลือกนี้
+  </Card>
+  <Card title="💡 OFF LED" icon="lightbulb-off">
+    ปิดหรือเปิดไฟสถานะ
+    
+    เมื่อต้องการปิดไฟให้เปิดตัวเลือกนี้
+  </Card>
+  <Card title="🔊 Test Buzzer" icon="volume-2">
+    ทดลองเสียงแต่ละรูปแบบ
+    
+    เลือกเสียงเพื่อฟังก่อนตัดสินใจ
+  </Card>
+  <Card title="✨ Test LED" icon="zap">
+    ทดลองไฟสถานะ
+    
+    ดูว่าไฟทำงานปกติหรือไม่
+  </Card>
+</CardGroup>
+
+<Info>
+
+คำว่า `Mute` และ `OFF` หมายถึง "ปิดการทำงาน" จึงอาจดูตรงข้ามกับสถานะสวิตช์บนหน้าจอ
+
+</Info>
+
+## 🎵 รูปแบบเสียงที่มีให้ทดสอบ
+
+เมื่อเข้า `Test Buzzer` จะพบเสียงเหล่านี้:
+
+<AccordionGroup>
+  <Accordion title="เสียงพื้นฐาน" icon="bell">
+    - `Click` - เสียงคลิกสั้น ๆ
+    - `Soft Ping` - เสียงปิ๊งนุ่ม ๆ
+    - `Ready` - เสียงพร้อมใช้งาน
+    - `Confirm` - เสียงยืนยัน
+    - `Success` - เสียงสำเร็จ
+  </Accordion>
+  <Accordion title="เสียงสถานะ" icon="activity">
+    - `Flipper Chirp` - เสียงเฉพาะของ Flipper
+    - `Mode Change` - เสียงเปลี่ยนโหมด
+    - `Start Armed` - เสียงเริ่มทำงาน
+    - `Stop Disarmed` - เสียงหยุดทำงาน
+    - `Connected` - เสียงเชื่อมต่อ
+    - `Disconnected` - เสียงตัดการเชื่อมต่อ
+  </Accordion>
+  <Accordion title="เสียงเตือน" icon="alert-triangle">
+    - `Busy Locked` - เสียงระบบไม่ว่าง
+    - `Denied` - เสียงปฏิเสธ
+    - `Warning Soft` - เสียงเตือนนุ่ม
+    - `Warning Tactical` - เสียงเตือนรุนแรง
+    - `Error Normal` - เสียง Error ปกติ
+    - `Hard Fail` - เสียงล้มเหลวอย่างหนัก
+    - `Low Battery` - เสียงแบตเตอรี่ต่ำ
+    - `Critical` - เสียงวิกฤต
+  </Accordion>
+  <Accordion title="เสียงการทำงาน" icon="radar">
+    - `Scan Tick` - เสียง Tick ขณะสแกน
+    - `Capture Found` - เสียงพบข้อมูล
+  </Accordion>
+</AccordionGroup>
+
+## 💡 เคล็ดลับการใช้งาน
+
+<Tip>
+
+**สภาพแวดล้อมเงียบ:** เปิด `Mute Buzzer` เพื่อปิดเสียงทั้งหมด
+
+**ประหยัดแบตเตอรี่:** เปิด `OFF LED` เพื่อปิดไฟสถานะ
+
+**ทดสอบก่อนใช้จริง:** ใช้ `Test Buzzer` และ `Test LED` เพื่อตรวจว่าอุปกรณ์ทำงานปกติ
+
+</Tip>
+
+<Info>
+🎬 **ต้องเพิ่มคลิปตรงนี้:** แสดงการเปิด/ปิด Mute Buzzer, OFF LED และทดสอบเสียง/ไฟ
+</Info>
+
+## ↩️ กลับไปหน้าหลัก
+
+<Card title="SETTINGS" icon="settings" href="/features/settings">
+  กลับไปดูตั้งค่าอื่น ๆ
+</Card>
