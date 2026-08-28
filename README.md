@@ -105,40 +105,57 @@ Replace `COM3` with your device's serial port (`/dev/ttyUSB0` on Linux/Mac).
 
 > **Important**: This firmware is designed specifically for ESP32-C5. Other ESP32 variants are not supported.
 
+> **Firmware profile**: The pinout below matches the default `XC5` / XIAO ESP32-C5 profile in `platformio.ini` and `board_config.h`.
+
 <br>
 
 ### Pin Assignments
 
 | Interface / Component | Signal | Pin | Notes |
 |-----------------------|--------|-----|-------|
-| **Shared SPI Bus** | SCK | GPIO8 | Shared by SPI devices |
-| | SDA / MOSI | GPIO10 | Shared by SPI devices |
-| | MISO | GPIO9 | Shared by SPI devices |
-| **1.54\" TFT (240x240)** | RST / RES | EN | Display reset |
+| **1.54\" TFT (240x240)** | SCK | GPIO8 | SPI clock |
+| | SDA / MOSI | GPIO10 | SPI data to display |
+| | RST / RES | EN | Connected to board reset; firmware uses `TFT_RST=-1` |
 | | DC | GPIO1 | Data / Command |
 | | CS | GPIO7 | Chip Select |
 | | BLK | GPIO25 | Backlight |
-| **SD Card** | CS | GPIO5 | Uses the shared SPI bus |
+| **SD Card** | SCK | GPIO8 | SPI clock |
+| | MOSI | GPIO10 | SPI data to SD card |
+| | MISO | GPIO9 | SPI data from SD card |
+| | CS | GPIO5 | Chip Select |
 | **5-Way Button** | UP | GPIO24 | Active LOW |
 | | DOWN | GPIO28 | Active LOW; boot button |
 | | LEFT | GPIO23 | Active LOW |
 | | RIGHT | GPIO0 | Active LOW |
 | | CENTER | GPIO4 | Active LOW |
-| **Expansion** | IR_BZER | GPIO3 | IR transmitter / buzzer expansion signal |
-| **CC1101** | CS | GPIO2 | Uses the shared SPI bus |
+| **Buzzer / IR Expansion** | IR_BZER | GPIO3 | Shared buzzer and IR transmitter signal |
+| **CC1101** | SCK | GPIO8 | SPI clock |
+| | MOSI | GPIO10 | SPI data to CC1101 |
+| | MISO | GPIO9 | SPI data from CC1101 |
+| | CS | GPIO2 | Chip Select |
 | | GDO0 | GPIO12 | Interrupt / data output |
 | | GDO2 | GPIO11 | Interrupt / data output |
+| **Battery Monitor** | BAT_VOLT | GPIO6 | Battery voltage ADC input |
+| | BAT_VOLT_EN | GPIO26 | Enables battery voltage measurement |
+| **Built-in LED** | LED_BUILTIN | GPIO27 | On-board buzzer activity LED; active LOW |
+
+> **TFT wiring**: The firmware configures the display as write-only SPI, so the TFT does not use MISO. GPIO9 MISO is required by the SD card and CC1101 only.
 
 ### External Module Board (Planned)
 
 The external module board requires additional connections and may not be included in the current hardware revision. The following modules are reserved for a future board:
 
-| Module | Connection / Status |
-|--------|---------------------|
-| GPS | Pin assignment TBD |
-| CC1101 | Shared SPI bus, CS GPIO2, GDO0 GPIO12, GDO2 GPIO11 |
-| IR transmitter (IRTX) | Expansion signal `IR_BZER` on GPIO3 |
-| IRTX step-up circuit | External power circuit; no GPIO assignment |
+| Module | Signal | Pin / Status |
+|--------|--------|--------------|
+| **GPS** | TX / RX | Not defined in the current firmware |
+| **CC1101** | SCK | GPIO8 |
+| | MOSI | GPIO10 |
+| | MISO | GPIO9 |
+| | CS | GPIO2 |
+| | GDO0 | GPIO12 |
+| | GDO2 | GPIO11 |
+| **IR transmitter (IRTX)** | IR_BZER | GPIO3; shared with the buzzer |
+| **IRTX step-up circuit** | Power | External power circuit; no GPIO assignment |
 
 ### Physical Components
 
