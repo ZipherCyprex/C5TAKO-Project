@@ -107,26 +107,38 @@ Replace `COM3` with your device's serial port (`/dev/ttyUSB0` on Linux/Mac).
 
 <br>
 
-| Component | GPIO Pin | Notes |
-|-----------|----------|-------|
-| **TFT Display (SPI)** | | |
-| - MOSI | TBD | SPI Data |
-| - MISO | TBD | SPI Data |
-| - SCK | TBD | SPI Clock |
-| - CS | TBD | Chip Select |
-| - DC | TBD | Data/Command |
-| - RST | TBD | Reset |
-| - BL | TBD | Backlight PWM |
-| **5-Way Button** | | Active LOW |
-| - UP | TBD | Pull-up |
-| - DOWN | TBD | Pull-up |
-| - LEFT | TBD | Pull-up |
-| - RIGHT | TBD | Pull-up |
-| - CENTER | TBD | Pull-up |
-| **Power (Optional)** | | |
-| - Battery | TBD | ADC for voltage monitoring |
+### Pin Assignments
 
-> **Note**: Pin assignments are being finalized and will be updated soon.
+| Interface / Component | Signal | Pin | Notes |
+|-----------------------|--------|-----|-------|
+| **Shared SPI Bus** | SCK | GPIO8 | Shared by SPI devices |
+| | SDA / MOSI | GPIO10 | Shared by SPI devices |
+| | MISO | GPIO9 | Shared by SPI devices |
+| **1.54\" TFT (240x240)** | RST / RES | EN | Display reset |
+| | DC | GPIO1 | Data / Command |
+| | CS | GPIO7 | Chip Select |
+| | BLK | GPIO25 | Backlight |
+| **SD Card** | CS | GPIO5 | Uses the shared SPI bus |
+| **5-Way Button** | UP | GPIO24 | Active LOW |
+| | DOWN | GPIO28 | Active LOW; boot button |
+| | LEFT | GPIO23 | Active LOW |
+| | RIGHT | GPIO0 | Active LOW |
+| | CENTER | GPIO4 | Active LOW |
+| **Expansion** | IR_BZER | GPIO3 | IR transmitter / buzzer expansion signal |
+| **CC1101** | CS | GPIO2 | Uses the shared SPI bus |
+| | GDO0 | GPIO12 | Interrupt / data output |
+| | GDO2 | GPIO11 | Interrupt / data output |
+
+### External Module Board (Planned)
+
+The external module board requires additional connections and may not be included in the current hardware revision. The following modules are reserved for a future board:
+
+| Module | Connection / Status |
+|--------|---------------------|
+| GPS | Pin assignment TBD |
+| CC1101 | Shared SPI bus, CS GPIO2, GDO0 GPIO12, GDO2 GPIO11 |
+| IR transmitter (IRTX) | Expansion signal `IR_BZER` on GPIO3 |
+| IRTX step-up circuit | External power circuit; no GPIO assignment |
 
 ### Physical Components
 
