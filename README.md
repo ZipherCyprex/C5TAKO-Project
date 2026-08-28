@@ -105,7 +105,7 @@ Replace `COM3` with your device's serial port (`/dev/ttyUSB0` on Linux/Mac).
 
 > **Important**: This firmware is designed specifically for ESP32-C5. Other ESP32 variants are not supported.
 
-> **Firmware profile**: The pinout below matches the default `XC5` / XIAO ESP32-C5 profile in `platformio.ini` and `board_config.h`.
+> **Hardware profile**: The pinout below is for the C5TAKO XIAO ESP32-C5 build.
 
 <br>
 
@@ -115,7 +115,7 @@ Replace `COM3` with your device's serial port (`/dev/ttyUSB0` on Linux/Mac).
 |-----------------------|--------|-----|-------|
 | **1.54\" TFT (240x240)** | SCK | GPIO8 | SPI clock |
 | | SDA / MOSI | GPIO10 | SPI data to display |
-| | RST / RES | EN | Connected to board reset; firmware uses `TFT_RST=-1` |
+| | RST / RES | EN | Connected to board reset; no separate reset GPIO |
 | | DC | GPIO1 | Data / Command |
 | | CS | GPIO7 | Chip Select |
 | | BLK | GPIO25 | Backlight |
@@ -137,7 +137,7 @@ Replace `COM3` with your device's serial port (`/dev/ttyUSB0` on Linux/Mac).
 | | GDO2 | GPIO11 | Interrupt / data output |
 | **Battery Monitor** | BAT_VOLT | GPIO6 | Battery voltage ADC input |
 | | BAT_VOLT_EN | GPIO26 | Enables battery voltage measurement |
-| **Built-in LED** | LED_BUILTIN | GPIO27 | On-board buzzer activity LED; active LOW |
+| **Built-in LED** | Activity LED | GPIO27 | On-board buzzer activity LED; active LOW |
 
 > **TFT wiring**: The firmware configures the display as write-only SPI, so the TFT does not use MISO. GPIO9 MISO is required by the SD card and CC1101 only.
 
@@ -147,7 +147,7 @@ The external module board requires additional connections and may not be include
 
 | Module | Signal | Pin / Status |
 |--------|--------|--------------|
-| **GPS** | TX / RX | Not defined in the current firmware |
+| **GPS** | TX / RX | Pin assignment TBD |
 | **CC1101** | SCK | GPIO8 |
 | | MOSI | GPIO10 |
 | | MISO | GPIO9 |
