@@ -165,6 +165,79 @@ The external module board requires additional connections and may not be include
 <br>
 <br>
 
+## 🟢 Feature list
+
+### WIFI
+- AP Scan
+- Station Scan
+- Packet Monitor
+- PCAP Capture
+- PCAP Crack
+- Channel Analyzer
+- Hidden AP Finder
+- Network Map
+- Mini Nmap
+- Whitelist
+- Deauthentication
+- Beacon Spam
+- Captive Portal
+
+### WIFI Device Detection
+- Drone Remote ID
+- Pwnagotchi
+- Wi-Fi Pineapple
+- ESP-NOW
+- Wi-Fi Mesh
+- Attack Alert
+- 7+ more... 
+
+### BLE
+- BLE Monitor 
+- BLE Inspector 
+- Model Finder 
+- BLE Spam (Raw+Pkt) 
+- Bad BLE
+- Ducky Script
+- BLE HID Composite
+- AirTag Trigger
+
+### BLE Device Detection
+- Apple Devices
+- AirTag
+- Samsung SmartTag
+- Tile
+- Android Fast Pair
+- Flipper
+- Pwnagotchi
+- Meta Ray-Ban
+- Card Skimmer Detection
+- 20+ more...
+
+### STORAGE & FILES
+- LittleFS
+- SD Card
+- Web File Manager
+- Serial File Transfer
+- BLE File Transfer
+- PCAP Storage
+- Portal Data Storage
+- Recovery Password Storage
+
+### SYSTEM
+- Display Menu
+- USB Serial Commands
+- BLE Serial Commands
+- Display Stream Buffer 
+- Settings
+- Battery Monitor
+
+### GAMES
+- Dino Game
+- Maze Game
+
+<br>
+<br>
+
 ## 📚 Documentation
 
 Complete user guides, feature documentation, and DIY assembly instructions:
