@@ -43,12 +43,6 @@ C5TAKO™ is a portable Wi-Fi (2.4/5 GHz) and Bluetooth LE testing device for se
 
 ### Latest Firmware
 
-Download the latest firmware `.bin` file from the [Releases](https://github.com/ZipherCyprex/C5TAKO-Project/releases) page.
-
-<br>
-
-### Flashing Methods
-
 ### 🌐 Option 1: Firmware Flasher (Easiest)
 
 Use the official web-based flasher - no installation required:
